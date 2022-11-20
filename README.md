@@ -79,10 +79,6 @@ Dashboard
 
 ## Technische uitwerking Project
 
-<details>
-<summary>Front-end</summary>
-<br>
-This is how you dropdown.
-</details>
+### Front-end
 
 
