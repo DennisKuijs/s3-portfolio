@@ -1,4 +1,4 @@
 # Individueel Project Semester 3
 
-# Project: Warehouse Management System (WMS)
+## Project: Warehouse Management System (WMS)
 ## Projectbeschrijving
