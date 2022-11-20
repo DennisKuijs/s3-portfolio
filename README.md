@@ -77,6 +77,12 @@ Leveranciers
 Dashboard
   - Als een gebruiker wil ik een dashboardpagina hebben waarop ik alle belangrijke informatie kan inzien
 
+## Technische uitwerking Project
 
+<details>
+<summary>Front-end</summary>
+<br>
+This is how you dropdown.
+</details>
 
 
