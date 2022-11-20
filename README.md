@@ -2,14 +2,14 @@
 
 ## Project: Warehouse Management System (WMS)
 
-## Projectbeschrijving
+### Projectbeschrijving
 In dit semester ben ik voor mijn individuele project begonnen aan een order/warehouse management tool. Met behulp van deze webapplicatie kunnen medewerkers alle processen binnen het warehouse beheren en overzichtelijk inzien.
 Het is bijvoorbeeld mogelijk om producten, leveranciers en bestellingen te beheren en deze te koppelen aan voorraadlocaties zodat altijd duidelijk is waar welk product ligt opgeslagen. 
 Ook is er de mogelijkheid om bestellingen te verwerken die binnenkomen via verschillende verkoopplatformen en/of webshops.
 
 Het idee voor dit project is ontstaan vanuit mijn eigen bedrijf. Ik ben actief als verkoper op bol.com en heb dagelijks te maken met logstieke processen. Op dit moment gebruiken we daarvoor externe software, deze software werkt prima, alleen missen we soms wat functionaliteiten. Met behulp van dit project proberen we deze functionaliteiten zelf te ontwikkelen.
 
-## Requirements
+### Requirements
 Klanten
   -	Een medewerker kan een nieuwe klant toevoegen in het systeem
   -	Een medewerker kan een bestaande klant aanpassen in het systeem.
@@ -44,7 +44,7 @@ Voorraadlocaties
   -	Een medewerker kan een bestaande voorraadlocatie verwijderen uit het systeem
   -	Er kan een export gemaakt worden van alle voorraadlocaties.
 
-## User Stories
+### User Stories
 Producten
   - Als een gebruiker wil ik nieuwe producten kunnen toevoegen aan het systeem
   - Als een gebruiker wil ik bestaande producten kunnen wijzigen in het systeem
