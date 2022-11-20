@@ -1,2 +1,4 @@
-# s3-portfolio
-Portfolio Semester 3 Fontys ICT
+# Individueel Project Semester 3
+
+# Project: Warehouse Management System (WMS)
+## Projectbeschrijving
