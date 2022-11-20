@@ -45,29 +45,36 @@ Voorraadlocaties
   -	Er kan een export gemaakt worden van alle voorraadlocaties.
 
 ## User Stories
+Producten
   - Als een gebruiker wil ik nieuwe producten kunnen toevoegen aan het systeem
   - Als een gebruiker wil ik bestaande producten kunnen wijzigen in het systeem
   - Als een gebruiker wil ik een bestaande product kunnen verwijderen uit het systeem
   - Als een gebruiker wil ik alle producten uit het systeem kunnen inzien
   - Als een gebruiker wil ik een bestaand product op non-actief kunnen zetten
 
+Klanten
   - Als een gebruiker wil ik een nieuwe klant kunnen toevoegen aan het systeem
   - Als een gebruiker wil ik een bestaande klant kunnen aanpassen in het systeem
   - Als een gebruiker wil ik een bestaande klant kunnen verwijderen uit het systeem
   - Als een gebruiker wil ik een overzicht hebben van alle klanten
   
+Voorraadlocaties
   - Als een gebruiker wil ik nieuwe voorraadlocaties kunnen aanmaken in het systeem
   - Als een gebruiker wil ik bestaande voorraadlocaties kunnen aanpassen in het systeem
   - Als een gebruiker wil ik bestaande voorraadlocaties kunnen verwijderen uit het systeem
   - Als gebruiker wil ik een bestaand product kunnen koppelen aan een voorraadlocatie
   - Als een gebruiker wil ik een overzicht hebben van alle voorraadlocaties
 
+Voorraad
   - Als een gebruiker wil ik de voorraad van een product kunnen wijzigen in het systeem
 
+Verkoopkanalen
   - Als een gebruiker wil ik mijn producten kunnen doorsturen naar verschillende marketplaces
 
+Leveranciers
   - Als gebruiker wil ik een leverancier kunnen koppelen aan een artikel
 
+Dashboard
   - Als een gebruiker wil ik een dashboardpagina hebben waarop ik alle belangrijke informatie kan inzien
 
 
