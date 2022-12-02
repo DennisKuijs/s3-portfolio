@@ -160,7 +160,7 @@ De submappen bevatten de volgende bestanden:
   Als laatste zijn er nog een aantal belangrijke bestanden die los in de hoofdmap staan. Dit zijn `main.js` en `.env`. 
   
   Het `main.js` bestand wordt gebruikt om alle losse bestanden te combineren tot een werkende Vue applicatie.
-  ReZo worden hier bijvoorbeeld verschillende pakketen ingeladen en wordt de Vue app gekoppeld aan het `index.html` bestand die we eerder in de `public` map hebben zien staan.
+  Zo worden hier bijvoorbeeld verschillende dependencies ingeladen en wordt de Vue app gekoppeld aan het `index.html` bestand die we eerder in de `public` map hebben zien staan.
 
   ![Screenshot](./assets/img/main.js-image.jpg)
 
@@ -254,7 +254,7 @@ Alle componenten kunnen data naar deze `state` toesturen en opvragen. Dit zorgt 
 
 ![Screenshot](./assets/img/state.jpg)
 
-De `Vuex` state is op de volgende manier opgebouwd.
+De `Vuex` state is op de volgende manier opgebouwd:
 
   - `getters` met behulp van een getter kan een component data uit de state opvragen
 
@@ -274,7 +274,24 @@ De `Vuex` state is op de volgende manier opgebouwd.
 
   - `modules` mocht de state te groot worden dan is het met `modules` mogelijk om meerdere losse states te maken. Dit is ook erg handig voor de onderhoudbaarheid van de    applicatie. Zo heb ik in mijn voorbeeld een aparte module gemaakt voor alles wat met de functionaliteit product te maken heeft.
 
+### Validations
 
+Het is erg belangrijk dat de invoer die de gebruik opgeeft in bijvoorbeeld een formulier voldoet aan de gewenste invoer. Om dit te controleren heb ik gebruik gemaakt van een form-validation package genaamd `yup`. Met behulp van deze package kan je heel eenvoudig regels opstellen voor elk afzonderlijk invoerveld.
+
+
+![Screenshot](./assets/img/yup.jpg)
+
+In het voorbeeld op de foto is te zien dat bijvoorbeeld het invoerveld `productName` moet voldoen aan de volgende regels:
+
+  - De invoer moet van het datatype `string` zijn.
+  - De invoer is `required`
+  - De lengte van de invoer mag maximaal `50` tekens zijn,
+  - De waarde `null` is toegestaan (`nullable`)
+
+Als de invoer niet voldoet aan de ingestelde regels dan wordt de meegestuurde foutmelding getoond aan de gebruiker.
+Dit ziet er alsvolgt uit:
+
+![Alt Text]('https://gyazo.com/67e2c3434983fbfc223db69b90d8c268')
 
 ### Backend
 De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
