@@ -524,14 +524,16 @@ Op basis van deze gegevens wordt er een filter object gemaakt met de volgende pr
 
 #### Utils
 
+##### Logger
 Er zijn ook een aantal helper bestanden. Deze dienen als uitbreiding of extensie voor bepaalde onderdelen van de applicatie. Zo is er een helper gemaakt genaamd `logger.ts`
 Deze zorgt met behulp van de `pino` en `pino-pretty` package dat er nette log meldingen worden weergegeven in de console.
 
 ![Screenshot](./assets/img/logger.jpg)
 
-In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb geïnstalleerd.
+In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb gebruikt..
 
-Met behulp van de `export default log` wordt de `log` variable exporteerd zodat andere bestanden in de applicatie deze kunnen gebruiken.
+De log variable bevat een instantie van de logger functie
+Met behulp van de `export default log` wordt de `log` variable exporteerd zodat andere bestanden in de applicatie deze functie kunnen gebruiken.
 
 Door het bestand te importeren in een ander bestand kun je vervolgens eenvoudig de gexporteerde functie van de `logger.ts` aanroepen.
 hierna is het mogelijk om met behulp van `.info()` een informatie log te versturen naar de console
@@ -545,3 +547,28 @@ of met `.error()` een error melding te versturen naar de console
 Het resultaat is terug te zien in de console van de applicatie
 
 ![Screenshot](./assets/img/logmelding.jpg)
+
+##### validateENV
+
+Ik heb ook een helper bestand gemaakt voor het valideren van de enviroment variablen. Met behulp van de package `envalid` kun je heel eenvoudig enviroment variabelen controleren op juiste data.
+De functie leest alle variablen uit het enviroment bestand via `process.env` daar heb ik voor elk variable aangegeven welk datatype de data in de variablen moet hebben.
+
+![Screenshot](./assets/img/validatenv.jpg)
+
+De meeste variabelen hebben als type `str()` wat inhoud dat ze een `string` moeten bevatten.
+De variable `SERVER_PORT` heeft als enige een afwijkend type, namelijk `port()` deze controleert of het ingevoerde getal een geldige poort kan zijn en of deze niet al in gebruik is. Daarnaast heb ik ook een default waarde ingesteld, mocht de enviroment variable geen waarde bevatten dan krijgt deze automatisch de default waarde toegewezen.
+
+##### DBConnection
+
+Als laatste heb ik een helper bestand gemaakt voor het verbinden van de MongoDB database. Voorheen had ik dit geintegreerd in het `App.ts` bestand. Vanwege de toegevoegde MockDB Instantie heb ik besloten om hiervoor een helper bestand te maken aangezien er nu een aantal extra checks zijn toegevoegd.
+
+Het helper bestand heeft 2 functies:
+
+   -  `connectDB()` voor het verbinden met de database van `MongoDB`
+   -  `disconnectDB()` voor het afsluiten van de databaseconnectie
+
+Voordat er een verbinding wordt opgezet wordt er eerst gekeken naar het enviroment variable `NODE_ENV`, op moment dat de waarde hiervan op `test` staat zal er een connectie worden gemaakt met een Mock instantie van MongoDB. Deze instantie wordt opgezet met behulp van de `mongodb-memory-server` package. Het systeem gaat er in dit geval van uit dat er uitsluitend tests worden gedraaid die niet op de productie database mogen worden uitgevoerd.
+
+Op moment dat de enviroment variable een andere waarde heeft dan `test` zal de server een verbinding opzetten met de productiedatabase. Deze URL wordt opgehaald uit de enviroment variable `MONGOOSE_CONNECTIONSTRING`
+
+![Screenshot](./assets/img/dbconnection.jpg)
