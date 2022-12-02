@@ -529,7 +529,7 @@ Deze zorgt met behulp van de `pino` en `pino-pretty` package dat er nette log me
 
 ![Screenshot](./assets/img/logger.jpg)
 
-In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige datum en tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb geïnstalleerd.
+In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb geïnstalleerd.
 
 Met behulp van de `export default log` wordt de `log` variable exporteerd zodat andere bestanden in de applicatie deze kunnen gebruiken.
 
