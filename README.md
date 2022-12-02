@@ -307,6 +307,26 @@ De backend voor de webapplicatie bestaat uit voor nu uit één enkele REST API v
 De REST API's worden ontwikkeld in Node.js in combinatie met TypeScript en Express.js
 Express.js is een framework voor Node.js dat specifiek bedoeld is voor het bouwen van REST API's. Express werkt op basis van JavaScript, net zoals de frontend in Vue.js. Dit zorgt ervoor dat zowel frontend als backend in dezelfde taal worden ontwikkeld. Daarnaast is het hier ook mogelijk om de npm package manager te gebruiken voor het installeren van diverse packages.
 
+Voor het opslaan van data maak ik gebruik van `MongoDB` Dit is een NoSQL database en is erg handig voor het opslaan van veel ongestructuurde data. 
+Het is ook mogelijk om een aantal simpele relaties te maken met behulp van zogenoemde `ObjectIds` Aangezien in mijn applicatie voor nu niet veel relaties zitten en er alleen productinformatie wordt opgeslagen leekt het mij een goed idee om hiervoor te kiezen.
+
+Voor de backend maak ik verder nog gebruik van de volgende packages:
+
+  - AWS-SDK (Voor de verbinding met de live AWS omgeving)
+  - body-parser (Voor het weergeven van extra informatie afkomstig van een HTTP Request)
+  - cors (Voor het beheren van de CORS Instellingen)
+  - dayjs (Een package voor het manipuleren van datums / tijden)
+  - dotenv (Voor het beheren van de .env enviroment variables)
+  - envalid (Voor het valideren van de .env enviroment variables)
+  - express (Voor het opzetten van de Express server)
+  - jest (Voor het uitvoeren van de integration tests)
+  - joi (Voor het maken van de validatieschema's om data te kunnen valideren)
+  - mongodb-memory-server (Voor het opzetten van een Mock instantie van MongoDB, deze wordt gebruikt binnen de tests)
+  - mongoose (Voor het verbinden met de live MongoDB server)
+  - pino & pino-pretty (Voor het maken van een duidelijk log melding in de console)
+  - supertest (Voor het maken van de integrationtests)
+  - uuid (Voor het creëren van unieke UUID's)
+
 #### Mappen structuur
 
 Ook voor de backend heb ik onderzoek gedaan naar een handige mappen structuur. Persoonlijk vind ik het fijn om dezelfde mappenstructuur aan te houden als de frontend applicatie. Dit maakt het voor mij erg overzichtelijk. Om die reden heb ik ook bij de backend applicatie mijn mappenstructuur opgedeeld op basis van de verschillende onderdelen van de API.
@@ -395,7 +415,7 @@ De ProductController in dit voorbeeld heeft een aantal endpoints:
 
  ![Screenshot](./assets/img/statuscode400.jpg)
 
- Verder gebruikt (`implements`) de Controller een interface. Deze zorgt ervoor dat elke Controller voldoet aan de eisen die zijn gesteld in de interface. In dit geval moet elke controller minimaal een variable `path` en `router` hebben.
+ Verder implementeert (`implements`) de Controller een interface. Deze zorgt ervoor dat elke Controller voldoet aan de eisen die zijn gesteld in de interface. In dit geval moet elke controller minimaal een variable `path` en `router` hebben.
  Op moment dat deze variabelen niet zijn aangemaakt zal de server een error tonen.
 
  ![Screenshot](./assets/img/implements.jpg)
@@ -411,7 +431,7 @@ De interface voor Controller bevat 2 property's genaamd `path` en `router`.
 
  ![Screenshot](./assets/img/interfacerouter.jpg)
 
-Elke klasse dat gebruik maakt (`implements`) van mijn interface Controller is verplicht om deze 2 property's over te nemen. Op moment dat dit niet gebeurd zal de applicatie een foutmelding geven.
+Elke klasse dat mijn interface implementeert (`implements`) is verplicht om deze 2 property's over te nemen. Op moment dat dit niet gebeurd zal de applicatie een foutmelding geven.
 
   ![Screenshot](./assets/img/implementserror.jpg)
 
@@ -421,3 +441,83 @@ Als extra heeft deze interface een connectie met mijn database model `Product` v
   ![Screenshot](./assets/img/Productinterface.jpg)
 
 
+#### Middlewares
+
+Binnen mijn backend applicatie heb ik een aantal middlewares geschreven. Deze middlewares zijn stukjes code die voorafgaand aan een request worden uitgevoerd. Denk hierbij aan de validatie van de gegevens die zijn meegegeven met een request. Of om te kijken of een gebruiker is ingelogd / toestemming heeft.
+
+Als de middleware een foutmelding geeft, zal de controller dit weergeven aan de gebruiker en wordt de code in de controller niet uitgevoerd.
+
+![Screenshot](./assets/img/validationmiddleware.jpg)
+
+In mijn REST API heb ik een middleware geschreven voor het valideren van de data die is meegegeven met een request. Deze middleware is toegepast op de endpoint `/create-product`
+Voor het valideren van de data maak ik gebruik van de npm package `Joi` Deze package werkt op dezelfde manier als `yup`, namelijk aan de hand van een validation schema.
+
+Op moment dat de meegestuurde data voldoet aan de gewenste invoer zal de middleware een signaal doorsturen dat de controller verder kan gaan met het uitvoeren van de code. Dit gebeurd dankzij de `next()` functie die is meegegeven aan de middleware.
+
+Mocht de middleware een fout teruggegeven dan wordt deze doorgestuurd naar de controller en zal de controller een error statuscode teruggesturen naar de gebruiker met daarin een nette foutmelding. De code in de controller wordt verder niet meer uitgevoerd.
+
+
+#### Models
+
+De backend applicatie gebruikt data modellen voor het opslaan van data in bijvoorbeeld een database of cache server. In mijn backend applicatie heb ik een model gemaakt die van de product data die wordt verstuurd een `Product` model kan maken en deze vervolgens kan opslaan in de `MongoDB` database
+
+In MongoDB representeert elke model een aparte tabel.
+
+![Screenshot](./assets/img/mongodbtable.jpg)
+
+Het model ziet er alsvolgt uit:
+
+![Screenshot](./assets/img/Productmodel.jpg)
+
+In het model zijn verschillende objecten gedefinieerd. Elk object is een apart veldje met data. Aan het object kunnen een aantal property's worden meegegeven zoals:
+
+  - `type` Dit is het datatype die de data moet bevatten, dit kan bijvoorbeeld `String`, `Number` of `Boolean` zijn.
+  - `required`: Of het verplicht is om dit veldje in te voeren.
+  - `default`: Een standaard waarde die automatisch wordt meegegeven aan het veldje bij het aanmaken van het model
+  - `immutable`: Of de data van dit veldje later (naardat het als eerste is gezet) nog aangepast kan worden. 
+  - `min`: Een minimale waarde die het veldje moet hebben.
+  - `max`: Een maximale waarde die het veldje kan hebben.
+
+Het model is opgebouwd als een `Schema` (tabel) van mongoose. Hierdoor staat het model direct in contact met de database en kunnen er nadat een model is aangemaakt eenvoudig database queries worden uitgevoerd.
+
+![Screenshot](./assets/img/databaseactions.jpg)
+
+
+#### Services
+
+De logica van de REST API is opgedeeld in verschillende services. Elke functionaliteit heeft zijn eigen service op de API. In de klasse `ProductService` zijn verschillende functies gemaakt voor de diverse acties die worden afgehandeld in deze service. 
+Elke functie is `async` (asynchronous) aangezien de code moet wachten op een antwoord van de database server of een externe API voordat deze verder kan gaan.
+
+![Screenshot](./assets/img/ProductService-backend.jpg)
+
+Er zijn ook een aantal controles opgenomen in de verschillende functies om ervoor te zorgen dat er geen dubbele producten kunnen worden aangemaakt of dat er geen product kan worden opgehaald die niet bestaat.
+Deze checks worden als eerste uitgevoerd op moment dat de functie wordt aangeroepen
+
+Mocht er een fout optreden tijdens deze controles dan zal de foutmelding worden doorgegeven aan de controller waarna deze de foutmelding zal tonen aan de gebruiker middels een statuscode `400 BAD REQUEST`
+
+Het is ook mogelijk dat binnen een service een andere service wordt aangeroepen. Dit is bijvoorbeeld het geval bij het aanmaken van een nieuw product. 
+Op moment dat de gebruiker een afbeelding meestuurt zal deze worden doorgestuurd naar de `ImageService` Deze Service is vervolgens verantwoordelijk voor het afhandelen van de gewenste actie.
+Mocht er een fout optreden in deze service dan zal dit ook worden doorgestuurd naar de controller waarna de gebruiker een foutmelding kan inzien en het probleem kan oplossen.
+
+![Screenshot](./assets/img/uploadimage.jpg)
+
+In het voorbeeld van de `ProductService` maken alle functies gebruik van het `mongoose` model Product, dit model staat in direct contact met de database tabel products waardoor er diverse databasequeries uitgevoerd kunnen worden.
+
+Op moment dat een actie succesvol uitgevoerd is zal de data die `mongoose` terugstuurt worden doorgestuurd naar de controller waarna deze aan de gebruiker kan worden getoond middels een statuscode `200 OK` of `201 CREATED`
+
+Verder is er bij de functie `GetAllProducts()` een pagination mechanisme gemaakt die ervoor zorgt dat het aantal producten dat wordt teruggesturud naar de gebruiker kan worden beperkt. Dit is vooral handig als het aantal producten in de database stijgt en deze niet meer allemaal op één pagina weergegeven kunnen worden.
+
+De functie ontvangt een limiet (Het maximaal aantal weer te geven producten) en het paginanummer (huidige pagina)
+Op basis van deze gegevens wordt er een filter object gemaakt met de volgende property's
+
+  - `limit`: Het limit dat wordt meegegeven door de gebruiker, als deze niet wordt meegegeven is de waarde 0 (Geen limiet)
+  - `currentPage`: Het paginanummer dat wordt meegegeven door de gebruiker, als deze niet wordt meegegeven is de waarde 1 (Eerste pagina)
+  - `maxPage`: Het maximaal aantal pagina's, dit cijfer is gebaseerd op het totaal aantal producten in de database gedeeld door het limiet (Hoeveel producten er maximaal weergeven mogen worden)
+
+  Deze parameters worden meegegeven aan de query van het `mongoose` model Product waarna de resultaten worden opgeslagen in een variable.
+  Aan deze `results` variable wordt het filter object dat eerder is aangemaakt meegegeven.
+
+  Dit gehele object zal worden doorgestuurd naar de controller waarna de gebruiker de opgehaalde producten kan bekijken.
+
+
+  ![Screenshot](./assets/img/pagination.jpg)
