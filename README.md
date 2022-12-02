@@ -521,3 +521,27 @@ Op basis van deze gegevens wordt er een filter object gemaakt met de volgende pr
 
 
   ![Screenshot](./assets/img/pagination.jpg)
+
+#### Utils
+
+Er zijn ook een aantal helper bestanden. Deze dienen als uitbreiding of extensie voor bepaalde onderdelen van de applicatie. Zo is er een helper gemaakt genaamd `logger.ts`
+Deze zorgt met behulp van de `pino` en `pino-pretty` package dat er nette log meldingen worden weergegeven in de console.
+
+![Screenshot](./assets/img/logger.jpg)
+
+In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige datum en tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb geïnstalleerd.
+
+Met behulp van de `export default log` wordt de `log` variable exporteerd zodat andere bestanden in de applicatie deze kunnen gebruiken.
+
+Door het bestand te importeren in een ander bestand kun je vervolgens eenvoudig de gexporteerde functie van de `logger.ts` aanroepen.
+hierna is het mogelijk om met behulp van `.info()` een informatie log te versturen naar de console
+
+![Screenshot](./assets/img/loggerinfo.jpg)
+
+of met `.error()` een error melding te versturen naar de console
+
+![Screenshot](./assets/img/logger-error.jpg)
+
+Het resultaat is terug te zien in de console van de applicatie
+
+![Screenshot](./assets/img/logmelding.jpg)
