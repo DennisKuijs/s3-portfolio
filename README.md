@@ -291,7 +291,8 @@ In het voorbeeld op de foto is te zien dat bijvoorbeeld het invoerveld `productN
 Als de invoer niet voldoet aan de ingestelde regels dan wordt de meegestuurde foutmelding getoond aan de gebruiker.
 Dit ziet er alsvolgt uit:
 
-![Alt Text]('https://gyazo.com/67e2c3434983fbfc223db69b90d8c268')
+![Alt Text](https://i.gyazo.com/67e2c3434983fbfc223db69b90d8c268.gif)
+
 
 ### Backend
 De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
