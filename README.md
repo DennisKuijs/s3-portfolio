@@ -123,7 +123,7 @@ De submappen bevatten de volgende bestanden:
 
   - in de `components` map staan alle losse components die ik gebruik in mijn applicatie. 
     
-    Deze components heb ik verder opgesplitst in UI components, Helper components en functionaliteit components. 
+    Deze components heb ik verder opgesplitst in UI components, Helper components en functionele components. 
     UI Components bouwen de grote onderdelen van de applicatie, zoals de NavBar, Footer etc. (`NavBar.vue`, `PaginationBox.vue`, `StatusBar.vue`)
    
     De helper components zijn components die door het gehele project gebruikt kunnen worden en dienen als ondersteuning. Een voorbeeld hiervan is bijvoorbeeld een dropdownlijst. (`CountrySelector.vue`, `ImageSelector.vue`, `VATSelector.vue`)
@@ -177,6 +177,22 @@ Om de frontend op te bouwen maak ik gebruik van zogenoemde components. Dit zijn 
 
 Op die manier hoef je de code maar één keer te schrijven en bij een aanpassing wordt hij overal waar het component wordt gebruikt direct bijgewerkt. Daarnaast draagt het bij aan een goede onderhoudbare en overzichtelijke applicatie.
 
+Elk component in Vue.js is opgebouwd op dezelfde manier. Zo start een component met de `template` tag. Elke template tag moet minstens één `root` element bevatten zoals een `div` tag. Binnen het `root` element kan vervolgens HTML code worden geschreven.
+
+![Screenshot](./assets/img/template.jpg)
+
+Als tweede wordt er een `<script>` tag toegvoegd. Binnen deze tag wordt alle Javascript code geschreven. Ook kunnen er bijvoorbeeld functies worden aangemaakt of een lokale `state` voor het opslaan van data binnen het component.
+
+![Screenshot](./assets/img/script.jpg)
+
+Als laatste wordt er een `style` tag toegevoegd voor het stylen van het component met behulp van `CSS` selectors. Binnen deze tag kun je normale CSS code schrijven. De `style` tag heeft 2 opties. `scoped` en `normaal`. 
+
+Bij de `scoped` variant wordt de CSS code alleen toegepast op de HTML code binnen hetzelfde component. Mocht bijvoorbeeld een bepaalde klasse of element elders op de webpagina  voorkomen dan wordt de CSS code niet toegepast op deze elementen.
+
+Bij de normale variant wordt de CSS code ook buiten het specifieke component gebruikt. Het kan dus voorkomen dat de styling van elementen wordt overschreven. 
+
+![Screenshot](./assets/img/style.jpg)
+
 ##### Helper components.
 
 Voor de structuur heb ik verschillende soorten components gemaakt die gebruikt kunnen worden. Als eerste ben ik bezig geweest met helper components. Dit zijn componenten die overal gebruikt kunnen worden en die een bepaalde functionaliteit versterken of uitbreiden. Een voorbeeld hiervan is `CountrySelector.vue`
@@ -194,6 +210,70 @@ Deze components komen op elke nieuwe webpagina terug en worden altijd op dezelfd
 
 
 ![Screenshot](./assets/img/Navbar.jpg)
+
+
+##### Functionele Components
+
+Als laaste heb ik Functionele components gemaakt. Dit zijn components die specifiek bedoeld zijn voor de werking van de applicatie en behoren tot een bepaalde functionaliteit. Een voorbeeld hiervan is bijvoorbeeld (`CreateProduct.vue`) voor het aanmaken van een product of (`Product.vue`) Voor het weergeven van een specifiek product.
+
+![Screenshot](./assets/img/Product.jpg)
+
+
+#### Router.
+
+Om eenvoudig tussen de verschillende webpagina's te navigeren is een zogenoemde `router` nodig. Deze router koppelt een specifiek pad in de browser aan een webpagina en de bijbehorende Vue componenten. Om dit voorelkaar te krijgen gebruik ik de package `VueRouter`. Met behulp van dit pakket kan ik in het configuratiebestand instellen welk pad naar welke pagina of component gaat.
+
+
+![Screenshot](./assets/img/router-details.jpg)
+
+Het gebruik ervan is erg simpel. Er is een hoofdobject waar de routes in gedefinieerd kunnen worden.
+Elke route bevat een aantal property's zoals:
+
+  - `path` Dit is het pad in de browser
+  - `component` Dit is het component die wordt gekoppeld aan het pad
+  - `name` Dit is de naam van de route, deze kun je bijvoorbeeld weergeven op het tabblad in je browser
+
+De functie `router.beforeEach` kan vervolgens de titel van het tabblad aanpassen naar de naam van de route die je hebt gespecificeerd in de `name` property van het route object.
+
+#### Services
+
+De logica van de applicatie is opgesplitst in verschillende services. Elke functionaliteit heeft zijn eigen service. In zo'n service kan vanalles gebeuren, zo kunnen er berekeningen worden uitgevoerd of bijvoorbeeld requests worden verstuurd naar de backend.
+
+![Screenshot](./assets/img/Productservice.jpg)
+
+In het voorbeeld op de afbeelding zijn er verschillende functies aangemaakt binnen de klasse `ProductService` Al deze functies halen of versturen data naar de backend server. Omdat het erg belangrijk is om te wachten op een antwoord van de server zijn deze functies `async` (asynchronous) gemaakt. Hierdoor stopt de code tijdelijk met lopen totdat ze een antwoord hebben ontvangen van in dit geval de backend server.
+
+Mocht er tijdens de operatie iets verkeerd gaan dan wordt de foutmelding netjes afgevangen en doorgestuurd naar de gebruiker.
+
+#### Store
+
+Standaard kunnen componenten alleen data opslaan binnen de state van het component en hebben andere componenten geen toegang tot deze data. Om het mogelijk te maken dat componenten data met elkaar kunnen uitwisselen is er een package gemaakt genaamd `Vuex`.
+Vuex zorgt ervoor dat er een `state` management is op een algemene plek in het project, buiten de componenten.
+
+Alle componenten kunnen data naar deze `state` toesturen en opvragen. Dit zorgt ervoor dat componenten op een gemakkelijke manier data met elkaar kunnen uitwisselen en zo kunnen inspelen op bepaalde acties.
+
+![Screenshot](./assets/img/state.jpg)
+
+De `Vuex` state is op de volgende manier opgebouwd.
+
+  - `getters` met behulp van een getter kan een component data uit de state opvragen
+
+  ![Screenshot](./assets/img/getters.jpg)
+
+  - `state` hierin wordt de data opgeslagen zodat alle components deze kunnen opvragen
+
+  ![Screenshot](./assets/img/statevuex.jpg)
+
+  - `actions` met behulp van een action kan een component data naar de state toesturen
+
+  ![Screenshot](./assets/img/action.jpg)
+
+  - `mutations` met behulp van een mutation kan de data worden opegeslagen in de state
+
+  ![Screenshot](./assets/img/mutation.jpg)
+
+  - `modules` mocht de state te groot worden dan is het met `modules` mogelijk om meerdere losse states te maken. Dit is ook erg handig voor de onderhoudbaarheid van de    applicatie. Zo heb ik in mijn voorbeeld een aparte module gemaakt voor alles wat met de functionaliteit product te maken heeft.
+
 
 
 ### Backend
