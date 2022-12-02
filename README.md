@@ -98,6 +98,8 @@ Voor de CSS gebruik ik Semantic UI als UIKit, ik vind dit persoonlijk zelf een e
 
 Ik heb in het begin ook gewerkt met TailwindCSS, deze UIKit vind ik zelf erg lastig om te gebruiken. De documentatie is duidelijk maar er zijn vaak geen bruikbare components die je gemakkelijk kan importeren in het project. bij TailwindCSS moet je deze zelf ontwikkelen en stylen. Omdat dit buiten de scope van dit project valt heb ik besloten om TailwindCSS niet te gebruiken. Hiermee ga ik in een later stadium verder.
 
+![Screenshot](./assets/img/Frontend-folder-structure.jpg)
+
 ### Backend
 De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
 
