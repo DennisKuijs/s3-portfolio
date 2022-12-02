@@ -142,9 +142,15 @@ De submappen bevatten de volgende bestanden:
   - in de `views` map staat de daadwerkelijke pagina die wordt geladen door de applicatie met behulp van de router. 
     Op de pagina worden de verschillende componenten die benodigd zijn ingeladen.
 
-  Als laatste zijn er nog een aantal belangrijke bestanden die los in de hoofdmap staan. Dit zijn `index.js` en `.env`. Het index.js bestand wordt gebruikt om alle losse bestanden te combineren tot een werkende Vue applicatie. Zo worden hier bijvoorbeeld verschillende pakketen ingeladen en wordt de Vue app gekoppeld aan het `index.html` bestand die we eerder in de `public` map hebben zien staan.
+  Als laatste zijn er nog een aantal belangrijke bestanden die los in de hoofdmap staan. Dit zijn `index.js` en `.env`. 
+  
+  Het index.js bestand wordt gebruikt om alle losse bestanden te combineren tot een werkende Vue applicatie.
+  ReZo worden hier bijvoorbeeld verschillende pakketen ingeladen en wordt de Vue app gekoppeld aan het `index.html` bestand die we eerder in de `public` map hebben zien staan.
 
-  In het `.env` bestand worden gevoelige gegevens opgeslagen die je liever niet in de code hebt staan. In Vue.js moet elke env variable beginnen met de prefix `VUE_APP_` gevolgd door een eigen gekozen naam. Deze variabelen worden in de code gebruikt om de waardes van de variable uit te lezen. Als de code naar een versiebeheersysteem zoals GitHub wordt gepusht wordt dit bestand uitgesloten zodat niemand toegang kan krijgen tot deze gegevens.
+  In het `.env` bestand worden gevoelige gegevens opgeslagen die je liever niet in de code hebt staan. 
+  In Vue.js moet elke env variable beginnen met de prefix `VUE_APP_` gevolgd door een eigen gekozen naam. 
+  
+  Deze variabelen worden in de code gebruikt om de waardes van de variable uit te lezen. Als de code naar een versiebeheersysteem zoals GitHub wordt gepusht wordt dit bestand uitgesloten zodat niemand toegang kan krijgen tot deze gegevens.
 
 ### Backend
 De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
