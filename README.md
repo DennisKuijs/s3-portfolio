@@ -274,10 +274,9 @@ De `Vuex` state is op de volgende manier opgebouwd:
 
   - `modules` mocht de state te groot worden dan is het met `modules` mogelijk om meerdere losse states te maken. Dit is ook erg handig voor de onderhoudbaarheid van de    applicatie. Zo heb ik in mijn voorbeeld een aparte module gemaakt voor alles wat met de functionaliteit product te maken heeft.
 
-### Validations
+#### Validations
 
-Het is erg belangrijk dat de invoer die de gebruik opgeeft in bijvoorbeeld een formulier voldoet aan de gewenste invoer. Om dit te controleren heb ik gebruik gemaakt van een form-validation package genaamd `yup`. Met behulp van deze package kan je heel eenvoudig regels opstellen voor elk afzonderlijk invoerveld.
-
+Het is erg belangrijk dat de invoer die de gebruik opgeeft in bijvoorbeeld een formulier voldoet aan de gewenste invoer. Om dit te controleren heb ik gebruik gemaakt van een schema validation package genaamd `yup`. Met behulp van deze package kan je heel eenvoudig regels opstellen voor elk afzonderlijk invoerveld.
 
 ![Screenshot](./assets/img/yup.jpg)
 
@@ -293,9 +292,80 @@ Dit ziet er alsvolgt uit:
 
 ![Alt Text](https://i.gyazo.com/67e2c3434983fbfc223db69b90d8c268.gif)
 
+Voor het controleren van de invoer heb ik gebruik gemaakt van de package `vee-validate` Deze package heeft mijn validation schema van `yup` ingeladen en kan op die manier controleren of de invoer voldoet aan de gestelde eisen.
+
+#### Views
+
+Om alle losse componenten in te laden op de webpagina maak ik gebruik van `views`. Deze views zijn de pagina's die de gebruiker te zien krijgt en worden via de router weergegeven op moment dat een gebruiker het desbetreffende pad intypt in de browser.
+
+![Screenshot](./assets/img/productpage.vue.jpg)
+
 
 ### Backend
-De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
+De backend voor de webapplicatie bestaat uit voor nu uit één enkele REST API voor het beheren van alles omtrent producten. Het is de bedoeling dat er uiteindelijk meerdere losse REST API's (Microservices) komen. Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
 
-De REST API's worden ontwikkeld in Node.js in combinatie met TypeScript op basis van Express.js
-Express.js is een framework voor Node.js dat specifiek bedoeld is voor het bouwen van REST API's. Express werkt op basis van JavaScript, net zoals de frontend in Vue.js. Dit zorgt ervoor dat zowel frontend als backend in dezelfde taal worden ontwikkeld. Daarnaast is het hier ook mogelijk om de npm package manager te gebruiken voor het installeren van diverse uitbreidingen.
+De REST API's worden ontwikkeld in Node.js in combinatie met TypeScript en Express.js
+Express.js is een framework voor Node.js dat specifiek bedoeld is voor het bouwen van REST API's. Express werkt op basis van JavaScript, net zoals de frontend in Vue.js. Dit zorgt ervoor dat zowel frontend als backend in dezelfde taal worden ontwikkeld. Daarnaast is het hier ook mogelijk om de npm package manager te gebruiken voor het installeren van diverse packages.
+
+#### Mappen structuur
+
+Ook voor de backend heb ik onderzoek gedaan naar een handige mappen structuur. Persoonlijk vind ik het fijn om dezelfde mappenstructuur aan te houden als de frontend applicatie. Dit maakt het voor mij erg overzichtelijk. Om die reden heb ik ook bij de backend applicatie mijn mappenstructuur opgedeeld op basis van de verschillende onderdelen van de API.
+
+![Screenshot](./assets/img/backend-folder.jpg)
+
+Ook hier bestaat de mappenstructuur uit een aantal hoofdmappen zoals `.github` `aws` `.localstack` en `node_modules`
+Deze mappen bevatten de volgende bestanden:
+
+  - In de map `.github` wordt het configuratiebestand van mijn Github worflow bewaard. Hierin staan de acties van de workflow beschreven
+
+  ![Screenshot](./assets/img/pipeline.jpg)
+  
+  - In de map `aws` wordt het configuratiebestand van mijn AWS ECS Task Definition bewaard. Dit bestand wordt gebruikt om tijdens de CI/CD Workflow de nieuwe container te kunnen deployen op een virtuele EC2 machine binnen het platform van Amazon (AWS)
+
+  ![Screenshot](./assets/img/aws.jpg)
+
+  - In de map `.localstack` worden de configuratiebestanden bewaard van mijn localstack docker container. Met behulp van Localstack kan ik lokaal & zonder kosten diverse AWS Services mocken en dus testen voordat deze op de live omgeving worden gebruikt.
+
+  ![Screenshot](./assets/img/localstack.jpg)
+
+Het hart van de applicatie staat in de map `.src` Deze map bevat volgens weer 2 mappen genaamd `api` en `tests`. 
+In de map `api` staan alle bestanden van de daadwerkelijke applicatie.
+
+In deze map heb ik ook weer diverse submappen gemaakt waarin verschillende onderdelen van de applicatie staan
+Deze submappen bevatten de volgende bestanden:
+
+  - in de `controllers` map staan de routers van de API. In deze routers worden de verschillende endpoints gedefinieerd waar de gebruiker naar toe kan gaan om informatie op te halen of te versturen.
+
+  ![Screenshot](./assets/img/controllers.jpg)
+
+  - in de `interfaces` map staan de verschillende interfaces die de API gebruikt. Deze interfaces vertellen de API hoe een bepaald model eruit moet zijn. Op die manier is er een extra controle dat de data voldoet aan de gestelde eisen.
+
+  ![Screenshot](./assets/img/interfaces.jpg)
+
+  - in de `middlewares` map staan de middlewares van de API. Deze middlewares kunnen door endpoints worden gebruikt om code uit te voeren voordat de daadwerkelijke call van de endpoint wordt uitgevoerd. Denk hierbij aan het valideren van invoer of het controleren of een gebruiker is ingelogd.
+
+  ![Screenshot](./assets/img/middlewares.jpg)
+
+  - in de `models` map staan de data modellen van de API. Deze data modellen zijn in mijn geval gekoppeld aan de `MongoDB` database 
+
+  ![Screenshot](./assets/img/models.jpg)
+
+  - in de `services` map staat de logica van de API. Hier wordt de ontvangen data verwerkt naar bijvoorbeeld de database of andere externe services. Ook kunnen berekeningen worden uitgevoerd.
+
+  ![Screenshot](./assets/img/services-api.jpg)
+
+  - in de `utils` map staan diverse helper bestanden, denk hierbij aan de connectie met de database of diverse uitbreidingen voor de API.
+
+  ![Screenshot](./assets/img/utils.jpg)
+
+  - in de `validations` map staan de validations schema's die worden gebruikt om de invoer van de gebruiker nogmaals de valideren.
+
+  ![Screenshot](./assets/img/validations-api.jpg)
+
+De map `tests` bevat diverse integration tests die alle endpoints van mijn REST API kunnen testen. Deze tests zijn voor de onderhoudbaarheid ook weer opgesplitst per functionaliteit.
+
+![Screenshot](./assets/img/tests.jpg)
+
+Verder zijn er ook nog 2 serverbestanden te vinden genaamd `App.ts` en `Server.ts`. In `App.ts` wordt de express server helemaal opgebouwd met alle benodigde instellingen. In `server.ts` wordt de daadwerkelijke connectie met de express server opgezet, deze server maakt een instantie van de klasse `App` aan.
+
+![Screenshot](./assets/img/server.jpg)
