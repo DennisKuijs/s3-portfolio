@@ -118,6 +118,9 @@ Het hart van de applicatie staat in de `src` map. Hierin heb ik een aantal subma
 De submappen bevatten de volgende bestanden:
 
   - in de `assets` map staan alle illustraties en stylesheets, denk hierbij aan afbeeldingen, CSS Bestanden, video's etc.
+
+    ![Screenshot](./assets/img/assets.jpg)
+
   - in de `components` map staan alle losse components die ik gebruik in mijn applicatie. 
     
     Deze components heb ik verder opgesplitst in UI components, Helper components en functionaliteit components. 
@@ -127,17 +130,27 @@ De submappen bevatten de volgende bestanden:
 
     Als laatste heb ik de components voor elke functionaliteit ook opgesplist. In de map `product` bevinden zich componenten die te maken hebben met alles omtrent de functionaliteit product, zoals bijvoorbeeld het aanmaken van een product (`CreateProduct.vue`) of de weergave van het Product (`Product.vue`)
 
+    ![Screenshot](./assets/img/components.jpg)
+
   - in de `router` map staat het configuratiebestand van de npm package `VueRouter`. 
     Hierin worden de verschillende routes gedefinieerd waar de gebruiker naar toe kan navigeren in de applicatie, zoals bijvoorbeeld  `/create-product` of `/products`
 
+    ![Screenshot](./assets/img/router.jpg)
+
   - in de `services` map staat de logica van de applicatie. Hier worden bijvoorbeeld de requests naar de backend opgebouwd met behulp van de npm package `axios`.
+
+    ![Screenshot](./assets/img/services.jpg)
 
   - in de `store` map staat het configuratiebestand van de npm package `Vuex`. 
     Hier wordt bepaalde data opgeslagen in de state van de applicatie zodat verschillende components gegevens met elkaar kunnen uitwisselen. 
     Deze store heb ik opgesplitst in losse modules zodat elke functionaliteit zijn eigen store heeft waarin data wordt opgeslagen. Dit maakt het erg overzichtelijk.
 
+    ![Screenshot](./assets/img/store.jpg)
+
   - in de `validations` map staat het validatieschema voor het formulier dat wordt gebruikt om een nieuw product aan te maken. 
     Met behulp van de npm package `yup` kan je erg gemakkelijk validatieregels toevoegen voor elk afzonderlijk invoerveld. Deze invoerregels worden met behulp van de npm package `vee-validate` gecontroleerd zodra de gebruiker iets invoert in het formulier.
+
+    ![Screenshot](./assets/img/validations.jpg)
 
   - in de `views` map staat de daadwerkelijke pagina die wordt geladen door de applicatie met behulp van de router. 
     Op de pagina worden de verschillende componenten die benodigd zijn ingeladen.
@@ -154,7 +167,7 @@ De submappen bevatten de volgende bestanden:
   In het `.env` bestand worden gevoelige gegevens opgeslagen die je liever niet in de code hebt staan. 
   In Vue.js moet elke env variable beginnen met de prefix `VUE_APP_` gevolgd door een eigen gekozen naam. 
   
-  ![Screenshot](./assets/img/env%20image.jpg.jpg)
+  ![Screenshot](./assets/img/env.jpg)
 
   Deze variabelen worden in de code gebruikt om de waardes van de variable uit te lezen. Als de code naar een versiebeheersysteem zoals GitHub wordt gepusht wordt dit bestand uitgesloten zodat niemand toegang kan krijgen tot deze gegevens.
 
