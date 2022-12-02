@@ -17,9 +17,10 @@ Klanten
   -	Er kan een export gemaakt worden van alle klanten uit het systeem.
 
 Producten
-  -	Een medewerker kan een nieuw product toevoegen in het systeem.
+  -	Een medewerker kan een nieuw product toevoegen in het systeem. 
   -	Een medewerker kan een bestaand product aanpassen in het systeem
   -	Een medewerker kan een bestaand product op in-actief zetten in het systeem.
+  - Een medewerker kan een bestaand product verwijderen uit het systeem. 
   -	Een medewerker kan een bestaand product koppelen aan een voorraadlocatie. 
   -	Een medewerker kan een bestaand product koppelen aan een leverancier
   -	Er kan een export gemaakt worden van alle producten uit het systeem.
@@ -46,11 +47,11 @@ Voorraadlocaties
 
 ### User Stories
 Producten
-  - Als een gebruiker wil ik nieuwe producten kunnen toevoegen aan het systeem
+  - Als een gebruiker wil ik nieuwe producten kunnen toevoegen aan het systeem :white_check_mark:
   - Als een gebruiker wil ik bestaande producten kunnen wijzigen in het systeem
-  - Als een gebruiker wil ik een bestaande product kunnen verwijderen uit het systeem
-  - Als een gebruiker wil ik alle producten uit het systeem kunnen inzien
-  - Als een gebruiker wil ik een bestaand product op non-actief kunnen zetten
+  - Als een gebruiker wil ik een bestaande product kunnen verwijderen uit het systeem :white_check_mark:
+  - Als een gebruiker wil ik alle producten uit het systeem kunnen inzien :white_check_mark:
+  - Als een gebruiker wil ik een bestaand product op non-actief kunnen zetten :white_check_mark:
 
 Klanten
   - Als een gebruiker wil ik een nieuwe klant kunnen toevoegen aan het systeem
@@ -97,6 +98,8 @@ Voor mijn project gebruik ik de volgende packages
 Voor de CSS gebruik ik Semantic UI als UIKit, ik vind dit persoonlijk zelf een erg mooi framework, het ziet er zakelijk uit, iets wat erg goed past binnen het project. De documentatie van Semantic UI is erg duidelijk en er bestaan zelfs Vue.js components die je direct kan gebruiken.
 
 Ik heb in het begin ook gewerkt met TailwindCSS, deze UIKit vind ik zelf erg lastig om te gebruiken. De documentatie is duidelijk maar er zijn vaak geen bruikbare components die je gemakkelijk kan importeren in het project. bij TailwindCSS moet je deze zelf ontwikkelen en stylen. Omdat dit buiten de scope van dit project valt heb ik besloten om TailwindCSS niet te gebruiken. Hiermee ga ik in een later stadium verder.
+
+#### Folder structuur
 
 ![Screenshot](./assets/img/Frontend-folder-structure.jpg)
 
