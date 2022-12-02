@@ -101,12 +101,18 @@ Ik heb in het begin ook gewerkt met TailwindCSS, deze UIKit vind ik zelf erg las
 
 #### Mappen structuur
 
-Voordat ik ben begonnen met het bouwen van de frontend voor mijn applicatie heb ik eerst onderzoek gedaan naar een goede mappenstructuur. Tijdens het werken met een component gebaseerd framework komen er al snel heel veel verschillende bestanden bij kijken. Om het overzicht niet kwijt te raken is een goede structuur cruciaal. Afhankelijk van de grootte van het project zijn daar verschillende mogelijkheden voor, zo kun je bijvoorbeeld alles groeperen op basis van een functionaliteit (Bijvoorbeeld alles van producten in een map zetten) of je kunt alle onderdelen van een applicatie splitsen (Bijvoorbeeld componenten, logica etc). Voor dat laatste heb ik gekozen aangezien deze variant het beste past bij het project. Ook vind ik dit persoonlijk het overzichtelijkst.
+Voordat ik ben begonnen met het bouwen van de frontend voor mijn applicatie heb ik eerst onderzoek gedaan naar een goede mappenstructuur. Tijdens het werken met een component gebaseerd framework komen er al snel heel veel verschillende bestanden bij kijken. 
+
+Om het overzicht niet kwijt te raken is een goede structuur cruciaal. Afhankelijk van de grootte van het project zijn daar verschillende mogelijkheden voor, zo kun je bijvoorbeeld alles groeperen op basis van een functionaliteit (Bijvoorbeeld alles van producten in een map zetten) of je kunt alle onderdelen van een applicatie splitsen (Bijvoorbeeld componenten, logica etc). 
+
+Voor dat laatste heb ik gekozen aangezien deze variant het beste past bij het project. Ook vind ik dit persoonlijk het overzichtelijkst.
 
 ![Screenshot](./assets/img/Frontend-folder-structure.jpg)
 
 De mappenstructuur bestaat als eerste uit een aantal hoofdmappen zoals `node_modules` en `public`.
-In de map node_modules komen alle geïnstalleerde packages van de npm package manager te staan. Zoals de packages eerder genoemd hierboven. In de public map staat het start `index.html` bestand en een favicon. Deze bestanden zijn de start van de applicatie.
+In de map node_modules komen alle geïnstalleerde packages van de npm package manager te staan.Zoals de packages eerder genoemd hierboven. 
+
+In de public map staat het start `index.html` bestand en een favicon. Deze bestanden zijn de start van de applicatie.
 
 ### Backend
 De backend voor de webapplicatie bestaat uit meerdere losse REST API's (Microservices) Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
