@@ -366,6 +366,58 @@ De map `tests` bevat diverse integration tests die alle endpoints van mijn REST 
 
 ![Screenshot](./assets/img/tests.jpg)
 
-Verder zijn er ook nog 2 serverbestanden te vinden genaamd `App.ts` en `Server.ts`. In `App.ts` wordt de express server helemaal opgebouwd met alle benodigde instellingen. In `server.ts` wordt de daadwerkelijke connectie met de express server opgezet, deze server maakt een instantie van de klasse `App` aan.
+Verder zijn er ook nog 2 serverbestanden te vinden genaamd `App.ts` en `Server.ts`. In `App.ts` wordt de express server helemaal opgebouwd met alle benodigde instellingen. In `server.ts` wordt de daadwerkelijke connectie met de express server opgezet, dit bestand maakt een instantie van de klasse `App` aan.
 
 ![Screenshot](./assets/img/server.jpg)
+
+#### Controllers
+
+Een REST API bestaat uit verschillende endpoints die door een computer of gebruiker kunnen worden aangeroepen. Deze endpoints worden gedefinieerd in de verschillende controllers. In mijn voorbeeld heb ik de controllers wederom opgesplitst per functionaliteit voor de onderhoudbaarheid van de applicatie.
+
+![Screenshot](./assets/img/productcontroller.jpg)
+
+De ProductController in dit voorbeeld heeft een aantal endpoints:
+
+ -  `/create-product` om een nieuw product aan te maken (POST)
+ -  `/get-product/:productId` om een bestaand product met het meegegeven productId te kunnen opvragen (GET)
+ -  `/products` om alle producten uit het systeem te kunnen opvragen (GET)
+ -  `/update-product/:productId` om een bestaand product met het meegegeven productId te kunnen updaten (bijwerken) (PUT)
+ -  `/disable-product/:productId` om een bestaand product met het meegegeven productId te kunnen uitschakelen (PUT)
+ -  `/delete-product/:productId` om een bestaand product met het meegeven productId te kunnen verwijderen (DELETE)
+
+ Alle endpoints starten met het start `path` wat is gedefinieerd in de klasse `ProductController` op die manier worden de endpoints verder opgebouwd. De endpoint `/create-product` wordt dus in de controller opgebouwd tot `/products/create-product`
+
+ Binnen de verschillende endpoints wordt de Serviceklasse `ProductService` die bij deze functionaliteit / controller hoort aangeroepen. Deze Serviceklasse geeft uiteindelijk een resultaat terug van de uitgevoerde actie. Op basis van het resultaat krijgt de gebruiker een success statuscode terug, dit is vaak `200 OK` of in het geval van een resource (product) aanmaken `201 CREATED`.
+
+ ![Screenshot](./assets/img/statuscode200.jpg)
+
+ Als de Serviceklasse een foutmelding teruggestuurd krijgt de gebruiker een error statuscode terug, dit zijn vaak de statuscodes `400 BAD REQUEST` of `500 INTERNAL SERVER ERROR`
+
+ ![Screenshot](./assets/img/statuscode400.jpg)
+
+ Verder gebruikt (`implements`) de Controller een interface. Deze zorgt ervoor dat elke Controller voldoet aan de eisen die zijn gesteld in de interface. In dit geval moet elke controller minimaal een variable `path` en `router` hebben.
+ Op moment dat deze variabelen niet zijn aangemaakt zal de server een error tonen.
+
+ ![Screenshot](./assets/img/implements.jpg)
+
+
+#### Interfaces
+
+Structuur is erg belangrijk binnen een applicatie en `interfaces` kunnen daarbij helpen. Een `interface` is eigenlijk een soort blueprint die verteld hoe een bepaald onderdeel van de applicatie eruit moet zien. Een soort contract.
+
+In mijn applicatie heb ik momenteel 2 interfaces aangemaakt, eentje voor de `Controller` en eentje voor `Product`.
+
+De interface voor Controller bevat 2 property's genaamd `path` en `router`.
+
+ ![Screenshot](./assets/img/interfacerouter.jpg)
+
+Elke klasse dat gebruik maakt (`implements`) van mijn interface Controller is verplicht om deze 2 property's over te nemen. Op moment dat dit niet gebeurd zal de applicatie een foutmelding geven.
+
+  ![Screenshot](./assets/img/implementserror.jpg)
+
+De interface voor product werkt op dezelfde manier en controleert alle property's van het model Product. Op moment dat er een property mist zal er een error worden weergegeven.
+Als extra heeft deze interface een connectie met mijn database model `Product` van de package `mongoose` Deze interface kan gebruik maken van de property's die daar in staan vermeld dankzij het `extends` keyword.
+
+  ![Screenshot](./assets/img/Productinterface.jpg)
+
+
