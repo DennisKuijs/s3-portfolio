@@ -123,7 +123,7 @@ Binnen Vue.js gebruik ik ook een aantal npm packages, dit zijn uitbreidingen (Va
 
 Voor mijn project gebruik ik de volgende packages
 
-  - [Axios](https://www.npmjs.com/package/axios) (Voor het maken van HTTP Requests naar mijn backend)
+  - `[Axios](https://www.npmjs.com/package/axios)` (Voor het maken van HTTP Requests naar mijn backend)
   - Vuex (Vue.js State management, voor het delen van data tussen verschillende components)
   - VueRouter (Vue.js Router Plugin, voor het navigeren tussen verschillende Views/Components)
   - Yup & Vee-validate (Voor de invoervalidatie op de front-end)
