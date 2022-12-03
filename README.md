@@ -13,6 +13,27 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 3. [User Stories](#user-stories)
 4. [Technische uitwerking Project](#technische-uitwerking-project)
     1. [Front-end](#Front-end)
+      1.  [Mappenstructuur](#mappenstructuur)
+      2.  [Components](#components)
+        1.  [Helper components](#helper-components)
+        2.  [UI Components](#ui-components)
+        3.  [Functionele Components](#functionele-components)
+      3. [Router](#router)
+      4. [Services](#services)
+      5. [Store](#store)
+      6. [Validations](#validations)
+      7. [Views](#views)
+    2. [Backend](#backend)
+      1.  [Mappenstructuur](#mappenstructuur)
+      2.  [Controllers](#controllers)
+      3.  [Interfaces](#interfaces)
+      4.  [Middlewares](#middlewares)
+      5.  [Models](#models)
+      6.  [Services](#services)
+      7.  [Utils](#Utils)
+        1.  [Logger](#logger)
+        2.  [validateENV](#validateenv)
+        3.  [DBConnection](#dbconnection)
 
 
 ### Projectbeschrijving
@@ -102,7 +123,7 @@ Binnen Vue.js gebruik ik ook een aantal npm packages, dit zijn uitbreidingen (Va
 
 Voor mijn project gebruik ik de volgende packages
 
-  - Axios (Voor het maken van HTTP Requests naar mijn backend)
+  - [Axios](#https://www.npmjs.com/package/axios) (Voor het maken van HTTP Requests naar mijn backend)
   - Vuex (Vue.js State management, voor het delen van data tussen verschillende components)
   - VueRouter (Vue.js Router Plugin, voor het navigeren tussen verschillende Views/Components)
   - Yup & Vee-validate (Voor de invoervalidatie op de front-end)
@@ -112,7 +133,7 @@ Voor de CSS gebruik ik Semantic UI als UIKit, ik vind dit persoonlijk zelf een e
 
 Ik heb in het begin ook gewerkt met TailwindCSS, deze UIKit vind ik zelf erg lastig om te gebruiken. De documentatie is duidelijk maar er zijn vaak geen bruikbare components die je gemakkelijk kan importeren in het project. bij TailwindCSS moet je deze zelf ontwikkelen en stylen. Omdat dit buiten de scope van dit project valt heb ik besloten om TailwindCSS niet te gebruiken. Hiermee ga ik in een later stadium verder.
 
-#### Mappen structuur
+#### Mappenstructuur
 
 Voordat ik ben begonnen met het bouwen van de frontend voor mijn applicatie heb ik eerst onderzoek gedaan naar een goede mappenstructuur. Tijdens het werken met een component gebaseerd framework komen er al snel heel veel verschillende bestanden bij kijken. 
 
@@ -206,7 +227,7 @@ Bij de normale variant wordt de CSS code ook buiten het specifieke component geb
 
 ![Screenshot](./assets/img/style.jpg)
 
-##### Helper components.
+##### Helper components
 
 Voor de structuur heb ik verschillende soorten components gemaakt die gebruikt kunnen worden. Als eerste ben ik bezig geweest met helper components. Dit zijn componenten die overal gebruikt kunnen worden en die een bepaalde functionaliteit versterken of uitbreiden. Een voorbeeld hiervan is `CountrySelector.vue`
 
@@ -232,7 +253,7 @@ Als laaste heb ik Functionele components gemaakt. Dit zijn components die specif
 ![Screenshot](./assets/img/Product.jpg)
 
 
-#### Router.
+#### Router
 
 Om eenvoudig tussen de verschillende webpagina's te navigeren is een zogenoemde `router` nodig. Deze router koppelt een specifiek pad in de browser aan een webpagina en de bijbehorende Vue componenten. Om dit voorelkaar te krijgen gebruik ik de package `VueRouter`. Met behulp van dit pakket kan ik in het configuratiebestand instellen welk pad naar welke pagina of component gaat.
 
@@ -340,7 +361,7 @@ Voor de backend maak ik verder nog gebruik van de volgende packages:
   - supertest (Voor het maken van de integrationtests)
   - uuid (Voor het creëren van unieke UUID's)
 
-#### Mappen structuur
+#### Mappenstructuur
 
 Ook voor de backend heb ik onderzoek gedaan naar een handige mappen structuur. Persoonlijk vind ik het fijn om dezelfde mappenstructuur aan te houden als de frontend applicatie. Dit maakt het voor mij erg overzichtelijk. Om die reden heb ik ook bij de backend applicatie mijn mappenstructuur opgedeeld op basis van de verschillende onderdelen van de API.
 
