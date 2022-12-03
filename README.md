@@ -8,10 +8,11 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 ### Inhoudsopgave
 
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
+1. [Projectbeschrijving](#rojectbeschrijving)
+2. [Requirements](#requirements)
+3. [User Stories](#user-stories)
+4. [Technische uitwerking Project](#technische-uitwerking-project)
+    1. [Front-end](#Front-end)
 
 
 ### Projectbeschrijving
