@@ -8,7 +8,7 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 ### Inhoudsopgave
 
-[Headers](#headers)  
+[Projectbeschrijving](#projectbeschrijving)  
 
 ### Projectbeschrijving
 In dit semester ben ik voor mijn individuele project begonnen aan een order/warehouse management tool. Met behulp van deze webapplicatie kunnen medewerkers alle processen binnen het warehouse beheren en overzichtelijk inzien.
