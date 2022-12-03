@@ -1,6 +1,14 @@
-# Individueel Project Semester 3
-
 ## Project: Warehouse Management System (WMS)
+
+### Inleiding
+In dit document vertel ik van begin tot eind wat voor project ik heb gemaakt in semester 3 en hoe ik dit technisch heb aangepakt van ontwerp tot realisatie.
+Hiermee probeer ik de leeruitkomsten van dit semester aan te tonen.
+
+Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dienen ter verduidelijking voor de geschreven tekst.
+
+### Inhoudsopgave
+
+[Headers](#headers)  
 
 ### Projectbeschrijving
 In dit semester ben ik voor mijn individuele project begonnen aan een order/warehouse management tool. Met behulp van deze webapplicatie kunnen medewerkers alle processen binnen het warehouse beheren en overzichtelijk inzien.
