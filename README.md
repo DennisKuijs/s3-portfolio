@@ -1,6 +1,8 @@
 ## Project: Warehouse Management System (WMS)
 
-![Screenshot](https://i.redd.it/uuvmp7cvkp3a1.png)
+<p align="center">
+  <img src="https://i.redd.it/uuvmp7cvkp3a1.png" />
+</p>
 
 ### Inleiding
 In dit document vertel ik van begin tot eind wat voor project ik heb gemaakt in semester 3 en hoe ik dit technisch heb aangepakt van ontwerp tot realisatie.
