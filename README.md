@@ -10,7 +10,9 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 [Projectbeschrijving](#projectbeschrijving)  
 [Requirements](#requirements)  
-[Userstories](#user-stories)  
+[User stories](#user-stories)  
+[Front-end](#front-end)  
+  [Mappen structuur](#Mappen-structuur)  
 
 ### Projectbeschrijving
 In dit semester ben ik voor mijn individuele project begonnen aan een order/warehouse management tool. Met behulp van deze webapplicatie kunnen medewerkers alle processen binnen het warehouse beheren en overzichtelijk inzien.
