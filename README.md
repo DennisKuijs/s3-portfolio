@@ -1,5 +1,7 @@
 ## Project: Warehouse Management System (WMS)
 
+![Screenshot](https://i.redd.it/uuvmp7cvkp3a1.png)
+
 ### Inleiding
 In dit document vertel ik van begin tot eind wat voor project ik heb gemaakt in semester 3 en hoe ik dit technisch heb aangepakt van ontwerp tot realisatie.
 Hiermee probeer ik de leeruitkomsten van dit semester aan te tonen.
@@ -131,7 +133,7 @@ Voor mijn project gebruik ik de volgende packages
 
 Voor de CSS gebruik ik [Semantic UI](https://semantic-ui.com/) als UIKit, ik vind dit persoonlijk zelf een erg mooi framework, het ziet er zakelijk uit, iets wat erg goed past binnen het project. De documentatie van Semantic UI is erg duidelijk en er bestaan zelfs Vue.js components die je direct kan gebruiken.
 
-Ik heb in het begin ook gewerkt met TailwindCSS, deze UIKit vind ik zelf erg lastig om te gebruiken. De documentatie is duidelijk maar er zijn vaak geen bruikbare components die je gemakkelijk kan importeren in het project. bij TailwindCSS moet je deze zelf ontwikkelen en stylen. Omdat dit buiten de scope van dit project valt heb ik besloten om TailwindCSS niet te gebruiken. Hiermee ga ik in een later stadium verder.
+Ik heb in het begin ook gewerkt met [Tailwind CSS](https://Tailwindcss.com), deze UIKit vind ik zelf erg lastig om te gebruiken. De documentatie is duidelijk maar er zijn vaak geen bruikbare components die je gemakkelijk kan importeren in het project. bij TailwindCSS moet je deze zelf ontwikkelen en stylen. Omdat dit buiten de scope van dit project valt heb ik besloten om TailwindCSS niet te gebruiken. Hiermee ga ik in een ander project mee verder.
 
 #### Mappenstructuur
 
@@ -144,7 +146,7 @@ Voor dat laatste heb ik gekozen aangezien deze variant het beste past bij het pr
 ![Screenshot](./assets/img/Frontend-folder-structure.jpg)
 
 De mappenstructuur bestaat als eerste uit een aantal hoofdmappen zoals `node_modules` en `public`.
-In de map node_modules komen alle geïnstalleerde packages van de npm package manager te staan.Zoals de packages eerder genoemd hierboven. 
+In de map node_modules komen alle geïnstalleerde packages van de npm package manager te staan. Zoals de packages eerder genoemd hierboven. 
 
 In de public map staat het start `index.html` bestand en een favicon. Deze bestanden zijn de start van de applicatie.
 
@@ -160,7 +162,7 @@ De submappen bevatten de volgende bestanden:
     Deze components heb ik verder opgesplitst in UI components, Helper components en functionele components. 
     UI Components bouwen de grote onderdelen van de applicatie, zoals de NavBar, Footer etc. (`NavBar.vue`, `PaginationBox.vue`, `StatusBar.vue`)
    
-    De helper components zijn components die door het gehele project gebruikt kunnen worden en dienen als ondersteuning. Een voorbeeld hiervan is bijvoorbeeld een dropdownlijst. (`CountrySelector.vue`, `ImageSelector.vue`, `VATSelector.vue`)
+    De helper components zijn components die door het gehele project gebruikt kunnen worden gebruikt en dienen als ondersteuning. Een voorbeeld hiervan is bijvoorbeeld een dropdownlijst. (`CountrySelector.vue`, `ImageSelector.vue`, `VATSelector.vue`)
 
     Als laatste heb ik de components voor elke functionaliteit ook opgesplist. In de map `product` bevinden zich componenten die te maken hebben met alles omtrent de functionaliteit product, zoals bijvoorbeeld het aanmaken van een product (`CreateProduct.vue`) of de weergave van het Product (`Product.vue`)
 
@@ -186,7 +188,7 @@ De submappen bevatten de volgende bestanden:
 
     ![Screenshot](./assets/img/validations.jpg)
 
-  - in de `views` map staat de daadwerkelijke pagina die wordt geladen door de applicatie met behulp van de router. 
+  - in de `views` map staan de daadwerkelijke pagina's die wordt geladen door de applicatie met behulp van de router. 
     Op de pagina worden de verschillende componenten die benodigd zijn ingeladen.
 
     ![Screenshot](./assets/img/Views-folder.jpg)
@@ -275,7 +277,8 @@ De logica van de applicatie is opgesplitst in verschillende services. Elke funct
 
 ![Screenshot](./assets/img/Productservice.jpg)
 
-In het voorbeeld op de afbeelding zijn er verschillende functies aangemaakt binnen de klasse `ProductService` Al deze functies halen of versturen data naar de backend server. Omdat het erg belangrijk is om te wachten op een antwoord van de server zijn deze functies `async` (asynchronous) gemaakt. Hierdoor stopt de code tijdelijk met lopen totdat ze een antwoord hebben ontvangen van in dit geval de backend server.
+In het voorbeeld op de afbeelding zijn er verschillende functies aangemaakt binnen de klasse `ProductService` 
+Al deze functies halen of versturen data naar de backend server. Omdat het erg belangrijk is om te wachten op een antwoord van de server zijn deze functies `async` (asynchronous) gemaakt. Hierdoor stopt de code tijdelijk met lopen totdat ze een antwoord hebben ontvangen van in dit geval de backend server.
 
 Mocht er tijdens de operatie iets verkeerd gaan dan wordt de foutmelding netjes afgevangen en doorgestuurd naar de gebruiker.
 
@@ -339,38 +342,43 @@ Om alle losse componenten in te laden op de webpagina maak ik gebruik van `views
 De backend voor de webapplicatie bestaat uit voor nu uit één enkele REST API voor het beheren van alles omtrent producten. Het is de bedoeling dat er uiteindelijk meerdere losse REST API's (Microservices) komen. Het doel hiervan is dat elke REST API verantwoordelijk is voor een eigen taak. De verschillende API's kunnen intern aan elkaar gekoppeld worden indien ze gegevens moeten uitwisslen.
 
 De REST API's worden ontwikkeld in Node.js in combinatie met TypeScript en Express.js
+
 Express.js is een framework voor Node.js dat specifiek bedoeld is voor het bouwen van REST API's. Express werkt op basis van JavaScript, net zoals de frontend in Vue.js. Dit zorgt ervoor dat zowel frontend als backend in dezelfde taal worden ontwikkeld. Daarnaast is het hier ook mogelijk om de npm package manager te gebruiken voor het installeren van diverse packages.
 
 Voor het opslaan van data maak ik gebruik van `MongoDB` Dit is een NoSQL database en is erg handig voor het opslaan van veel ongestructuurde data. 
-Het is ook mogelijk om een aantal simpele relaties te maken met behulp van zogenoemde `ObjectIds` Aangezien in mijn applicatie voor nu niet veel relaties zitten en er alleen productinformatie wordt opgeslagen leekt het mij een goed idee om hiervoor te kiezen.
+Het is ook mogelijk om een aantal simpele relaties te maken met behulp van zogenoemde `ObjectIds` 
+
+Aangezien in mijn applicatie voor nu niet veel relaties zitten en er alleen productinformatie wordt opgeslagen leekt het mij een goed idee om hiervoor te kiezen.
 
 Voor de backend maak ik verder nog gebruik van de volgende packages:
 
-  - AWS-SDK (Voor de verbinding met de live AWS omgeving)
-  - body-parser (Voor het weergeven van extra informatie afkomstig van een HTTP Request)
-  - cors (Voor het beheren van de CORS Instellingen)
-  - dayjs (Een package voor het manipuleren van datums / tijden)
-  - dotenv (Voor het beheren van de .env enviroment variables)
-  - envalid (Voor het valideren van de .env enviroment variables)
-  - express (Voor het opzetten van de Express server)
-  - jest (Voor het uitvoeren van de integration tests)
-  - joi (Voor het maken van de validatieschema's om data te kunnen valideren)
-  - mongodb-memory-server (Voor het opzetten van een Mock instantie van MongoDB, deze wordt gebruikt binnen de tests)
-  - mongoose (Voor het verbinden met de live MongoDB server)
-  - pino & pino-pretty (Voor het maken van een duidelijk log melding in de console)
-  - supertest (Voor het maken van de integrationtests)
-  - uuid (Voor het creëren van unieke UUID's)
+  - [AWS-SDK](https://www.npmjs.com/package/aws-sdk) (Voor de verbinding met de live AWS omgeving)
+  - [body-parser](https://www.npmjs.com/package/body-parser) (Voor het weergeven van extra informatie afkomstig van een HTTP Request)
+  - [cors](https://www.npmjs.com/package/cors) (Voor het beheren van de CORS Instellingen)
+  - [dayjs](https://day.js.org/) (Een package voor het manipuleren van datums / tijden)
+  - [dotenv](https://www.npmjs.com/package/dotenv) (Voor het beheren van de .env enviroment variables)
+  - [envalid](https://www.npmjs.com/package/envalid) (Voor het valideren van de .env enviroment variables)
+  - [express](https://www.npmjs.com/package/express) (Voor het opzetten van de Express server)
+  - [jest](https://www.npmjs.com/package/jest) (Voor het uitvoeren van de integration tests)
+  - [joi](https://www.npmjs.com/package/joi) (Voor het maken van de validatieschema's om data te kunnen valideren)
+  - [mongodb-memory-server](https://www.npmjs.com/package/mongodb-memory-server) (Voor het opzetten van een Mock instantie van MongoDB, deze wordt gebruikt binnen de tests)
+  - [mongoose](https://www.npmjs.com/package//mongoose) (Voor het verbinden met de live MongoDB server)
+  - [pino](https://www.npmjs.com/package/pino) & [pino-pretty](https://www.npmjs.com/package/pino-pretty?activeTab=readme) (Voor het maken van een duidelijk log melding in de console)
+  - [supertest](https://www.npmjs.com/package/supertest) (Voor het maken van de integrationtests)
+  - [uuid](https://www.npmjs.com/package/uuid) (Voor het creëren van unieke UUID's)
 
 #### Mappenstructuur
 
-Ook voor de backend heb ik onderzoek gedaan naar een handige mappen structuur. Persoonlijk vind ik het fijn om dezelfde mappenstructuur aan te houden als de frontend applicatie. Dit maakt het voor mij erg overzichtelijk. Om die reden heb ik ook bij de backend applicatie mijn mappenstructuur opgedeeld op basis van de verschillende onderdelen van de API.
+Ook voor de backend heb ik onderzoek gedaan naar een handige mappenstructuur. Persoonlijk vind ik het fijn om dezelfde mappenstructuur aan te houden als de frontend applicatie. Dit maakt het voor mij erg overzichtelijk. 
+
+Om die reden heb ik ook bij de backend applicatie mijn mappenstructuur opgedeeld op basis van de verschillende onderdelen van de API.
 
 ![Screenshot](./assets/img/backend-folder.jpg)
 
 Ook hier bestaat de mappenstructuur uit een aantal hoofdmappen zoals `.github` `aws` `.localstack` en `node_modules`
 Deze mappen bevatten de volgende bestanden:
 
-  - In de map `.github` wordt het configuratiebestand van mijn Github worflow bewaard. Hierin staan de acties van de workflow beschreven
+  - In de map `.github` wordt het configuratiebestand van mijn Github workflow bewaard. Hierin staan de verschillende jobs van de workflow beschreven
 
   ![Screenshot](./assets/img/pipeline.jpg)
   
@@ -378,33 +386,33 @@ Deze mappen bevatten de volgende bestanden:
 
   ![Screenshot](./assets/img/aws.jpg)
 
-  - In de map `.localstack` worden de configuratiebestanden bewaard van mijn localstack docker container. Met behulp van Localstack kan ik lokaal & zonder kosten diverse AWS Services mocken en dus testen voordat deze op de live omgeving worden gebruikt.
+  - In de map `.localstack` worden de configuratiebestanden bewaard van mijn LocalStack docker container. Met behulp van LocalStack kan ik lokaal & zonder kosten diverse AWS services mocken en dus testen voordat deze op de live omgeving worden gebruikt.
 
   ![Screenshot](./assets/img/localstack.jpg)
 
 Het hart van de applicatie staat in de map `.src` Deze map bevat volgens weer 2 mappen genaamd `api` en `tests`. 
-In de map `api` staan alle bestanden van de daadwerkelijke applicatie.
+In de map `api` staan alle bestanden van de daadwerkelijke REST API.
 
-In deze map heb ik ook weer diverse submappen gemaakt waarin verschillende onderdelen van de applicatie staan
+In deze map heb ik ook weer diverse submappen gemaakt waarin verschillende onderdelen van de API staan
 Deze submappen bevatten de volgende bestanden:
 
   - in de `controllers` map staan de routers van de API. In deze routers worden de verschillende endpoints gedefinieerd waar de gebruiker naar toe kan gaan om informatie op te halen of te versturen.
 
   ![Screenshot](./assets/img/controllers.jpg)
 
-  - in de `interfaces` map staan de verschillende interfaces die de API gebruikt. Deze interfaces vertellen de API hoe een bepaald model eruit moet zijn. Op die manier is er een extra controle dat de data voldoet aan de gestelde eisen.
+  - in de `interfaces` map staan de verschillende interfaces die de API gebruikt. Deze interfaces vertellen de API hoe een bepaald model eruit moet zijn. Op die manier is er een extra controle dat de ontvangen data voldoet aan de gestelde eisen.
 
   ![Screenshot](./assets/img/interfaces.jpg)
 
-  - in de `middlewares` map staan de middlewares van de API. Deze middlewares kunnen door endpoints worden gebruikt om code uit te voeren voordat de daadwerkelijke call van de endpoint wordt uitgevoerd. Denk hierbij aan het valideren van invoer of het controleren of een gebruiker is ingelogd.
+  - in de `middlewares` map staan de middlewares van de API. Deze middlewares kunnen door de controllers worden gebruikt om code uit te voeren voordat de daadwerkelijke code van de controller wordt uitgevoerd. Denk hierbij aan het valideren van invoer of het controleren of een gebruiker is ingelogd.
 
   ![Screenshot](./assets/img/middlewares.jpg)
 
-  - in de `models` map staan de data modellen van de API. Deze data modellen zijn in mijn geval gekoppeld aan de `MongoDB` database 
+  - in de `models` map staan de data modellen van de API. Deze data modellen zijn in mijn geval gekoppeld aan de `MongoDB` database dankzij de npm package `mongoose`
 
   ![Screenshot](./assets/img/models.jpg)
 
-  - in de `services` map staat de logica van de API. Hier wordt de ontvangen data verwerkt naar bijvoorbeeld de database of andere externe services. Ook kunnen berekeningen worden uitgevoerd.
+  - in de `services` map staat de logica van de API. Hier wordt de ontvangen data verwerkt naar bijvoorbeeld de database of andere externe services. Ook kunnen hier berekeningen worden uitgevoerd.
 
   ![Screenshot](./assets/img/services-api.jpg)
 
@@ -420,7 +428,9 @@ De map `tests` bevat diverse integration tests die alle endpoints van mijn REST 
 
 ![Screenshot](./assets/img/tests.jpg)
 
-Verder zijn er ook nog 2 serverbestanden te vinden genaamd `App.ts` en `Server.ts`. In `App.ts` wordt de express server helemaal opgebouwd met alle benodigde instellingen. In `server.ts` wordt de daadwerkelijke connectie met de express server opgezet, dit bestand maakt een instantie van de klasse `App` aan.
+Verder zijn er ook nog 2 serverbestanden te vinden genaamd `App.ts` en `Server.ts`. 
+
+In `App.ts` wordt de express server helemaal opgebouwd met alle benodigde instellingen. In `server.ts` wordt de daadwerkelijke connectie met de express server opgezet, dit bestand maakt een instantie van de klasse `App` aan.
 
 ![Screenshot](./assets/img/server.jpg)
 
@@ -439,17 +449,18 @@ De ProductController in dit voorbeeld heeft een aantal endpoints:
  -  `/disable-product/:productId` om een bestaand product met het meegegeven productId te kunnen uitschakelen (PUT)
  -  `/delete-product/:productId` om een bestaand product met het meegeven productId te kunnen verwijderen (DELETE)
 
- Alle endpoints starten met het start `path` wat is gedefinieerd in de klasse `ProductController` op die manier worden de endpoints verder opgebouwd. De endpoint `/create-product` wordt dus in de controller opgebouwd tot `/products/create-product`
+ Alle endpoints starten met het start `path` wat is gedefinieerd in de klasse `ProductController`. Op die manier worden de endpoints verder opgebouwd. 
+ De endpoint `/create-product` wordt dus in de controller opgebouwd tot `/products/create-product`
 
- Binnen de verschillende endpoints wordt de Serviceklasse `ProductService` die bij deze functionaliteit / controller hoort aangeroepen. Deze Serviceklasse geeft uiteindelijk een resultaat terug van de uitgevoerde actie. Op basis van het resultaat krijgt de gebruiker een success statuscode terug, dit is vaak `200 OK` of in het geval van een resource (product) aanmaken `201 CREATED`.
+ Binnen de verschillende endpoints wordt de serviceklasse `ProductService` die bij deze functionaliteit / controller hoort aangeroepen. Deze serviceklasse geeft uiteindelijk een resultaat terug van de uitgevoerde actie. Op basis van het resultaat krijgt de gebruiker een success statuscode terug, dit is vaak `200 OK` of in het geval van een resource (product) aanmaken `201 CREATED`.
 
  ![Screenshot](./assets/img/statuscode200.jpg)
 
- Als de Serviceklasse een foutmelding teruggestuurd krijgt de gebruiker een error statuscode terug, dit zijn vaak de statuscodes `400 BAD REQUEST` of `500 INTERNAL SERVER ERROR`
+ Als de serviceklasse een foutmelding teruggestuurd krijgt de gebruiker een error statuscode terug, dit zijn vaak de statuscodes `400 BAD REQUEST` of `500 INTERNAL SERVER ERROR`
 
  ![Screenshot](./assets/img/statuscode400.jpg)
 
- Verder implementeert (`implements`) de Controller een interface. Deze zorgt ervoor dat elke Controller voldoet aan de eisen die zijn gesteld in de interface. In dit geval moet elke controller minimaal een variable `path` en `router` hebben.
+ Verder implementeert (`implements`) de Controller een interface. Deze zorgt ervoor dat elke controller voldoet aan de eisen die zijn gesteld in de interface. In dit geval moet elke controller minimaal een variable `path` en `router` hebben.
  Op moment dat deze variabelen niet zijn aangemaakt zal de server een error tonen.
 
  ![Screenshot](./assets/img/implements.jpg)
@@ -457,7 +468,7 @@ De ProductController in dit voorbeeld heeft een aantal endpoints:
 
 #### Interfaces
 
-Structuur is erg belangrijk binnen een applicatie en `interfaces` kunnen daarbij helpen. Een `interface` is eigenlijk een soort blueprint die verteld hoe een bepaald onderdeel van de applicatie eruit moet zien. Een soort contract.
+Structuur is erg belangrijk binnen een applicatie en `interfaces` kunnen daarbij helpen. Een `interface` is eigenlijk een soort blauwprint die verteld hoe een bepaald onderdeel van de applicatie eruit moet zien.
 
 In mijn applicatie heb ik momenteel 2 interfaces aangemaakt, eentje voor de `Controller` en eentje voor `Product`.
 
@@ -465,11 +476,14 @@ De interface voor Controller bevat 2 property's genaamd `path` en `router`.
 
  ![Screenshot](./assets/img/interfacerouter.jpg)
 
-Elke klasse dat mijn interface implementeert (`implements`) is verplicht om deze 2 property's over te nemen. Op moment dat dit niet gebeurd zal de applicatie een foutmelding geven.
+Elke klasse dat mijn interface implementeert (`implements`) is verplicht om deze 2 property's over te nemen. 
+Op moment dat dit niet gebeurd zal de applicatie een foutmelding geven.
 
   ![Screenshot](./assets/img/implementserror.jpg)
 
-De interface voor product werkt op dezelfde manier en controleert alle property's van het model Product. Op moment dat er een property mist zal er een error worden weergegeven.
+De interface voor product werkt op dezelfde manier en controleert alle property's van het model Product. 
+Op moment dat er een property mist zal er een error worden weergegeven.
+
 Als extra heeft deze interface een connectie met mijn database model `Product` van de package `mongoose` Deze interface kan gebruik maken van de property's die daar in staan vermeld dankzij het `extends` keyword.
 
   ![Screenshot](./assets/img/Productinterface.jpg)
@@ -484,6 +498,7 @@ Als de middleware een foutmelding geeft, zal de controller dit weergeven aan de 
 ![Screenshot](./assets/img/validationmiddleware.jpg)
 
 In mijn REST API heb ik een middleware geschreven voor het valideren van de data die is meegegeven met een request. Deze middleware is toegepast op de endpoint `/create-product`
+
 Voor het valideren van de data maak ik gebruik van de npm package `Joi` Deze package werkt op dezelfde manier als `yup`, namelijk aan de hand van een validation schema.
 
 Op moment dat de meegestuurde data voldoet aan de gewenste invoer zal de middleware een signaal doorsturen dat de controller verder kan gaan met het uitvoeren van de code. Dit gebeurd dankzij de `next()` functie die is meegegeven aan de middleware.
@@ -529,8 +544,11 @@ Deze checks worden als eerste uitgevoerd op moment dat de functie wordt aangeroe
 
 Mocht er een fout optreden tijdens deze controles dan zal de foutmelding worden doorgegeven aan de controller waarna deze de foutmelding zal tonen aan de gebruiker middels een statuscode `400 BAD REQUEST`
 
-Het is ook mogelijk dat binnen een service een andere service wordt aangeroepen. Dit is bijvoorbeeld het geval bij het aanmaken van een nieuw product. 
-Op moment dat de gebruiker een afbeelding meestuurt zal deze worden doorgestuurd naar de `ImageService` Deze Service is vervolgens verantwoordelijk voor het afhandelen van de gewenste actie.
+Het is ook mogelijk dat binnen een service een andere service wordt aangeroepen. 
+Dit is bijvoorbeeld het geval bij het aanmaken van een nieuw product. 
+
+Op moment dat de gebruiker een afbeelding meestuurt zal deze worden doorgestuurd naar de `ImageService` Deze service is vervolgens verantwoordelijk voor het afhandelen van de gewenste actie.
+
 Mocht er een fout optreden in deze service dan zal dit ook worden doorgestuurd naar de controller waarna de gebruiker een foutmelding kan inzien en het probleem kan oplossen.
 
 ![Screenshot](./assets/img/uploadimage.jpg)
@@ -566,11 +584,12 @@ Deze zorgt met behulp van de `pino` en `pino-pretty` package dat er nette log me
 
 In het helper bestand kun je de opbouw van deze log melding helemaal zelf aanpassen. In dit geval wordt de huidige tijd netjes weergegeven dankzij de `dayjs` package die ik hiervoor heb gebruikt..
 
-De log variable bevat een instantie van de logger functie
+De log variable bevat een instantie van de logger functie.
+
 Met behulp van de `export default log` wordt de `log` variable exporteerd zodat andere bestanden in de applicatie deze functie kunnen gebruiken.
 
 Door het bestand te importeren in een ander bestand kun je vervolgens eenvoudig de gexporteerde functie van de `logger.ts` aanroepen.
-hierna is het mogelijk om met behulp van `.info()` een informatie log te versturen naar de console
+Hierna is het mogelijk om met behulp van `.info()` een informatie log te versturen naar de console
 
 ![Screenshot](./assets/img/loggerinfo.jpg)
 
@@ -585,12 +604,14 @@ Het resultaat is terug te zien in de console van de applicatie
 ##### validateENV
 
 Ik heb ook een helper bestand gemaakt voor het valideren van de enviroment variablen. Met behulp van de package `envalid` kun je heel eenvoudig enviroment variabelen controleren op juiste data.
-De functie leest alle variablen uit het enviroment bestand via `process.env` daar heb ik voor elk variable aangegeven welk datatype de data in de variablen moet hebben.
+De functie leest alle variablen uit het enviroment bestand via `process.env` vervolgens heb ik voor elk variable aangegeven welk datatype de data in de variablen moet hebben.
 
 ![Screenshot](./assets/img/validatenv.jpg)
 
 De meeste variabelen hebben als type `str()` wat inhoud dat ze een `string` moeten bevatten.
 De variable `SERVER_PORT` heeft als enige een afwijkend type, namelijk `port()` deze controleert of het ingevoerde getal een geldige poort kan zijn en of deze niet al in gebruik is. Daarnaast heb ik ook een default waarde ingesteld, mocht de enviroment variable geen waarde bevatten dan krijgt deze automatisch de default waarde toegewezen.
+
+Op die manier heeft de server altijd een geldige poort om een connectie te kunnen opstarten.
 
 ##### DBConnection
 
