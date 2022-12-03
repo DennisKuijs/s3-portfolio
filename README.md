@@ -123,11 +123,11 @@ Binnen Vue.js gebruik ik ook een aantal npm packages, dit zijn uitbreidingen (Va
 
 Voor mijn project gebruik ik de volgende packages
 
-  - `[Axios](https://www.npmjs.com/package/axios)` (Voor het maken van HTTP Requests naar mijn backend)
-  - Vuex (Vue.js State management, voor het delen van data tussen verschillende components)
-  - VueRouter (Vue.js Router Plugin, voor het navigeren tussen verschillende Views/Components)
-  - Yup & Vee-validate (Voor de invoervalidatie op de front-end)
-  - FontAwesome (Voor de mooie icoontjes binnen het project)
+  - [Axios](https://www.npmjs.com/package/axios) (Voor het maken van HTTP Requests naar mijn backend)
+  - [Vuex](https://vuex.vuejs.org/) (Vue.js State management, voor het delen van data tussen verschillende components)
+  - [VueRouter](https://router.vuejs.org/) (Vue.js Router Plugin, voor het navigeren tussen verschillende Views/Components)
+  - [Yup](https://www.npmjs.com/package/yup) & [Vee-validate](https://vee-validate.logaretm.com/v4/) (Voor de invoervalidatie op de front-end)
+  - [FontAwesome](https://fontawesome.com/) (Voor de mooie icoontjes binnen het project)
 
 Voor de CSS gebruik ik Semantic UI als UIKit, ik vind dit persoonlijk zelf een erg mooi framework, het ziet er zakelijk uit, iets wat erg goed past binnen het project. De documentatie van Semantic UI is erg duidelijk en er bestaan zelfs Vue.js components die je direct kan gebruiken.
 
