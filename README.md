@@ -8,11 +8,11 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 ### Inhoudsopgave
 
-1. [Projectbeschrijving](#projectbeschrijving)  
-2. [Requirements](#requirements)  
-3. [User stories](#user-stories)  
-4. [Front-end](#front-end)  
-    1. [Mappen structuur](#Mappen-structuur)  
+1. [Introduction](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
+
 
 ### Projectbeschrijving
 In dit semester ben ik voor mijn individuele project begonnen aan een order/warehouse management tool. Met behulp van deze webapplicatie kunnen medewerkers alle processen binnen het warehouse beheren en overzichtelijk inzien.
