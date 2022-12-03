@@ -8,11 +8,11 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 ### Inhoudsopgave
 
-1. [Projectbeschrijving](#rojectbeschrijving)
-2. [Requirements](#requirements)
-3. [User Stories](#user-stories)
-4. [Technische uitwerking Project](#technische-uitwerking-project)
-    1. [Front-end](#Front-end)
+-  [Projectbeschrijving](#rojectbeschrijving)
+-  [Requirements](#requirements)
+-  [User Stories](#user-stories)
+-  [Technische uitwerking Project](#technische-uitwerking-project)
+    - [Front-end](#Front-end)
       1.  [Mappenstructuur](#mappenstructuur)
       2.  [Components](#components)
         1.  [Helper components](#helper-components)
