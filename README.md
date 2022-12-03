@@ -12,10 +12,11 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 ### Inhoudsopgave
 
--  [Projectbeschrijving](#rojectbeschrijving)
+-  [Inleiding](#inleiding)
+-  [Projectbeschrijving](#projectbeschrijving)
 -  [Requirements](#requirements)
 -  [User Stories](#user-stories)
--  [Technische uitwerking Project](#technische-uitwerking-project)
+-  [Technische uitwerking](#technische-uitwerking)
     - [Front-end](#Front-end)
       -   [Mappenstructuur](#mappenstructuur)
       -   [Components](#components)
@@ -34,6 +35,8 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
       -   [Middlewares](#middlewares)
       -   [Models](#models)
       -   [Services](#services)
+          -  [AWS S3](#aws-s3)
+          -  [AWS Cloudfront](#aws-cloudfront)
       -   [Utils](#Utils)
           -   [Logger](#logger)
           -   [validateENV](#validateenv)
@@ -116,7 +119,7 @@ Leveranciers
 Dashboard
   - Als een gebruiker wil ik een dashboardpagina hebben waarop ik alle belangrijke informatie kan inzien
 
-## Technische uitwerking Project
+## Technische uitwerking
 
 ### Front-end
 De front-end van de webapplicatie heb ik ontwikkeld in Vue.js in combinatie met Javascript. Vue.js is een erg klein framework waardoor het snel te gebruiken is. Daarnaast werkt Vue.js met zogenoemde components, hierdoor kan je gemakkelijk bepaalde functionaliteiten opsplitsen en later hergebruiken binnen het project zonder de code ervan opnieuw te hoeven schrijven. Dit zorgt ervoor dat je code onderhoudbaarder wordt en daardoor ook leesbaarder.
@@ -575,6 +578,53 @@ Op basis van deze gegevens wordt er een filter object gemaakt met de volgende pr
 
 
   ![Screenshot](./assets/img/pagination.jpg)
+
+##### AWS S3
+Tijdens het aanmaken van een nieuw product heeft de gebruiker de mogelijkheid om een afbeelding van het product te uploaden naar de applicatie. Op moment dat de server een afbeelding ontvangt zal deze de ontvangen `base64` data als eerste omzetten naar een `ByteArray`
+
+![Screenshot](./assets/img/bytearray.jpg)
+
+Vervolgens is het van belang dat de server de afbeelding data kan opslaan op een (online)locatie waar de front-end applicatie eenvoudig de afbeeldingen kan opvragen.
+In mijn project heb ik gekozen om de afbeeldingen te uploaden in een zogenoemde `bucket` van `S3` op het platform van Amazon (AWS)
+
+![Screenshot](./assets/img/s3bucket.jpg)
+
+Amazon S3 is een service waarmee je heel eenvoudig verschillende soorten objecten(bestanden) kan opslaan op een server. Vervolgens is het mogelijk om deze bestanden via een unieke link te downloaden of te bekijken.
+
+De backend kan vervolgens een verbinding maken met de AWS S3 Service om de afbeelding data te uploaden naar de opgegeven bucket. Voor elke afbeelding die wordt geüpload naar S3 wordt een unieke `Key` (Bestandsnaam) aangemaakt. Deze is terug te zien in de online omgeving van Amazon en wordt gebruikt om de afbeelding later weer te kunnen opvragen.
+
+Mocht er tijdens het uploaden van de afbeelding een fout optreden dan wordt deze via de `ImageService` klasse doorgestuurd naar de `ProductService` klasse die hem op zijn beurt weer zal doorsturen naar de controller die vervolgens een foutmelding kan tonen aan de gebruiker.
+
+![Screenshot](./assets/img/uploadimagetos3.jpg)
+
+##### AWS Cloudfront
+Nadat een afbeelding succesvol is geupload naar de bucket van AWS S3 kan deze op verschillende manieren worden opgevraagd. De makkelijkste manier is om unieke link te genereren die verwijst naar de afbeelding op de bucket. Jammer genoeg is dit ook de meest langzaamste manier, een afbeelding opvragen op deze wijze duurt gemiddeld 600 to 800 MS voordat de afbeelding volledig is geladen of gedownload.
+
+Om dit proces te versnellen maar ik gebruik van AWS Cloudfront. Deze service van AWS is een CDN (Content-Delivery Network) wat ervoor bedoeld is om data op een veel snellere manier te kunnen ophalen en verwerken dankzij de verschillende `edge` locations over de hele wereld
+
+AWS Cloudfront werkt via een caching mechanisme, dit mechanisme kan alle objecten(bestanden) die gekoppeld zijn aan de AWS S3 bucket in de cache bewaren voor maximaal 24 uur.
+Alle binnenkomende requests binnen de 24 uur worden verwerkt via de caching server en hoeven dus niet opnieuw opgehaald te worden. Dit scheelt enorm in tijd waardoor de objecten of in dit geval afbeeldingen in maximaal 20 to 30 MS volledig beschikbaar zijn.
+
+In mijn project heb ik een zogenoemde `distribution` opgezet via AWS Cloudfront
+
+![Screenshot](./assets/img/cloudfront.jpg)
+
+Deze `distribution` is gekoppeld aan mijn eerder gemaakte S3 bucket met daarin de productafbeeldingen die de gebruiker heeft geüpload naar de server.
+De Cloudfront distribution is te benaderen via een unieke link gevolgd met een `/` en de `Key` van het object in de bucket die opgehaald moet worden. Bijvoorbeeld `https://d182u9nt18az2v.cloudfront.net/3a85c062-05d2-4ae6-a083-00da386ca71a`
+
+Ook de beveiliging bij AWS is van groot belang, het gebruik van verschillende resources kan erg prijzig zijn en je wilt voorkomen dat gebruikers hier (on)bewust misbruik van maken.
+Om die reden kunnen de afbeeldingen via de AWS Cloudfront distribution alleen worden opgehaald met een zogenoemde `SignedURL`. Dit is een unieke URL die is beveiligd met een public en private keypair en die automatisch komt te vervallen na de ingestelde tijdsperiode. 
+
+![Screenshot](./assets/img/signedurl.jpg)
+
+Nadat de front-end een verzoek verstuurt naar de backend om een afbeelding op te halen wordt er een unieke `SignedURL` gegenereed door de server met behulp van de `AWS-SDK`. De URL bevat een private key die op de server staat opgeslagen en een datum/tijd wanneer de link komt te vervallen. Deze private key is gekoppeld aan een public key die staat ingesteld in de Cloudfront distribution binnen de AWS Console.
+
+Nadat de gebruiker een afbeelding opvraagd via de door de server gegenereerde SignedURL wordt gecontroleerd of de meegegeven private key behoort tot de public key die bekend is bij AWS. Ook wordt de huidige datum/tijd vergeleken met de datum/tijd dat de link verloopt. Als de link geldig is wordt de afbeelding weergegeven. Op moment dat blijkt dat de link ongeldig is krijgt de gebruiker een foutmelding te zien.
+
+![Screenshot](./assets/img/errorCloudfront.jpg)
+
+Op deze manier worden de bestanden in de S3 bucket die is gekoppeld aan de Cloudfront Distribution beveiligd voor onbevoegden. Doordat de link een verloopdatum heeft kunnen `webscrapers` niet onbeperkt het object uit de bucket opvragen en dus resources gebruiken op jouw AWS Rekening.
+
 
 #### Utils
 
