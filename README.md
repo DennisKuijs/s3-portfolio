@@ -45,8 +45,8 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
       -   [App & Server.ts](#server-&-app.ts)
           -   [App.ts](#app.ts)
           -   [Server.ts](#server.ts)
-    - [Testen & Quality Assurance](#testen&qualityassurance)
-      - [Integration Tests](#integration-tests)
+  - [Testen & Quality Assurance](#testen&qualityassurance)
+    - [Integration Tests](#integration-tests)
 
 
 ### Projectbeschrijving
@@ -826,7 +826,9 @@ De daadwerkelijke tests kunnen worden gemaakt met de `it()` functie. Ook hier is
 ![Screenshot](./assets/img/testfunctie.jpg)
 
 In de bovenstaande test wordt er getest of het mogelijk is om een nieuw product aan te maken.
-Als eerste wordt er verbinding gemaakt met de express server die vooraf dat de tests zijn gestart is geinitaliseerd. Nadat er succesvol een verbinding is met de server wordt de productdata die opgeslagen staat in de `productDTO` variable verstuurd naar de server via de specifieke endpoint `/api/v1/products/create-product`
+Als eerste wordt er verbinding gemaakt met de express server die vooraf dat de tests zijn gestart is geinitaliseerd. 
+
+Nadat er succesvol een verbinding is met de server wordt de productdata die opgeslagen staat in de `productDTO` variable verstuurd naar de server via de specifieke endpoint `/api/v1/products/create-product`
 
 ![Screenshot](./assets/img/productdto.jpg)
 
@@ -845,6 +847,7 @@ Als laatste wordt gecontroleerd of de ontvangen productdata overeenkomt met de p
 ![Screenshot](./assets/img/expectequal.jpg)
 
 Ook wordt de productData opgeslagen in een variable met de naam `Product`
+
 Hierdoor kunnen we later in andere tests eenvoudig informatie opvragen van het aangemaakte product zoals het `Id` of de `productStatus`
 
 ![Screenshot](./assets/img/saveProduct.jpg)
