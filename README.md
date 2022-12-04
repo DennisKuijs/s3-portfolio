@@ -754,7 +754,7 @@ Daarnaast zorgt het toevoegen van `/v1/` ervoor dat er een `versioning` systeem 
 
 Op moment dat de middlewares succesvol zijn geinitaliseerd zal als laatste de connectie met de database worden opgezet.
 
-![Screenshot](./assets/img/dbconnection.jpg)
+![Screenshot](./assets/img/DBConnect.jpg)
 
 Als laatste bevat het `Server.ts` bestand een functie genaamd `listen()`. Met deze functie kan de Express server worden opgestart zodat deze bereikbaar is voor andere applicaties of gebruikers
 
