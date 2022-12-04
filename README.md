@@ -794,7 +794,10 @@ Als er vervolgens geen fouten optreden is de server beschikbaar via de localhost
 Om de werking en de kwaliteit van de code te kunnen aantonen maak ik gebruik van tests. Er zijn verschillende manieren om tests te kunnen maken, zo is het mogelijk om Unit tests te schrijven, functional tests, end-to-end tests en integration tests.
 
 Aangezien de backend applicatie bestaat uit verschillende endpoints leek het mij handig om deze te testen met behulp van integration tests (endpoint tests)
-Deze testen maken een instantie aan van de Express server en controleren of het resultaat van een endpoint overeenkomt met het verwachte resultaat.
+Deze testen zijn bedoeld om verschillende onderdelen van een applicatie te kunnen testen om zo te kunnen controleren of ze goed met elkaar samenwerken / communiceren.
+
+In mijn geval maakt de test een instantie aan van de Express server en controleren ze of het resultaat van een endpoint overeenkomt met het verwachte resultaat.
+Aan deze endpoints zijn verschillende `Controllers` en `Services` gekoppeld zoals `ProductService` en `ImageService`
 
 Voor het maken van de integration tests maak ik gebruik van de packages `supertest` en `jest`. Met behulp van supertest kan ik eenvoudig een instantie opzetten van de Express server zodat de tests deze kunnen gebruiken om verbinding te maken met de diverse endpoints.
 
@@ -804,9 +807,9 @@ Met de package `jest` kunnen de gemaakte tests eenvoudig worden uitgevoerd. Ik h
 
 Dankzij deze regel code in het configuratiebestand kan ik eenvoudig via de terminal met de commando `npm run test` jest laten starten zodat de tests worden uitgevoerd.
 
-Voor de onderhoudbaarheid van mijn applicatie heb ik ervoor gekozen om verschillende `test stages` te maken. Elke stage test een andere functionaliteit. In mijn geval heb ik 3 stages gemaakt voor `product` `country` en `image`.
+Voor de onderhoudbaarheid van mijn applicatie heb ik ervoor gekozen om verschillende `test suites` te maken. Elke suite test een andere functionaliteit. In mijn geval heb ik 3 suites gemaakt voor `product` `country` en `image`.
 
-Elke test stage is opgebouwd op dezelfde manier:
+Elke test suite is opgebouwd op dezelfde manier:
 
 Het begint allemaal bij de `describe` functie. Hiermee kun je aangeven dat je een nieuwe groep met testen hebt, dankzij de `string` waarde die je kunt meegeven aan deze functie is het mogelijk om een kleine beschrijving toe te voegen zodat je weet welk onderdeel wordt getest.
 
@@ -832,3 +835,20 @@ Het resultaat van de server wordt vervolgens opgeslagen in de variable `response
 Als eerste wordt gecontroleerd of de teruggegeven statuscode overeenkomt met `201 CREATED`. Dit is de statuscode voor het aanmaken van een nieuwe resource.
 
 ![Screenshot](./assets/img/201statuscode.jpg)
+
+Daarna wordt gecontroleerd of de `Content-Type` overeenkomt met `application/json`
+
+![Screenshot](./assets/img/applicationjson.jpg)
+
+Als laatste wordt gecontroleerd of de ontvangen productdata overeenkomt met de productdata die naar de endpoint is gestuurd.
+
+![Screenshot](./assets/img/expectequal.jpg)
+
+Ook wordt de productData opgeslagen in een variable met de naam `Product`
+Hierdoor kunnen we later in andere tests eenvoudig informatie opvragen van het aangemaakte product zoals het `Id` of de `productStatus`
+
+![Screenshot](./assets/img/saveProduct.jpg)
+
+Op moment dat alle checks de gewenste data teruggeven zal de test slagen. Dit is vervolgens terug te zien in de console.
+
+![Screenshot](./assets/img/successTest.jpg)
