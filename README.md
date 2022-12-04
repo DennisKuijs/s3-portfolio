@@ -727,17 +727,35 @@ Om de server te kunnen starten heb ik als eerst een klasse gemaakt genaamd `App`
 Als eerste wordt bij een nieuwe instantie van de `App` klasse de constructor aangeroepen. In de constructor wordt een nieuwe Express app aangemaakt en wordt het poortnummer waarop de server gaat draaien opgeslagen in een `field` variable.
 Vervolgens worden er een aantal functies aangeroepen die de server verder gaan configureren, te beginnen met een aantal `middlewares` voor Express.
 
+![Screenshot](./assets/img/constructor.jpg)
+
 Zo wordt de `cors` plugin geinitaliseerd en wordt mijn eigen `IP Adres` toegevoegd aan de lijst met veilige addressen. De package `cors` is een Express middleware waarmee je de `CORS` beveiling op verschillende manieren kan toepassen op de express server. CORS staat voor (Cross-origin resource sharing) en dankzij dit mechanisme wordt het mogelijk voor andere domeinen (buiten het domein waarvan het verzoek oorspronkelijk afkomt) om bepaalde beveiligde resources (bestanden) op te vragen
+
+![Screenshot](./assets/img/cors.jpg)
 
 Daarna wordt de `Content-Type` ingesteld op `json`. Dit zorgt ervoor dat de server alleen kijkt naar inkomende requests met JSON data en ook alleen JSON data kan terugsturen naar de gebruiker.
 
-Als laatste wordt de `body-parser` package geinitaliseerd en wordt het limiet ingesteld op `50mb`. Dit limiet is voornamelijk bedoeld voor het uploaden van de productafbeeldingen naar de server. Zonder dit limiet is het niet mogelijk om bestanden te versturen. Het limiet van `50mb` is erg groot, dit kan nog worden bijgesteld naar `5mb` wat meer dan voldoende is voor het versturen van afbeeldingen.
+![Screenshot](./assets/img/json.jpg)
+
+Ook wordt de `body-parser` package geinitaliseerd en wordt het limiet ingesteld op `50mb`. Dit limiet is voornamelijk bedoeld voor het uploaden van de productafbeeldingen naar de server. Zonder dit limiet is het niet mogelijk om bestanden te versturen. Het limiet van `50mb` is erg groot, dit kan nog worden bijgesteld naar `5mb` wat meer dan voldoende is voor het versturen van afbeeldingen.
+
+![Screenshot](./assets/img/bodyparser.jpg)
 
 Deze package is verder ook een Express Middleware en zorgt er voor dat de inkomende data wordt geparsed (omgezet) naar in dit geval `json` voordat de data beschikbaar komt in het `req.body` object van de controller. Echter is het ook mogelijk om de inkomende data om te zetten naar `text` of `raw`, deze instellingen kunnen met behulp van de functie eenvoudig worden aangepast.
 
 Nadat de middlewares zijn geinitaliseerd worden de controllers die zijn meegegeven aan de `App` klasse ingeladen. Hierna is het mogelijk om de verschillende endpoints te benaderen via bijvoorbeeld een webbrowser. 
 
+![Screenshot](./assets/img/controllersExpress.jpg)
+
 De server voegt voor elke endpoint die wordt ingeladen nog een extra `path` toe genaamd `/api/v1/` Dit zorgt ervoor dat de totale endpoint wordt uitgebreid naar bijvoorbeeld `/api/v1/products/create-product`
 Het eerste gedeelte van de endpoint is afkomstig van de server instellingen. Het andere gedeelte wordt ingesteld in de controller.
 
 Daarnaast zorgt het toevoegen van `/v1/` ervoor dat er een `versioning` systeem is waardoor in de toekomstig heel eenvoudig nieuwe versies van de API kunnen worden uitgebracht.
+
+Op moment dat de middlewares succesvol zijn geinitaliseerd zal als laatste de connectie met de database worden opgezet.
+
+![Screenshot](./assets/img/dbconnection.jpg)
+
+Als laatste bevat het `Server.ts` bestand een functie genaamd `listen()`. Met deze functie kan de Express server worden opgestart zodat deze bereikbaar is voor andere applicaties of gebruikers
+
+![Screenshot](./assets/img/listen.jpg)
