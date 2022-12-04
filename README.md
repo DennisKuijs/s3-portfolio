@@ -42,6 +42,11 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
           -   [Logger](#logger)
           -   [validateENV](#validateenv)
           -   [DBConnection](#dbconnection)
+      -   [App & Server.ts](#server-&-app.ts)
+          -   [App.ts](#app.ts)
+          -   [Server.ts](#server.ts)
+    - [Testen & Quality Assurance](#testen&qualityassurance)
+      - [Integration Tests](#integration-tests)
 
 
 ### Projectbeschrijving
@@ -718,6 +723,8 @@ Het validatieschema is opgebouwd op dezelfde manier. Alle data die wordt ontvang
 
 #### Server & App.ts
 
+##### App.ts
+
 Om de REST API te kunnen laten werken moet er een server gestart worden. Dit gebeurd met behulp van de package `express`. Express is een framework dat specifiek is bedoeld voor het maken van REST API's.
 
 Om de server te kunnen starten heb ik als eerst een klasse gemaakt genaamd `App`. Deze App klasse bevat alle belangrijke configuraties voor de server die nodig zijn om alle inkomende requests goed te kunnen afhandelen.
@@ -729,7 +736,9 @@ Vervolgens worden er een aantal functies aangeroepen die de server verder gaan c
 
 ![Screenshot](./assets/img/constructor.jpg)
 
-Zo wordt de `cors` plugin geinitaliseerd en wordt mijn eigen `IP Adres` toegevoegd aan de lijst met veilige addressen. De package `cors` is een Express middleware waarmee je de `CORS` beveiling op verschillende manieren kan toepassen op de express server. CORS staat voor (Cross-origin resource sharing) en dankzij dit mechanisme wordt het mogelijk voor andere domeinen (buiten het domein waarvan het verzoek oorspronkelijk afkomt) om bepaalde beveiligde resources (bestanden) op te vragen
+Zo wordt de `cors` plugin geinitaliseerd en wordt mijn eigen `IP Adres` toegevoegd aan de lijst met veilige addressen. De package `cors` is een Express middleware waarmee je de `CORS` beveiling op verschillende manieren kan toepassen op de express server. 
+
+CORS staat voor (Cross-origin resource sharing) en dankzij dit mechanisme wordt het mogelijk voor andere domeinen (buiten het domein waarvan het verzoek oorspronkelijk afkomt) om bepaalde beveiligde resources (bestanden) op te vragen
 
 ![Screenshot](./assets/img/cors.jpg)
 
@@ -741,7 +750,9 @@ Ook wordt de `body-parser` package geinitaliseerd en wordt het limiet ingesteld 
 
 ![Screenshot](./assets/img/bodyparser.jpg)
 
-Deze package is verder ook een Express Middleware en zorgt er voor dat de inkomende data wordt geparsed (omgezet) naar in dit geval `json` voordat de data beschikbaar komt in het `req.body` object van de controller. Echter is het ook mogelijk om de inkomende data om te zetten naar `text` of `raw`, deze instellingen kunnen met behulp van de functie eenvoudig worden aangepast.
+Deze package is verder ook een Express Middleware en zorgt er voor dat de inkomende data wordt geparsed (omgezet) naar in dit geval `json` voordat de data beschikbaar komt in het `req.body` object van de controller. 
+
+Echter is het ook mogelijk om de inkomende data om te zetten naar `text` of `raw`, deze instellingen kunnen met behulp van de functie eenvoudig worden aangepast.
 
 Nadat de middlewares zijn geinitaliseerd worden de controllers die zijn meegegeven aan de `App` klasse ingeladen. Hierna is het mogelijk om de verschillende endpoints te benaderen via bijvoorbeeld een webbrowser. 
 
@@ -756,6 +767,68 @@ Op moment dat de middlewares succesvol zijn geinitaliseerd zal als laatste de co
 
 ![Screenshot](./assets/img/DBConnect.jpg)
 
-Als laatste bevat het `Server.ts` bestand een functie genaamd `listen()`. Met deze functie kan de Express server worden opgestart zodat deze bereikbaar is voor andere applicaties of gebruikers
+Op moment dat alle configuraties goed zijn ingesteld en er geen fouten optreden kan met de functie genaamd `listen()` de express server worden opgestart zodat deze bereikbaar is voor andere applicaties of gebruikers
 
 ![Screenshot](./assets/img/listen.jpg)
+
+
+##### Server.ts
+
+In het `Server.ts` bestand wordt de daadwerkelijke connectie met de Express server opgezet.
+Als eerste wordt er met behulp van de `validateENV()` helper klasse gecontroleerd of alle `.env` variabelen aanwezig zijn en de juiste waardes hebben. Mocht dit niet het geval zijn dan zal er een foutmelding worden getoond en de server niet worden gestart.
+
+Mocht alles in orde zijn dan worden alle `controllers` die op de server geladen moeten worden opgeslagen in een `Array` van het type `Controller[]`. Door hier wederom gebruik te maken van de `interface` Controller kunnen we opnieuw controleren of de waardes in de array voldoen aan de eisen die zijn gesteld in de interface. In dit geval of de controllers die worden meegegeven een `path` en `router` variable hebben, deze heeft de Express server namelijk nodig om de verbindingen tot stand te kunnen brengen.
+
+Daarna is het mogelijk om een nieuwe instantie te maken van de `App` klasse en de `controllers` mee te sturen met een poortnummer. Op het meegestuurde poortnummer zal de Express server later wanneer de verbinding wordt gestart bereikbaar zijn.
+
+Zodra de instantie van de server (`App`) is aangemaakt kunnen we deze opstarten met behulp van de functie `App.listen()` die beschikbaar wordt.
+
+Als er vervolgens geen fouten optreden is de server beschikbaar via de localhost (`127.0.0.1`) op het ingestelde poortnummer.
+
+![Screenshot](./assets/img/serverts.jpg)
+
+### Testen & Quality Assurance
+
+#### Integration Tests
+
+Om de werking en de kwaliteit van de code te kunnen aantonen maak ik gebruik van tests. Er zijn verschillende manieren om tests te kunnen maken, zo is het mogelijk om Unit tests te schrijven, functional tests, end-to-end tests en integration tests.
+
+Aangezien de backend applicatie bestaat uit verschillende endpoints leek het mij handig om deze te testen met behulp van integration tests (endpoint tests)
+Deze testen maken een instantie aan van de Express server en controleren of het resultaat van een endpoint overeenkomt met het verwachte resultaat.
+
+Voor het maken van de integration tests maak ik gebruik van de packages `supertest` en `jest`. Met behulp van supertest kan ik eenvoudig een instantie opzetten van de Express server zodat de tests deze kunnen gebruiken om verbinding te maken met de diverse endpoints.
+
+Met de package `jest` kunnen de gemaakte tests eenvoudig worden uitgevoerd. Ik heb jest gekoppeld aan een commando van npm in het `package.json` bestand
+
+![Screenshot](./assets/img/packagejsontest.jpg)
+
+Dankzij deze regel code in het configuratiebestand kan ik eenvoudig via de terminal met de commando `npm run test` jest laten starten zodat de tests worden uitgevoerd.
+
+Voor de onderhoudbaarheid van mijn applicatie heb ik ervoor gekozen om verschillende `test stages` te maken. Elke stage test een andere functionaliteit. In mijn geval heb ik 3 stages gemaakt voor `product` `country` en `image`.
+
+Elke test stage is opgebouwd op dezelfde manier:
+
+Het begint allemaal bij de `describe` functie. Hiermee kun je aangeven dat je een nieuwe groep met testen hebt, dankzij de `string` waarde die je kunt meegeven aan deze functie is het mogelijk om een kleine beschrijving toe te voegen zodat je weet welk onderdeel wordt getest.
+
+![Screenshot](./assets/img/describe.jpg)
+
+Daarna kun je met behulp van de functie `beforeAll()` aangeven welke code uitgevoerd moet worden voordat de tests in deze stage worden gestart. In mijn geval wordt er een verbinding opgezet met de Express server en de database. Deze wordt na afloop met behulp van de functie `afterAll()` ook weer netjes afgesloten.
+
+Het is ook mogelijk om vooraf voor elke test een stukje code te laten uitvoeren, dit kan met behulp van de functie `beforeEach()`
+
+![Screenshot](./assets/img/beforeall.jpg)
+
+De daadwerkelijke tests kunnen worden gemaakt met de `it()` functie. Ook hier is het mogelijk om een `string` waarde mee te geven zodat duidelijk is wat er precies getest wordt.
+
+![Screenshot](./assets/img/testfunctie.jpg)
+
+In de bovenstaande test wordt er getest of het mogelijk is om een nieuw product aan te maken.
+Als eerste wordt er verbinding gemaakt met de express server die vooraf dat de tests zijn gestart is geinitaliseerd. Nadat er succesvol een verbinding is met de server wordt de productdata die opgeslagen staat in de `productDTO` variable verstuurd naar de server via de specifieke endpoint `/api/v1/products/create-product`
+
+![Screenshot](./assets/img/productdto.jpg)
+
+Het resultaat van de server wordt vervolgens opgeslagen in de variable `response` waarna we kunnen controleren of de teruggeven data overeenkomt met wat we verwachten.
+
+Als eerste wordt gecontroleerd of de teruggegeven statuscode overeenkomt met `201 CREATED`. Dit is de statuscode voor het aanmaken van een nieuwe resource.
+
+![Screenshot](./assets/img/201statuscode.jpg)
