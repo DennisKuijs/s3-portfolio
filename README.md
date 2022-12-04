@@ -847,7 +847,6 @@ Als laatste wordt gecontroleerd of de ontvangen productdata overeenkomt met de p
 ![Screenshot](./assets/img/expectequal.jpg)
 
 Ook wordt de productData opgeslagen in een variable met de naam `Product`
-
 Hierdoor kunnen we later in andere tests eenvoudig informatie opvragen van het aangemaakte product zoals het `Id` of de `productStatus`
 
 ![Screenshot](./assets/img/saveProduct.jpg)
