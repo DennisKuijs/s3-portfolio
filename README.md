@@ -129,6 +129,7 @@ Om die reden hebben we de taken later in het project opgesplitst in kleinere los
 Na enkele weken merkte we dat door deze aanpassing er een beter overzicht is gekomen en dat de productiviteit onder de groepsleden is toegenomen.
 
 Op moment dat een sprint langzamerhand ter einde kwam zijn we begonnen met de voorbereidingen voor de sprintoplevering. We hebben een powerpoint presentatie gemaakt met daarin een korte samenvatting van de user stories waaraan we deze sprint hebben gewerkt en welke user stories we in de volgende sprint gaan oppakken. Ook hebben we bij elke oplevering een demonstratie gegeven van de huidige versie van het product.
+
 Tijdens de sprintopleveringen waren de stakeholders Cas & Bart van het bedrijf aanwezig, alsmede onze coach vanuit Fontys. Na afloop van de demonstratie hebben feedbackpunten ontvangen die zijn genoteerd door de notulist van de groep. Deze feedbackpunten worden besproken in de retrospective en vervolgens meegenomen in de sprintplanning.
 
 ![Screenshot](./assets/img/powerpointsprint.jpg)
@@ -174,8 +175,30 @@ Ook in het individuele project komt het onderwerp profesionele ontwikkeling aanb
 
 ### Culturele verschillen
 
+Aangezien wij in onze projectgroep geen internationale studenten hebben was het lastig om dit leerdoel te kunnen aantonen. Na een gesprek te hebben gehad met onze semestercoach zijn wij met de groep uitgenodigd om een online IDII Assessment te maken over culturele verschillen.
 
+Tijdens dit assessment komen er in totaal 50 vragen die gaan over de cultuur verschillen tussen je eigen land en andere landen. Na afloop van het assessment wordt er met behulp van de antwoorden een persoonlijk profiel rapport gemaakt waarin je kunt lezen hoe je omgaat met verschillende culturelen standpunten
 
+In mijn preceived orientation score behaalde ik 110 punten, dit betekend dat ik in de categorie Minimization val. Deze categorie houd in dat je verschillende culturelen verschillen kunt inzien en benadrukken
+
+![Screenshot](./assets/img/PO.jpg)
+
+Bij mijn Developmental Orientation Score behaalde ik maar slechts 65.19 punten, wat betekend dat ik in de categorie Denial val. Deze categorie houd in dat je de meer waarneembare culturele verschillen kunt herkennen zoals eten, kunst etc. Maar dat je de dieper gelegen culterele verschillen niet kunt opmerken zoals bijvoorbeeld conflicten of deze liever wilt vermijden.
+
+![Screenshot](./assets/img/DO.jpg)
+
+Uit de test is gebleken dat mijn Orientation Gap (OG) op 45.68 punten verschil ligt. De OG score wordt gebaseerd op het verschil tussen de PO score (Preceived Orientation) en de DO Score (Developmental Orientation). Op moment dat de PO score hoger is dan de DO score heb je je eigen culturele vermogen overschat, op moment dat de DO score hoger is dan de PO score heb je je eigen culturele vermogen onderschat.
+
+In mijn voorbeeld heb ik mijn eigen vermogen duidelijk overschat. Dit is terug te zien in de grafiek op het rapport.
+
+![Screenshot](./assets/img/OG.jpg)
+
+Nadat het assessment met succes is afgerond kun je met behulp van de scores in het persoonlijk profiel een debrief opdracht maken. Deze opdracht sluit aan bij de Developmental orientation Score. Met behulp van deze interactieve videoopdracht worden de verschillen tussen de orientaties nader toegelicht. Er worden tussendoor in totaal 12 vragen gesteld om te kunnen toetsen of je begrijpt wat er wordt bedoeld met de verschillende orientaties.
+
+Na afloop van de debrief ontvang je een persoonlijke score gebaseerd op het aantal goede antwoorden van de test.
+In mijn geval kwam had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%
+
+![Screenshot](./assets/img/debrief.jpg)
 
 ### Requirements
 Klanten
