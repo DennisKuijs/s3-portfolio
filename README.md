@@ -177,7 +177,7 @@ Ook in het individuele project komt het onderwerp profesionele ontwikkeling aanb
 
 Aangezien wij in onze projectgroep geen internationale studenten hebben was het lastig om dit leerdoel te kunnen aantonen. Na een gesprek te hebben gehad met onze semestercoach zijn wij met de groep uitgenodigd om een online IDII Assessment te maken over culturele verschillen.
 
-Tijdens dit assessment komen er in totaal 50 vragen die gaan over de cultuur verschillen tussen je eigen land en andere landen. Na afloop van het assessment wordt er met behulp van de antwoorden een persoonlijk profiel rapport gemaakt waarin je kunt lezen hoe je omgaat met verschillende culturelen standpunten
+Tijdens dit assessment worden er in totaal 50 vragen gesteld die gaan over de cultuur verschillen tussen je eigen land en andere landen. Na afloop van het assessment wordt er met behulp van de antwoorden een Profile Report gemaakt waarin je kunt lezen hoe je omgaat met verschillende culturelen standpunten
 
 In mijn preceived orientation score behaalde ik 110 punten, dit betekend dat ik in de categorie Minimization val. Deze categorie houd in dat je verschillende culturelen verschillen kunt inzien en benadrukken
 
@@ -193,10 +193,10 @@ In mijn voorbeeld heb ik mijn eigen vermogen duidelijk overschat. Dit is terug t
 
 ![Screenshot](./assets/img/OG.jpg)
 
-Nadat het assessment met succes is afgerond kun je met behulp van de scores in het persoonlijk profiel een debrief opdracht maken. Deze opdracht sluit aan bij de Developmental orientation Score. Met behulp van deze interactieve videoopdracht worden de verschillen tussen de orientaties nader toegelicht. Er worden tussendoor in totaal 12 vragen gesteld om te kunnen toetsen of je begrijpt wat er wordt bedoeld met de verschillende orientaties.
+Nadat het assessment met succes is afgerond kun je met behulp van de scores in het Profile Report een debrief opdracht maken. Deze opdracht sluit aan bij de Developmental orientation Score. Met behulp van deze interactieve videoopdracht worden de verschillen tussen de orientaties nader toegelicht. Er worden tussendoor in totaal 12 vragen gesteld om te kunnen toetsen of je begrijpt wat er wordt bedoeld met de verschillende orientaties.
 
 Na afloop van de debrief ontvang je een persoonlijke score gebaseerd op het aantal goede antwoorden van de test.
-In mijn geval kwam had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%
+In mijn geval had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%
 
 ![Screenshot](./assets/img/debrief.jpg)
 
