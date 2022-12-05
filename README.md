@@ -14,14 +14,16 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 
 -  [Inleiding](#inleiding)
 -  [Projectbeschrijving](#projectbeschrijving)
--  [Requirements](#requirements)
--  [User Stories](#user-stories)
 -  [Agile](#agile)
    -  [Wat is Agile?](#wat-is-agile)
    -  [Verschillende Agile werkwijzen](#verschillende-agile-werkwijzen)
    -  [Agile toegepast binnen het groepsproject](#agile-toegepast-binnen-het-groepsproject)
+-  [Professionele ontwikkeling](#professionele-ontwikkeling)
+-  [Culturele verschillen](#culturele-verschillen)
+-  [Requirements](#requirements)
+-  [User Stories](#user-stories)
 -  [Technische uitwerking](#technische-uitwerking)
-    - [Front-end](#Front-end)
+    - [Frontend](#Frontend)
       -   [Mappenstructuur](#mappenstructuur)
       -   [Components](#components)
             - [Helper components](#helper-components)
@@ -59,6 +61,119 @@ Het is bijvoorbeeld mogelijk om producten, leveranciers en bestellingen te beher
 Ook is er de mogelijkheid om bestellingen te verwerken die binnenkomen via verschillende verkoopplatformen en/of webshops.
 
 Het idee voor dit project is ontstaan vanuit mijn eigen bedrijf. Ik ben actief als verkoper op bol.com en heb dagelijks te maken met logstieke processen. Op dit moment gebruiken we daarvoor externe software, deze software werkt prima, alleen missen we soms wat functionaliteiten. Met behulp van dit project proberen we deze functionaliteiten zelf te ontwikkelen.
+
+### Agile
+
+#### Wat is Agile?
+Agile is een methodiek die voornamelijk in de software development branch wordt gebruikt om een iteratief proces te beschrijven. Er wordt vaak gepland in verschillende sprints waarbij teams telkens een bepaald onderdeel opleveren en hier na afloop op reflecteren.
+
+#### Verschillende Agile werkwijzen
+Binnen Agile zijn er diverse werkwijzen die kunnen worden toegepast binnen een project. Elke werkwijze kan worden toegepast waar dit het meeste relevant is.
+In dit voorbeeld heb ik 2 verschillende Agile werkwijzen uitgelegd:
+
+  - Scrum
+  In Scrum werk je samen met een projectgroep in vaak kleine periodes van enkele weken aan een set taken die onderdeel uitmaken van een (groot)project. Deze periodes worden in SCRUM termen sprints genoemd. Deze sprints zijn vooraf vastgestelde momenten waarop de projectgroep bij elkaar komt en zijn/haar voortgang van de taken presenteert aan de stakeholders.
+
+  De stakeholders zijn vaak de belanghebbenden binnen het bedrijf waarvoor het project wordt uitgevoerd. Tijdens de sprintopleveringen kunnen zij feedback geven op de producten die worden opgeleverd door het ontwikkelteam.
+  
+  Als de stakeholders nog aanvullende wensen of eisen hebben dan kunnen zij deze doorgeven aan de Product owner. Hij is verantwoordelijk voor de communicatie tussen het ontwikkelteam en de stakeholders en maakt beslissingen voor het project. Ook kan de product owner de ontvangen feedback verwerken tot nieuwe taken voor de komende sprints.
+  De verschillende taken worden in termen van SCRUM vaak backlog items genoemd
+
+  - Kanban
+  Deze Agile methode werkt op een totaal andere manier als SCRUM. Bij Kanban werk je met een zogenoemd bord waarbij gebruik gemaakt wordt van simpele notities. Elke notitie representeert een andere taak. Het bord wordt opgebouwd met behulp van drie kolommen genaamd:
+
+    - To Do (Taken die nog opgepakt kunnen worden en nog niet zijn gestart)
+    - Doing (Taken waar op dit moment aan wordt gewerkt)
+    - Done (Taken die zijn afgerond)
+
+  Op deze manier is er een overzichtelijk overzicht in de nog openstaande taken en kunnen knelpunten snel worden opgespoord. Afhankelijk van de grootte van het project kan het bord nog worden uitgebreid met extra kolommen zoals een review kolom. 
+  In deze kolom kunnen dan taken komen te staan die bijvoorbeeld nog eerst getest moeten worden alvorens ze worden verplaatst naar afgerond.
+
+#### Agile toegepast binnen het groepsproject
+In semester 3 hebben wij ook gewerkt aan een groepsproject samen met het bedrijf iO Digital in Eindhoven.
+
+Voor dit bedrijf zijn wij het afgelopen semester bezig geweest met het ontwikkelen van een mobiele app waarbij de gebruikers van de app eenvoudig hun collega's kunnen tracken met behulp van hun locatie in het gebouw en de ingeplande afspraken.
+Het doel van de app is om de productiviteit van de collega's op kantoor te verhogen, doordat zij gemakkelijker hun collega's kunnen vinden en hierdoor geen onnodige tijd verloren gaat.
+
+Voor het projectmanagement hebben wij binnen het groepsproject gebruik gemaakt van de SCRUM methodiek die onderdeel is van Agile.
+We hebben als eerste een DevOps board aangemaakt via Microsoft Azure, hierop staan alle User Stories en bijbehorende taken vermeld.
+
+![Screenshot](./assets/img/scrumboard.jpg)
+
+Hierna hebben we samen met de stakeholders besproken hoeveel sprints we voor dit project inplannen. Gezien de tijd van het semester en het aantal werkdagen in de week die zijn ingepland voor dit project zijn we uitgekomen op een totaal van 5 sprints met een interval van 3 (werk)weken, de vakantie zijn hierbij uitgesloten.
+Deze sprintplanning hebben we vervolgens genoteerd in ons DevOps board.
+
+![Screenshot](./assets/img/sprintplanning.jpg)
+
+Nadat we de afspraken met de stakeholders hebben gemaakt zijn we begonnen met het bedenken van user stories en hebben deze vervolgens verwerkt op ons DevOps board. Bij de verschillende user stories hebben we taken opgesteld die nodig zijn om een user story succesvol te kunnen afronden.
+
+![Screenshot](./assets/img/tasksStory.jpg)
+
+Bij elke taak hebben we samen met de groepsleden een D.O.D (Definition Of Done) opgesteld. Hiermee bepalen we gezamelijk wanneer wij als groep vinden dat een taak succesvol is afgerond en kan worden verplaatst.
+Deze D.O.D is terug te vinden in de beschrijving van de taak
+
+![Screenshot](./assets/img/DOD.jpg)
+
+Ook hebben we een inschatting gemaakt hoeveel tijd we verwachten nodig te hebben om een taak te kunnen afronden. Deze tijd (in uren) staat in de taak vermeld bij Original Estimate. Wanneer de taak is afgerond hebben wij onze uiteindelijk besteede uren ingevoerd bij Completed.
+
+We hebben gemerkt dat het plannen van taken in het begin nog lastig kan zijn. Bij veel van onze taken hebben we minder uren opgegeven dan dat we er uiteindelijk aan hebben besteed. 
+Wel hebben we gemerkt dat het plannen van taken gedurende het semester steeds beter gaat en dat de inschattingen acqurater worden.
+
+![Screenshot](./assets/img/taskTime.jpg)
+
+Verder hebben we in het begin onze taken erg groot en algemeen beschreven. Gedurende het project merkte we dat het toewijzen van taken aan individuele groepsleden op deze manier erg lastig ging worden. Ook hadden we geen goed overzicht wat er nog precies moest gebeuren om een taak volledig te kunnen afronden.
+Om die reden hebben we de taken later in het project opgesplitst in kleinere losse taken die onderdeel zijn van een user story. 
+
+Na enkele weken merkte we dat door deze aanpassing er een beter overzicht is gekomen en dat de productiviteit onder de groepsleden is toegenomen.
+
+Op moment dat een sprint langzamerhand ter einde kwam zijn we begonnen met de voorbereidingen voor de sprintoplevering. We hebben een powerpoint presentatie gemaakt met daarin een korte samenvatting van de user stories waaraan we deze sprint hebben gewerkt en welke user stories we in de volgende sprint gaan oppakken. Ook hebben we bij elke oplevering een demonstratie gegeven van de huidige versie van het product.
+Tijdens de sprintopleveringen waren de stakeholders Cas & Bart van het bedrijf aanwezig, alsmede onze coach vanuit Fontys. Na afloop van de demonstratie hebben feedbackpunten ontvangen die zijn genoteerd door de notulist van de groep. Deze feedbackpunten worden besproken in de retrospective en vervolgens meegenomen in de sprintplanning.
+
+![Screenshot](./assets/img/powerpointsprint.jpg)
+
+Na afloopt van elke sprintoplevering zijn we met de groep gaan refelecteren op de sprint in een zogenoemde retrospective. We hebben hierbij gebruik gemaakt van de 4 L's
+
+  - Liked
+  - Learned
+  - Lacked
+  - Longed For
+
+In dit schema geven we aan welke zaken we konden waarderen (Liked), wat we afgelopen sprint hebben geleerd (Learned), maar ook minder goed zaken worden besproken in de Lacked kolom. Als laatste vertellen we wat we graag nog zouden willen bereiken in de volgende sprint (Longed For).
+
+![Screenshot](./assets/img/retrospective.jpg)
+
+Nadat de retrospective is besproken met het team zal hier in Feedpulse een korte samenvatting over worden geschreven.
+Deze samenvatting is een leidraad voor het gesprek met onze coach van de Fontys. Hij zal ons ook voorzien van feedback over de sprintoplevering.
+
+![Screenshot](./assets/img/feedpulse.jpg)
+
+Als laatste is de sfeer in het groepsproject ook erg belangrijk. Als er zaken spelen waarvan de andere groepsleden op de hoogte moeten zijn of als er minder goede dingen gebeuren dan moet dit bespreekbaar zijn.
+Daarom doen we een aantal keren gedurende het project een peer review invullen. Hier kan elk groepslid aangeven wat hij/zij vindt van de inspanning en/of motvatie van de andere groepsleden.
+
+Na afloop bespreken we de resulaten met iedereen en nemen we indien noodzakelijk de nodige maatregelen.
+
+![Screenshot](./assets/img/peerreview.jpg)
+
+### Professionele ontwikkeling
+
+Profesionnele ontwikkeling is ook erg belangrijk als Software developer. Zowel binnen het groepsproject als het individuele project is dit veelvuldig teruggekomen.
+Zo hebben we binnen het groepsproject afspraken gemaakt over de dagen en tijden dat we fysiek aanwezig zijn op de campus. Voor de online dagen zijn er ook afspraken gemaakt met betrekking tot de werktijden en de pauzes.
+Op moment dat een groepslid verhinderd is om wat voor reden dan ook wordt dit tijdig gecommuniceerd via de aangewezen chatkanalen (Microsoft Teams)
+
+![Screenshot](./assets/img/guusVoorbeeld.jpg)
+
+Daarnaast hebben we ook afspraken gemaakt over wie de communicatie met de stakeholders bijhoudt. Dit gebeurd meestal via de e-mail, maar kan soms ook via Microsoft Teams. Elk teamlid wordt in de cc gezet van de e-mails zodat iedereen op de hoogte is van de communicatie en bijbehorende afspraken.
+
+![Screenshot](./assets/img/mailCindy.jpg)
+
+Ook in het individuele project komt het onderwerp profesionele ontwikkeling aanbod. Zo heb ik regelmatig feedbackgesprekken gevoerd met de coach van dit semester om samen te bespreken waar ik mee bezig ben of op vast loop. Een samenvatting van dit gesprek heb ik na afloop genoteerd in Feedpulse.
+
+![Screenshot](./assets/img/feedpulseIndi.jpg)
+
+### Culturele verschillen
+
+
+
 
 ### Requirements
 Klanten
@@ -129,85 +244,10 @@ Leveranciers
 Dashboard
   - Als een gebruiker wil ik een dashboardpagina hebben waarop ik alle belangrijke informatie kan inzien
 
-### Agile
-
-#### Wat is Agile?
-Agile is een methodiek die voornamelijk in de software development branch wordt gebruikt om een iteratief proces te beschrijven. Er wordt vaak gepland in verschillende sprints waarbij teams telkens een bepaald onderdeel opleveren en hier na afloop op reflecteren.
-
-#### Verschillende Agile werkwijzen
-Binnen Agile zijn er diverse werkwijzen die kunnen worden toegepast binnen een project. Elke werkwijze kan worden toegepast waar dit het meeste relevant is.
-In dit voorbeeld heb ik 2 verschillende Agile werkwijzen uitgelegd:
-
-  - SCRUM
-  In SCRUM werk je samen met een projectgroep in vaak kleine periodes van enkele weken aan een set taken die onderdeel uitmaken van een (groot)project. Deze periodes worden in SCRUM termen sprints genoemd. Deze sprints zijn vooraf vastgestelde momenten waarop de projectgroep bij elkaar komt en zijn/haar voortgang van de taken presenteert aan de stakeholders.
-
-  De stakeholders zijn vaak de belanghebbenden binnen het bedrijf waarvoor het project wordt uitgevoerd. Tijdens de sprintopleveringen kunnen zij feedback geven op de producten die worden opgeleverd door het ontwikkelteam.
-  
-  Als de stakeholders nog aanvullende wensen of eisen hebben dan kunnen zij deze doorgeven aan de Product owner. Hij is verantwoordelijk voor de communicatie tussen het ontwikkelteam en de stakeholders en maakt beslissingen voor het project. Ook kan de product owner de ontvangen feedback verwerken tot nieuwe taken voor de komende sprints.
-  De verschillende taken worden in termen van SCRUM vaak backlog items genoemd
-
-  - Kanban
-  Deze Agile methode werkt op een totaal andere manier als SCRUM. Bij Kanban werk je met een zogenoemd bord waarbij gebruik gemaakt wordt van simpele notities. Elke notitie representeert een andere taak. Het bord wordt opgebouwd met behulp van drie kolommen genaamd:
-
-    - To Do (Taken die nog opgepakt kunnen worden en nog niet zijn gestart)
-    - Doing (Taken waar op dit moment aan wordt gewerkt)
-    - Done (Taken die zijn afgerond)
-
-  Op deze manier is er een overzichtelijk overzicht in de nog openstaande taken en kunnen knelpunten snel worden opgespoord. Afhankelijk van de grootte van het project kan het bord nog worden uitgebreid met extra kolommen zoals een review kolom. 
-  In deze kolom kunnen dan taken komen te staan die bijvoorbeeld nog eerst getest moeten worden alvorens ze worden verplaatst naar afgerond.
-
-#### Agile toegepast binnen het groepsproject
-In semester 3 hebben wij ook gewerkt aan een groepsproject samen met het bedrijf iO Digital in Eindhoven.
-
-Voor dit bedrijf zijn wij het afgelopen semester bezig geweest met het ontwikkelen van een mobiele app waarbij de gebruikers van de app eenvoudig hun collega's kunnen tracken met behulp van hun locatie in het gebouw en de ingeplande afspraken.
-Het doel van de app is om de productiviteit van de collega's op kantoor te verhogen, doordat zij gemakkelijker hun collega's kunnen vinden en hierdoor geen onnodige tijd verloren gaat.
-
-Voor het projectmanagement hebben wij binnen het groepsproject gebruik gemaakt van de SCRUM methodiek die onderdeel is van Agile.
-We hebben als eerste een DevOps board aangemaakt via Microsoft Azure, hierop staan alle User Stories en bijbehorende taken vermeld.
-
-![Screenshot](./assets/img/scrumboard.jpg)
-
-Hierna hebben we samen met de stakeholders besproken hoeveel sprints we voor dit project inplannen. Gezien de tijd van het semester en het aantal werkdagen in de week die zijn ingepland voor dit project zijn we uitgekomen op een totaal van 5 sprints met een interval van 3 (werk)weken, de vakantie zijn hierbij uitgesloten.
-Deze sprintplanning hebben we vervolgens genoteerd in ons DevOps board.
-
-![Screenshot](./assets/img/sprintplanning.jpg)
-
-Nadat we de afspraken met de stakeholders hebben gemaakt zijn we begonnen met het bedenken van user stories en hebben deze vervolgens verwerkt op ons DevOps board. Bij de verschillende user stories hebben we taken opgesteld die nodig zijn om een user story succesvol te kunnen afronden.
-
-![Screenshot](./assets/img/tasksStory.jpg)
-
-Bij elke taak hebben we samen met de groepsleden een D.O.D (Definition Of Done) opgesteld. Hiermee bepalen we gezamelijk wanneer wij als groep vinden dat een taak succesvol is afgerond en kan worden verplaatst.
-Deze D.O.D is terug te vinden in de beschrijving van de taak
-
-![Screenshot](./assets/img/DOD.jpg)
-
-Ook hebben we een inschatting gemaakt hoeveel tijd we verwachten nodig te hebben om een taak te kunnen afronden. Deze tijd (in uren) staat in de taak vermeld bij Original Estimate. Wanneer de taak is afgerond hebben wij onze uiteindelijk besteede uren ingevoerd bij Completed.
-
-We hebben gemerkt dat het plannen van taken in het begin nog lastig kan zijn. Bij veel van onze taken hebben we minder uren opgegeven dan dat we er uiteindelijk aan hebben besteed. 
-Wel hebben we gemerkt dat het plannen van taken gedurende het semester steeds beter gaat en dat de inschattingen acqurater worden.
-
-![Screenshot](./assets/img/taskTime.jpg)
-
-Verder hebben we in het begin onze taken erg groot en algemeen beschreven. Gedurende het project merkte we dat het toewijzen van taken aan individuele groepsleden op deze manier erg lastig ging worden. Ook hadden we geen goed overzicht wat er nog precies moest gebeuren om een taak volledig te kunnen afronden.
-Om die reden hebben we de taken later in het project opgesplitst in kleinere losse taken die onderdeel zijn van een user story. 
-
-Na enkele weken merkte we dat door deze aanpassing er een beter overzicht is gekomen en dat de productiviteit onder de groepsleden is toegenomen.
-
-Op moment dat een sprint langzamerhand ter einde kwam zijn we begonnen met de voorbereidingen voor de sprintoplevering. We hebben een powerpoint presentatie gemaakt met daarin een korte samenvatting van de user stories waaraan we deze sprint hebben gewerkt en welke user stories we in de volgende sprint gaan oppakken. Ook hebben we bij elke oplevering een demonstratie gegeven van de huidige versie van het product.
-Tijdens de sprintopleveringen waren de stakeholders Cas & Bart van het bedrijf aanwezig, alsmede onze coach vanuit Fontys. Na afloop van de demonstratie hebben feedbackpunten ontvangen die zijn genoteerd door de notulist van de groep. Deze feedbackpunten worden besproken in de retrospective en vervolgens meegenomen in de sprintplanning.
-
-<------ Foto powerpoint ------->
-
-Na afloopt van elke sprintoplevering zijn we met de groep gaan refelecteren op de sprint in een zogenoemde retrospective. We hebben hierbij gebruik gemaakt van de 4 L's
-
-  - Longed For
-  - 
-
-
 
 ## Technische uitwerking
 
-### Front-end
+### Frontend
 De front-end van de webapplicatie heb ik ontwikkeld in Vue.js in combinatie met Javascript. Vue.js is een erg klein framework waardoor het snel te gebruiken is. Daarnaast werkt Vue.js met zogenoemde components, hierdoor kan je gemakkelijk bepaalde functionaliteiten opsplitsen en later hergebruiken binnen het project zonder de code ervan opnieuw te hoeven schrijven. Dit zorgt ervoor dat je code onderhoudbaarder wordt en daardoor ook leesbaarder.
 
 In de afgelopen jaren heb ik al aan meerdere projecten gewerkt die in Vue.js zijn geschreven, onder andere tijdens mijn eerdere stages. Hierdoor ken ik de basis van Vue.js erg goed en wil ik mij verder verdiepen in de geadvanceerde onderdelen binnen dit framework.
