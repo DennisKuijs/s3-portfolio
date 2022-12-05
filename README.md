@@ -71,16 +71,16 @@ Agile is een methodiek die voornamelijk in de software development branch wordt 
 Binnen Agile zijn er diverse werkwijzen die kunnen worden toegepast binnen een project. Elke werkwijze kan worden toegepast waar dit het meeste relevant is.
 In dit voorbeeld heb ik 2 verschillende Agile werkwijzen uitgelegd:
 
-  - Scrum
-  In Scrum werk je samen met een projectgroep in vaak kleine periodes van enkele weken aan een set taken die onderdeel uitmaken van een (groot)project. Deze periodes worden in SCRUM termen sprints genoemd. Deze sprints zijn vooraf vastgestelde momenten waarop de projectgroep bij elkaar komt en zijn/haar voortgang van de taken presenteert aan de stakeholders.
+  Scrum:
+  In Scrum werk je samen met een projectgroep in vaak kleine periodes van enkele weken aan een set taken die onderdeel uitmaken van een (groot)project. Deze periodes worden in Scrum termen sprints genoemd. Deze sprints zijn vooraf vastgestelde momenten waarop de projectgroep bij elkaar komt en zijn/haar voortgang van de taken presenteert aan de stakeholders.
 
   De stakeholders zijn vaak de belanghebbenden binnen het bedrijf waarvoor het project wordt uitgevoerd. Tijdens de sprintopleveringen kunnen zij feedback geven op de producten die worden opgeleverd door het ontwikkelteam.
   
   Als de stakeholders nog aanvullende wensen of eisen hebben dan kunnen zij deze doorgeven aan de Product owner. Hij is verantwoordelijk voor de communicatie tussen het ontwikkelteam en de stakeholders en maakt beslissingen voor het project. Ook kan de product owner de ontvangen feedback verwerken tot nieuwe taken voor de komende sprints.
-  De verschillende taken worden in termen van SCRUM vaak backlog items genoemd
+  De verschillende taken worden in termen van Scrum vaak backlog items genoemd
 
-  - Kanban
-  Deze Agile methode werkt op een totaal andere manier als SCRUM. Bij Kanban werk je met een zogenoemd bord waarbij gebruik gemaakt wordt van simpele notities. Elke notitie representeert een andere taak. Het bord wordt opgebouwd met behulp van drie kolommen genaamd:
+  Kanban:
+  Deze Agile methode werkt op een totaal andere manier als Scrum. Bij Kanban werk je met een zogenoemd bord waarbij gebruik gemaakt wordt van simpele notities. Elke notitie representeert een andere taak. Het bord wordt opgebouwd met behulp van drie kolommen genaamd:
 
     - To Do (Taken die nog opgepakt kunnen worden en nog niet zijn gestart)
     - Doing (Taken waar op dit moment aan wordt gewerkt)
