@@ -162,23 +162,46 @@ In semester 3 hebben wij ook gewerkt aan een groepsproject samen met het bedrijf
 Voor dit bedrijf zijn wij het afgelopen semester bezig geweest met het ontwikkelen van een mobiele app waarbij de gebruikers van de app eenvoudig hun collega's kunnen tracken met behulp van hun locatie in het gebouw en de ingeplande afspraken.
 Het doel van de app is om de productiviteit van de collega's op kantoor te verhogen, doordat zij gemakkelijker hun collega's kunnen vinden en hierdoor geen onnodige tijd verloren gaat.
 
-Binnen het groepsproject hebben wij gebruik gemaakt van de SCRUM methodiek die onderdeel is van Agile.
+Voor het projectmanagement hebben wij binnen het groepsproject gebruik gemaakt van de SCRUM methodiek die onderdeel is van Agile.
 We hebben als eerste een DevOps board aangemaakt via Microsoft Azure, hierop staan alle User Stories en bijbehorende taken vermeld.
 
 ![Screenshot](./assets/img/scrumboard.jpg)
 
-In het begin hadden we deze taken erg groot en algemeen beschreven. Gedurende het project merkte we dat het toewijzen van taken aan individuele groepsleden op deze manier erg lastig ging worden. Ook hadden we geen goed overzicht wat er nog precies moest gebeuren om een taak volledig te kunnen afronden.
-Om die reden hebben we de taken later in het project opgesplitst in kleinere losse taken die onderdeel zijn van een user story. 
-
-Na enkele weken merkte we dat door deze aanpassing er een beter overzicht is gekomen en dat de productiviteit onder de groepsleden is toegenomen.
-
-Samen met de stakeholders hebben we besproken hoeveel sprints we voor dit project inplannen. Gezien de tijd van het semester en het aantal werkdagen in de week die zijn ingepland voor dit project zijn we uitgekomen op een totaal van 5 sprints met een interval van 3 (werk)weken, de vakantie zijn hierbij uitgesloten.
+Hierna hebben we samen met de stakeholders besproken hoeveel sprints we voor dit project inplannen. Gezien de tijd van het semester en het aantal werkdagen in de week die zijn ingepland voor dit project zijn we uitgekomen op een totaal van 5 sprints met een interval van 3 (werk)weken, de vakantie zijn hierbij uitgesloten.
 Deze sprintplanning hebben we vervolgens genoteerd in ons DevOps board.
 
 ![Screenshot](./assets/img/sprintplanning.jpg)
 
+Nadat we de afspraken met de stakeholders hebben gemaakt zijn we begonnen met het bedenken van user stories en hebben deze vervolgens verwerkt op ons DevOps board. Bij de verschillende user stories hebben we taken opgesteld die nodig zijn om een user story succesvol te kunnen afronden.
 
+![Screenshot](./assets/img/tasksStory.jpg)
 
+Bij elke taak hebben we samen met de groepsleden een D.O.D (Definition Of Done) opgesteld. Hiermee bepalen we gezamelijk wanneer wij als groep vinden dat een taak succesvol is afgerond en kan worden verplaatst.
+Deze D.O.D is terug te vinden in de beschrijving van de taak
+
+![Screenshot](./assets/img/DOD.jpg)
+
+Ook hebben we een inschatting gemaakt hoeveel tijd we verwachten nodig te hebben om een taak te kunnen afronden. Deze tijd (in uren) staat in de taak vermeld bij Original Estimate. Wanneer de taak is afgerond hebben wij onze uiteindelijk besteede uren ingevoerd bij Completed.
+
+We hebben gemerkt dat het plannen van taken in het begin nog lastig kan zijn. Bij veel van onze taken hebben we minder uren opgegeven dan dat we er uiteindelijk aan hebben besteed. 
+Wel hebben we gemerkt dat het plannen van taken gedurende het semester steeds beter gaat en dat de inschattingen acqurater worden.
+
+![Screenshot](./assets/img/taskTime.jpg)
+
+Verder hebben we in het begin onze taken erg groot en algemeen beschreven. Gedurende het project merkte we dat het toewijzen van taken aan individuele groepsleden op deze manier erg lastig ging worden. Ook hadden we geen goed overzicht wat er nog precies moest gebeuren om een taak volledig te kunnen afronden.
+Om die reden hebben we de taken later in het project opgesplitst in kleinere losse taken die onderdeel zijn van een user story. 
+
+Na enkele weken merkte we dat door deze aanpassing er een beter overzicht is gekomen en dat de productiviteit onder de groepsleden is toegenomen.
+
+Op moment dat een sprint langzamerhand ter einde kwam zijn we begonnen met de voorbereidingen voor de sprintoplevering. We hebben een powerpoint presentatie gemaakt met daarin een korte samenvatting van de user stories waaraan we deze sprint hebben gewerkt en welke user stories we in de volgende sprint gaan oppakken. Ook hebben we bij elke oplevering een demonstratie gegeven van de huidige versie van het product.
+Tijdens de sprintopleveringen waren de stakeholders Cas & Bart van het bedrijf aanwezig, alsmede onze coach vanuit Fontys. Na afloop van de demonstratie hebben feedbackpunten ontvangen die zijn genoteerd door de notulist van de groep. Deze feedbackpunten worden besproken in de retrospective en vervolgens meegenomen in de sprintplanning.
+
+<------ Foto powerpoint ------->
+
+Na afloopt van elke sprintoplevering zijn we met de groep gaan refelecteren op de sprint in een zogenoemde retrospective. We hebben hierbij gebruik gemaakt van de 4 L's
+
+  - Longed For
+  - 
 
 
 
