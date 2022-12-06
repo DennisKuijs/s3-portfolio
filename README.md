@@ -200,6 +200,8 @@ Na afloop van de debrief ontvang je een persoonlijke score gebaseerd op het aant
 In mijn geval had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%.
 Met dit resultaat ben ik erg tevreden.
 
+![Screenshot](./assets/img/debrief.jpg)
+
 Ook in het buitenland heb ik al een aantal culturele verschillen opgemerkt. Een voorbeeld hiervan is afgelopen zomer toen ik op rondreis was door Europa met de trein. Tijdens onze treinreis raakte we in gesprek met een echtpaar uit Nieuw-zeeland. Zij vertelden dat ze na een lange periode van lockdowns en coronamaatregelen eindelijk hun thuisland weer mochten verlaten om op reis te kunnen.
 
 Ze waren vanaf Auckland naar Dubai gevlogen om daar over te stappen op een vliegtuig naar London. Vanaf London waren zij hun treinrondreis gestart richting Denemarken waar wij ze in de trein tegenkwamen. Vanwege een storing op het spoor had onze trein een behoorlijke vertraging opgelopen. Het echtpaar wist echter niet zeker of ze hun overstap in Duitsland nog gingen halen. 
@@ -209,10 +211,31 @@ Toen ze dat wilde navragen bij de conducteur reageerde hij boos en niet geïnter
 Gedurende de treinrit raakte het echtpaar ook nog in gesprek met een man in Chicago. Hij vertelde dat hij een surfschool had en nodigde het echtpaar uit om eens langs te komen. Dit vond ik persoonlijk erg apart. De man in kwestie kenden de personen verder niet, en zij hadden hem nog nooit eerder gezien. Toch is de Amerikaanse cultuur in bepaalde staten een stuk opener en socialer dan in sommige andere landen.
 In Nederland zouden we dit namelijk niet zo snel doen, bij ons wordt het als normaal gezien om eerst zogenoemd de kat uit de boom te kijken alvorens mensen een afspraak met iemand maken.
 
+
 ### Ethiek
 
+Ethiek speelt in de wereld van Software ontwikkeling een grootte rol. Steeds meer applicaties worden slimmer ingericht en ook de hoeveelheid data die worden gedeeld neemt snel toe. Hoe zorgen we ervoor dat de software etesiche verantwoord blijft in deze snel veranderende sector? Wanneer is er sprake van onetische software? En wat kunnen we eraan doen?
+Dat zijn allemaal relevanten vragen die gesteld kunnen worden.
 
-![Screenshot](./assets/img/debrief.jpg)
+Ook bij ons in het groepsproject speelt het etische vraagstuk een grootte rol. Voor iO Digital ontwikkelen wij een mobiele applicatie waarmee de medewerkers op kantoor andere medewerkers eenvoudig kunnen vinden. De locaties van de collega's worden bepaald aan de hand van de apparaten die zijn verbonden op de verschillende accesspoints die door het gebouw heen zijn geplaatst.
+
+Met de app wordt het dus technisch gezien mogelijk dat collega's andere collega's voortdurend in de gaten kunnen houden en zo een locatiehistorie kunnen opbouwen van deze persoon. Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
+
+Over dit vraagstuk hebben wij de afgelopen maanden onderzoek gedaan. We zijn in gesprek geweest met de stakeholders van het project en hebben verder gesproken met de Legal afdeling over dit probleem. De resultaten van dit onderzoek hebben geleid tot een aantal beveiligingsoplossingen die we hebben geimplementeerd in de applicatie om deze zo veilig mogelijk te maken voor de gebruikers.
+
+Zo hebben we onder andere afgesproken dat de ontvangen WiFi data maximaal 12 uur opgeslagen mag worden in de database. Elke invoer die langer dan 12 uur staat opgeslagen wordt automatisch door het systeem verwijderd. Dit zorgt ervoor dat de gegevens maximaal voor één werkdag worden bewaard en dat er geen historie wordt opgebouwd.
+
+Ook kunnen collega's zelf bepalen of zij toestemming geven om hun locatie te delen met andere gebruikers. Deze toestemming kunnen zij ten alle tijden zelf aanpassen in de instellingen van de applicatie. Op moment dat er geen toestemming is verleend worden de locatiegegevens van deze persoon niet verwerkt. Indien gewenst kan de persoon alsnog handmatig zijn/haar locatie doorgeven.
+
+Verder kunnen alleen medewerkers met een geactiveerd account inloggen in de applicatie. Een account aanmaken is alleen mogelijk met een e-mail adres van de organisatie die endigd op (@iodigital.com). Op deze manier zorgen we ervoor dat er geen onbevoegden toegang kunnen krijgen tot deze gevoelige gegevens.
+Mocht een medewerker niet meer actief werken voor de organisatie dan kan de toegang tot de app eenvoudig worden ingetrokken.
+
+Ten slotte zorgen we ervoor dat de API Server die deze gegevens verwerkt goed wordt beveiligd. Alle endpoints van de API kunnen alleen worden aangeroepen met een geldige accessToken. Deze accessToken wordt verleend op moment dat de gebruiker succesvol inlogd in de applicatie.
+De overige endpoints zijn beveiligd met een API Key die gehashed staat opgeslagen op een veilige plek op de AWS Omgeving.
+Op deze manier proberen we de aanvallen van buitenaf tot een minimum te beperken en zo datalekken te voorkomen.
+
+De geimplementeerde beveiligingsoplossingen zijn besproken en goedgekeurd door de stakeholders van het project. Indien noodzakelijk worden deze in de toekomst aangevuld met extra eisen of worden bestaande eisen uitgebreid.
+
 
 ### Requirements
 Klanten
