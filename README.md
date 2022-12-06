@@ -20,6 +20,7 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
    -  [Agile toegepast binnen het groepsproject](#agile-toegepast-binnen-het-groepsproject)
 -  [Professionele ontwikkeling](#professionele-ontwikkeling)
 -  [Culturele verschillen](#culturele-verschillen)
+-  [Ethiek](#ethiek)
 -  [Requirements](#requirements)
 -  [User Stories](#user-stories)
 -  [Technische uitwerking](#technische-uitwerking)
@@ -196,7 +197,20 @@ In mijn voorbeeld heb ik mijn eigen vermogen duidelijk overschat. Dit is terug t
 Nadat het assessment met succes is afgerond kun je met behulp van de scores in het Profile Report een debrief opdracht maken. Deze opdracht sluit aan bij de Developmental orientation Score. Met behulp van deze interactieve videoopdracht worden de verschillen tussen de orientaties nader toegelicht. Er worden tussendoor in totaal 12 vragen gesteld om te kunnen toetsen of je begrijpt wat er wordt bedoeld met de verschillende orientaties.
 
 Na afloop van de debrief ontvang je een persoonlijke score gebaseerd op het aantal goede antwoorden van de test.
-In mijn geval had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%
+In mijn geval had ik in totaal 10 van de 12 vragen goed beantwoord, wat neerkomt op een score van 83,33%.
+Met dit resultaat ben ik erg tevreden.
+
+Ook in het buitenland heb ik al een aantal culturele verschillen opgemerkt. Een voorbeeld hiervan is afgelopen zomer toen ik op rondreis was door Europa met de trein. Tijdens onze treinreis raakte we in gesprek met een echtpaar uit Nieuw-zeeland. Zij vertelden dat ze na een lange periode van lockdowns en coronamaatregelen eindelijk hun thuisland weer mochten verlaten om op reis te kunnen.
+
+Ze waren vanaf Auckland naar Dubai gevlogen om daar over te stappen op een vliegtuig naar London. Vanaf London waren zij hun treinrondreis gestart richting Denemarken waar wij ze in de trein tegenkwamen. Vanwege een storing op het spoor had onze trein een behoorlijke vertraging opgelopen. Het echtpaar wist echter niet zeker of ze hun overstap in Duitsland nog gingen halen. 
+
+Toen ze dat wilde navragen bij de conducteur reageerde hij boos en niet geïntereseerd. Het echtpaar vertelde ons dat ze al vaker hadden opgemerkt dat mensen in Europa totaal anders reageren als dat ze zelf gewend zijn in Nieuw-zeeland.
+
+Gedurende de treinrit raakte het echtpaar ook nog in gesprek met een man in Chicago. Hij vertelde dat hij een surfschool had en nodigde het echtpaar uit om eens langs te komen. Dit vond ik persoonlijk erg apart. De man in kwestie kenden de personen verder niet, en zij hadden hem nog nooit eerder gezien. Toch is de Amerikaanse cultuur in bepaalde staten een stuk opener en socialer dan in sommige andere landen.
+In Nederland zouden we dit namelijk niet zo snel doen, bij ons wordt het als normaal gezien om eerst zogenoemd de kat uit de boom te kijken alvorens mensen een afspraak met iemand maken.
+
+### Ethiek
+
 
 ![Screenshot](./assets/img/debrief.jpg)
 
