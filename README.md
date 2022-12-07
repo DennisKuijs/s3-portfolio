@@ -1204,12 +1204,11 @@ Na het configureren van de standaardinstellingen van de workflow komt het echte 
 
 In mijn voorbeeld heb ik 2 `jobs` gemaakt met de namen `build` en `deploy`. 
 
-De build stage is verantwoordelijk voor het bouwen van de Docker image en om deze te pushen naar de AWS ECR omgeving op het platform van Amazon. 
-De deploy stage zorgt ervoor dat de image die bij AWS ECR is opgeslagen wordt gestart op een server dankzij AWS ECS & EC2.
-
 De komende tijd ga ik de workflow nog verder uitbreiden met een derde job genaamd `test`. Hierbij is het de bedoeling dat de integration tests en de SonarCloud controle wordt gestart.
 
 ##### Build
+
+Voordat de applicatie gestart kan worden op een (live)server moet er eerst een nieuwe Docker image voor worden gebouwd. Voor dit proces is de `Build` job verantwoordelijk. Hij zorgt ervoor dat er een Docker Image wordt gebouwd en dat deze wordt gepusht naar de AWS ECR omgeving.
 
 Elke job is op dezelfde manier opgebouwd en begint als eerste met de `name` property. Dit is de naam van de specifieke job die ook zichtbaar zal zijn in het overzicht van Github actions.
 
@@ -1265,3 +1264,30 @@ Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stapp
      ![Screenshot](./assets/img/echoimage.jpg)
 
 ##### Deploy
+
+Nadat de Docker image succesvol is gebouwd en gepusht naar AWS ECR kan deze worden gedeployt. Voor deze taak is de `deploy` job verantwoordelijk. Hij zorgt ervoor dat de Docker image wordt opgehaald uit de AWS ECR repository en dat deze wordt gestart op een service binnen het AWS ECS Cluster. In het cluster staat vervolgens een virtuele machine (EC2) waarop de software kan worden gedraaid.
+
+De deploy job doorloopt de volgende stappen:
+
+  1.  Als eerste wordt er opnieuw een verbinding gemaakt met de AWS omgeving. 
+      Dit gebeurd wederom met dezelfde inloggevens die staan opgeslagen als `secret` binnen de GitHub secrets module
+
+      ![Screenshot](./assets/img/awscredentials.jpg)
+  
+  2.  Daarna wordt de task definition uitgelezen die staat opgeslagen in het `task-definition.json` bestand. 
+      Dit bestand bevat configuratiegegevens die de AWS ECS Service gebruikt om een docker container te kunnen starten binnen het cluster. 
+
+      ![Screenshot](./assets/img/taskdefinition.jpg)
+
+      Omdat de naam van elke Docker image bestaat uit een uniek gegenereerde `SHA` waarde zal deze ook telkens moeten worden bijgewerkt in de task definition.
+      Op moment dat dit niet gebeurd zal de AWS ECS Service telkens dezelfde (en dus oude) image deployen op de virtuele machine. De naam van de nieuwe image kan worden opgehaald dankzij de eerder opgeslagen `output` variable 
+
+      ![Screenshot](./assets/img/imageoutput.jpg)
+
+  3.  Nadat de task definition is bijgewerkt kan deze worden gestart op een AWS ECS Service. 
+      
+      Hiervoor gebruiken we uiteraard de aangepaste versie van dit bestand, deze staat nu opgeslagen in een output variable van de vorige stap. Ook hebben we eerder in een enviroment variable de `AWS_SERVICE` naam opgeslagen en het cluster in de variable `AWS_CLUSTER`. Deze variabelen zijn nodig om de task definition op de juiste resources te starten.
+
+      De AWS ECS Service zal vervolgens de container die staat vermeld in het task definition bestand deployen op een virtuele machine (EC2)
+
+
