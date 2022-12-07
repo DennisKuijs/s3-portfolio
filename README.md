@@ -23,6 +23,7 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
 -  [Ethiek](#ethiek)
 -  [Requirements](#requirements)
 -  [User Stories](#user-stories)
+-  [Design](#design)
 -  [Technische uitwerking](#technische-uitwerking)
     - [Frontend](#Frontend)
       -   [Mappenstructuur](#mappenstructuur)
@@ -54,6 +55,8 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
           -   [Server.ts](#server.ts)
   - [Testen & Quality Assurance](#testen&qualityassurance)
     - [Integration Tests](#integration-tests)
+    - [SonarCloud](#sonarcloud)
+  - [Continuous Integration & Continuous Development](#continuous-integration&continuous-development)
 
 
 ### Projectbeschrijving
@@ -306,6 +309,42 @@ Leveranciers
 Dashboard
   - Als een gebruiker wil ik een dashboardpagina hebben waarop ik alle belangrijke informatie kan inzien
 
+### Design
+
+Voor het design van mijn invididuele applicatie heb ik als eerste onderzoek gedaan naar de verschillende WMS Systemen die inmiddels op de markt te verkrijgen zijn. Hierbij heb ik voornamelijk gelet op de de verschillen en gelijkenissen binnen het design, maar ook naar de verschillen in functionaliteiten onder de systemen.
+
+Er zijn tegenwoordig een heleboel WMS Systemen te gebruiken die allemaal ongeveer hetzelfde werken. De meeste systemen zijn klein en bevatten alleen basisfunctionaliteiten zoals het beheren van producten en het opboeken van voorraad.
+De 2 grootste systemen die ik ben tegengekomen zijn Picqer en GoedGepickt. Deze softwareproducten bevatten functionaliteiten voor zowel kleine als grotere warehouses en bieden veel meer koppelingen om alles te kunnen automatiseren.
+
+Het design van mijn applicatie is gebaseerd op een combinatie van deze 2 systemen. Zo werkt Picqer vooral met diverse zoegenoemde `cards` op een webpagina met op elke card een ander stukje informatie. Dit zorgt ervoor dat alles erg overzichtelijk wordt weergegeven op het scherm en dat er geen onduidelijkheden kunnen zijn, dit is erg cruciaal in een warehouse.
+
+Bij GoedGepickt wordt op sommige momenten meer gebruik gemaakt van tabellen. Dit zorgt ervoor dat alleen de benodigde informatie wordt weergegeven op de pagina en de informatie daardoor veel compacter kan worden getoond. Dit vond ik zelf erg onhandig aangezien je dan erg goed moet zoeken naar de gewenste informatie, dit lijkt me in een warehouse niet efficient.
+
+Ook over de kleurstelling van de applicatie heb ik nagedacht, zo heb ik al eerste ideeën opgedaan met een colorpicker die ik online tegen ben gekomen. Deze software genereerd verschillende kleurenpalleten die bij elkaar passen. Jammer genoeg ben ik hier geen kleurenpallet tegengekomen die het beste aansluit bij de applicatie en het gevoel wat ik ermee wil uitstralen
+
+![Screenshot](./assets/img/colorpicker.jpg)
+
+Aangezien de applicatie gebaseerd is op mijn eigen onderneming leek het mij het leukste om de kleuren uit het logo te gebruiken op verschillende plekken in de applicatie.
+Deze kleuren bestaan uit twee tinten blauw, lichtblauw (#00A9FA) en donkerblauw (#1C5CA1)
+
+![Screenshot](./assets/img/kleuren.jpg)
+
+Verder maak ik voor het lettertype gebruik van `Roboto`. Dit lettertype wordt ook gebruikt op de facturen die worden verzonden aan klanten en past dus mooi binnen het design
+
+![Screenshot](./assets/img/Roboto.jpg)
+
+De gemaakte keuzes voor het design heb ik laten valideren door meerdere gebruikers. Daaruit is naar voren gekomen dat het gebruik van oranje als secundaire kleur niet past binnen het design van de applicatie. Ook waren de melding kleuren van succes, warning en error erg dof, deze mochten wat feller worden. Dankzij de ontvangen feedback is het design verder aangepast en zie het eindresultaat er alsvolgt uit
+
+![Screenshot](./assets/img/NavbarDesign.jpg)
+
+Voor de navigatiebalk is gekozen om de achtergrondkleur in te stellen op de donkerblauwe kleur die onderdeel is van het logo. De tekst heeft een witte kleur zodat deze op de donkere achtergrond goed leesbaar blijft. Verder heeft maakt de tekst gebruik van het lettertype Roboto wat onderdeel is van het design.
+
+![Screenshot](./assets/img/AddProduct.jpg)
+
+Voor het toevoegen van het product is gebruik gemaakt van de losse `cards` waar ik inspiratie van heb gekregen dankzij de software Picqer. Verder heb ik gebruik gemaakt van het lettertype Roboto voor zowel de tekst als de invoervelden. 
+De meldingen op de pagina waarvoor het voor de gebruiker belangrijk is om hier op te letten hebben een gele warning kleur gekregen die een stuk feller is. 
+
+De knoppen `Kies afbeelding`en `Velden leegmaken` hebben de kleuren van het logo gekregen, de knop `Product aanmaken` heeft de groene succeskleur gekregen. Deze kleur laat zien dat de gebruiker het beste op de knop kan klikken voor het afhandelen van de gewenste actie.
 
 ## Technische uitwerking
 
@@ -1036,3 +1075,69 @@ Hierdoor kunnen we later in andere tests eenvoudig informatie opvragen van het a
 Op moment dat alle checks de gewenste data teruggeven zal de test slagen. Dit is vervolgens terug te zien in de console.
 
 ![Screenshot](./assets/img/successTest.jpg)
+
+#### SonarCloud
+
+Ook de kwaliteit van de geschreven code is erg belangrijk. Je wilt immers geen code waar bugs of security issues in voorkomen. Voor het bewaken van de Qualtity van de code heb ik gebruik gemaakt van de software SonarCloud.
+SonarCloud is een online softwareproduct waarmee je eenvoudig je codebase kan laten scannen op reliability, maintainability en security. Na afloop van de scan geeft SonarCloud je een rapport met daarop de scores van je codebase.
+
+![Screenshot](./assets/img/sonarcloud.jpg)
+
+Mocht er problemen zijn gevonden dan wordt precies aangegeven op welke regels code dit probleem voorkomt en worden er verschillende oplossingen getoond om het probleem op een veilige manier op te lossen.
+
+Op dit moment zijn er in mijn codebase geen problemen gedetecteerd, de problemen die in het verleden waren gevonden zijn inmiddels opgelost. Deze waren vooral CORS gerelateerd en hadden impact op de security van de applicatie.
+De komende tijd wil ik het gebruik van SonarCloud nog verder uitbreiden met onder andere code coverages, hierdoor kan ik zien hoeveel % van mijn applicatie wordt getest.
+Ook wil ik SonarCloud toevoegen aan mijn CI/CD Workflow zodat deployment alleen mogelijk is zonder problemen en dat ik een badge kan toevoegen bij GitHub die verwijst naar mijn SonarCloud pagina.
+
+### Continuous Integration & Continuous Development
+
+Continuous Integration & Continuous Development afgekort CI/CD is binnen de software ontwikkeling een erg handige tool. Dankzij het gebruik van CI/CD pipelines wordt het mogelijk gemaakt om bepaalde acties automatisch te laten uitvoeren na bijvoorbeeld een code push naar GitHub. Deze acties kunnen bijvoorbeeld het testen van code zijn, maar ook het deployen van code naar een productieontwikkeling of scannen op onregelmatigheden behoort tot de mogelijkheden.
+
+Dankzij deze automatische taken wordt het voor ontwikkelaars eenvoudiger om wijzigingen aan te brengen in de code, daarnaast is het minder foutgevoelig waardoor de betrouwbaarheid toeneemt.
+
+In mijn project heb ik voor mijn REST API een CI/CD workflow opgezet met behulp van GitHub Actions en het AWS Plaform. Voordat ik deze Workflow helemaal heb geconfigureerd heb ik als eerste mijn REST API gecontainerized met behulp van Docker.
+
+Dankzij Docker is het mogelijk om bijvoorbeeld stukjes software te verpakken in een zogenoemde `image` en deze vervolgens te draaien in een zogenoemde `container`. Een docker image is eigenlijk een soort besturingssysteem voor de container zodat de container precies weet welke taken hij moet uitvoeren en opstarten.
+
+Om een Docker image te kunnen maken moet je precies kunnen vertellen aan het systeem welke stappen er uitgevoerd moeten worden om de software te kunnen draaien in de `container` Deze beschrijving wordt genoteerd in een `Dockerfile` die je toevoegd in je projectmap waar ook de code staat opgeslagen.
+
+![Screenshot](./assets/img/dockerfile.jpg)
+
+In mijn voorbeeld heb ik een `Dockerfile` gemaakt voor het installeren en starten van de REST API. Het bestand is alsvolgt opgebouwd:
+
+Als eerste heb ik bovenaan met het keyword `FROM` aangegeven welk besturingsysteem de docker image moet gebruiken, in mijn voorbeeld maak ik gebruik van NodeJS (node) gevolgd door een dubbele punt met daarachter het versienummer, in dit geval versie 18.
+Dit zogenoemde besturingsysteem kan Docker op deze manier eenvoudig downloaden via de Dockerhub, dit is de online omgeving van Docker waar bedrijven maar ook ontwikkelaars hun eigen gemaakte images kunnen opslaan zodat andere deze kunnen gebruiken.
+
+![Screenshot](./assets/img/node.jpg)
+
+Nadat het besturingssysteem is gedownload wordt er met behulp van het keyword `WORKDIR` een map aangemaakt met in dit geval de naam `/api`. In deze map worden straks alle bestanden van de REST API opgeslagen.
+
+![Screenshot](./assets/img/workdir.jpg)
+
+Vervolgens wordt er met behulp van het keyword `COPY` het `package.json` bestand gekopieerd naar de werkmap die we eerder hebben aangemaakt. 
+In het bestand `package.json` staat genoteerd welke npm packages het systeem allemaal nodig heeft om te kunnen functioneren. Deze packages kunnen straks eenvoudig worden gedownload vanaf npm
+
+![Screenshot](./assets/img/copypackage.jpg)
+
+Met behulp van het keyword `RUN` kunnen we tegen Docker vertellen dat hij een commando mag uitvoeren, in dit geval het commando `npm run install`. Dankzij dit commando wordt de REST API helemaal geinstalleerd en worden de npm packages die staan genoteerd in het `package.json` bestand nu gedownload.
+
+![Screenshot](./assets/img/npmrun.jpg)
+
+Daarna kunnen we met het keyword `COPY . .` opnieuw aangeven dat we de geïnstalleerde bestanden willen verplaatsen naar de hoofdmap, in dit geval onze werkmap `/api`
+
+![Screenshot](./assets/img/copy.jpg)
+
+Nu dat onze REST API helemaal is geïnstalleerd en de bestanden op de juiste plek staan kunnen we met het keyword `EXPOSE` aangeven op welke poortnummer we de API beschikbaar willen maken in het netwerk.
+In dit geval wordt de API beschikbaar gesteld op poort 5000
+
+![Screenshot](./assets/img/expose.jpg)
+
+Als laatste is het belangrijk om de REST API te starten op de container zodat we deze kunnen benaderen in het netwerk. Voor het starten maken we gebruik van het keyword `CMD`. Hier kunnen we aangeven welke commando uitgevoerd moet worden, in dit geval `npm start` om de REST API te starten
+
+![Screenshot](./assets/img/cmd.jpg)
+
+Nu dat we in het `Dockerfile` hebben kunnen specificeren hoe de image eruit ziet kunnen we deze vervolgens door het systeem laten bouwen. Voordat we dit gaan doen heb ik als eerste nog een `.dockerignore` bestand aangemaakt. In dit bestand kan ik aangeven welke mappen of bestanden uitgesloten moeten worden tijdens het bouwen van de image.
+
+![Screenshot](./assets/img/dockerignore.jpg)
+
+In mijn geval heb ik hier de map `node_modules` uitgesloten, deze map wordt namelijk door het systeem vanzelf aangemaakt bij het uitvoeren van de commando `npm run install`. Er is dus geen noodzaak om deze vooraf mee te nemen in de codebase, daarnaast is deze map behoorlijk groot en zou het build proces van de image enorm kunnen vertragen.
