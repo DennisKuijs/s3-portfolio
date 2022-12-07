@@ -1173,6 +1173,8 @@ Ook is deze branch op dit moment niet gekoppeld aan een specifieke workflow. Wel
 
 Hierna ben ik verder gegaan met het opzetten van de daadwerkelijke workflow. Omdat ik gebruik ga maken van de verschillende services op het platform van AWS heb ik gekozen om een starttemplate te gebruiken voor AWS. Dit template heb ik vervolgens helemaal aangepast naar mijn eigen wensen en benodigheden.
 
+##### Workflows
+
 Wanneer je een nieuwe workflow aanmaakt wordt er in de repository automatisch een map aangemaakt genaamd `.workflows`. In deze map komen alle configuratiebestanden van de verschillende workflows te staan. In mijn voorbeeld heb ik één workflow gemaakt genaamd `production.yml`
 
 ![Screenshot](./assets/img/workflows.jpg)
@@ -1196,10 +1198,14 @@ Indien de rechten van de workflow moeten worden beperkt kan dit worden geregeld 
 
 ![Screenshot](./assets/img/permissionworkflow.jpg)
 
+##### Jobs
+
 Na het configureren van de standaardinstellingen van de workflow komt het echte werk, de zogenoemde `jobs` of `stages`. Elke `job` representeert een bepaalde taak en heeft verschillende `steps` in hoe deze taak uitgevoerd moet worden.
 
 In mijn voorbeeld heb ik 2 `jobs` gemaakt met de namen `build` en `deploy`. De build stage is verantwoordelijk voor het bouwen van de Docker image en om deze te pushen naar de AWS ECR omgeving op het platform van Amazon. De deploy stage zorgt ervoor dat de image die bij AWS ECR is opgeslagen wordt gestart op een server dankzij AWS ECS & EC2.
 De komende tijd ga ik de workflow nog verder uitbreiden met een derde job genaamd `test`. Hierbij is het de bedoeling dat de integration tests en de SonarCloud controle wordt gestart.
+
+###### Build
 
 Elke job is op dezelfde manier opgebouwd en begint als eerste met de `name` property. Dit is de naam van de specifieke job die ook zichtbaar zal zijn in het overzicht van Github actions.
 
@@ -1222,7 +1228,7 @@ Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stapp
 
      ![Screenshot](./assets/img/awscredentials.jpg)
 
-     De verbinding wordt opgebouwd met behulp van de `AccessKey`, `PublicKey` en de `region`. Al deze waardes staan netjes opgeslagen als een `secret` in de Github Secrets module
+     De verbinding wordt opgebouwd met behulp van de `AccessKey`, `SecretKey` en de `Region`. Al deze waardes staan netjes opgeslagen als een `secret` in de Github Secrets module
 
      ![Screenshot](./assets/img/secrets.jpg)
 
@@ -1242,14 +1248,16 @@ Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stapp
 
      Daarna worden er 3 commando's uitgevoerd. 
      
-     Met behulp van de commando `docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .` wordt de Docker image gebouwd met als naam een combinatie van de AWS ECR Repository link en de ImageTag.
+     Met behulp van de commando docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . wordt de Docker image gebouwd met als naam een combinatie van de AWS ECR Repository link en de ImageTag.
 
      ![Screenshot](./assets/img/dockerbuiltcommand.jpg)
 
-     Vervolgens wordt de Image gepusht naar de AWS ECR Repository dankzij de commando `docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG`
+     Vervolgens wordt de Image gepusht naar de AWS ECR Repository dankzij de commando docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
      ![Screenshot](./assets/img/dockerpush.jpg)
 
      En als laatste wordt de Docker Image naam opgeslagen in een `output` variable die we eerder hebben aangemaakt. Dankzij deze waarde kan de volgende job, in dit geval `deploy` de waarde uitlezen en deze gebruiken om verdere stappen uit te voeren 
 
      ![Screenshot](./assets/img/echoimage.jpg)
+
+###### Deploy
