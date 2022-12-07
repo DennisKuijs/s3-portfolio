@@ -1162,11 +1162,15 @@ Om de REST API te bereiken via bijvoorbeeld een webbrowser of API tester zoals P
 
 #### Github Actions
 
-Nadat de integratie met Docker helemaal is ingesteld en getest is op juiste werking ben ik verder gegaan met het opzetten van de CI/CD Workflow. Hiervoor heb ik gebruik gemaak van Github Actions. Er zijn diverse tools op het internet beschikbaar die je kunnen helpen met het bouwen van dergelijke pipelines, echter heb ik gekozen voor Github actions vanwege het feit dat dit mooi integreerd in de code repository op Github en je op die manier alles bij elkaar hebt staan.
+Nadat de integratie met Docker helemaal is ingesteld en getest is op juiste werking ben ik verder gegaan met het opzetten van de CI/CD Workflow. Hiervoor heb ik gebruik gemaak van Github Actions. 
+
+Er zijn diverse tools op het internet beschikbaar die je kunnen helpen met het bouwen van dergelijke pipelines, echter heb ik gekozen voor Github actions vanwege het feit dat dit mooi integreerd in de code repository op Github en je op die manier alles bij elkaar hebt staan.
 
 Ik ben als eerste begonnen met het aanmaken van 2 branches, eentje genaamd `production` en een met de naam `development`. In de branch `production` komt alle code te staan die helemaal klaar is om gedeployt te worden op een (live)server. Aan deze branch heb ik mijn Github Workflow gekoppeld. 
 
-In de development branch komt alle code te staan waar op dit moment nog aan wordt gewerkt en waar mogelijkerwijs nog fouten en/of bugs in kunnen voorkomen. Deze code is nog niet klaar om in productie te kunnen worden gebruikt.
+In de development branch komt alle code te staan waar op dit moment nog aan wordt gewerkt en waar mogelijkerwijs nog fouten en/of bugs in kunnen voorkomen. 
+
+Deze code is nog niet klaar om in productie te kunnen worden gebruikt.
 Ook is deze branch op dit moment niet gekoppeld aan een specifieke workflow. Wel wil ik de komende tijd dit nog uitbreiden door een aparte development workflow te maken zodat deze code eventueel op een `playground` server gedeployt kan worden. 
 
 ![Screenshot](./assets/img/branches.jpg)
@@ -1286,8 +1290,31 @@ De deploy job doorloopt de volgende stappen:
 
   3.  Nadat de task definition is bijgewerkt kan deze worden gestart op een AWS ECS Service. 
       
-      Hiervoor gebruiken we uiteraard de aangepaste versie van dit bestand, deze staat nu opgeslagen in een output variable van de vorige stap. Ook hebben we eerder in een enviroment variable de `AWS_SERVICE` naam opgeslagen en het cluster in de variable `AWS_CLUSTER`. Deze variabelen zijn nodig om de task definition op de juiste resources te starten.
+      Hiervoor gebruiken we de aangepaste versie van de task definition, deze staat nu opgeslagen in een output variable van de vorige stap. Ook hebben we eerder in een enviroment variable genaamd `AWS_SERVICE` de service naam opgeslagen en het cluster in de variable `AWS_CLUSTER`. Deze variabelen zijn nodig om de task definition op de juiste resources te starten.
 
-      De AWS ECS Service zal vervolgens de container die staat vermeld in het task definition bestand deployen op een virtuele machine (EC2)
+      De AWS ECS Service zal vervolgens de image die staat vermeld in het task definition bestand deployen op een virtuele machine (EC2)
 
+      ![Screenshot](./assets/img/deployservice.jpg)
+
+ Nadat alle `jobs` en bijbehorende steps zijn uitgewerkt is de workflow klaar om getest te worden. Zodra er een nieuw push event plaatsvind op de ingestelde branch zal de workflow automatisch gaan starten. Het proces is eenvoudig te volgen via het Github Actions scherm. 
+
+ ![Screenshot](./assets/img/workflow.jpg)
+
+ Op moment dat alles goed verloopt zal de workflow bij elke job een groen vinkje laten zien. Mocht er ergens een fout optreden dan wordt dit aangeduid met een rood kruis. Het is dan ook mogelijk om de specfieke fout te bekijken door te klikken op de desbetreffende job
+
+![Screenshot](./assets/img/errorpush.jpg)
+
+
+#### AWS ECR
+
+Voor het opslaan van de aangemaakte Docker images maak ik gebruik van AWS ECR (Amazon Elastic Registry). Hierop heb ik een private repository gemaakt waarin de images kunnen worden bewaard. Vervolgens is het mogelijk voor andere AWS diensten om deze images te gebruiken. 
+Daarnaast kunnen gebruikers in het geval van een public repository de images ook eenvoudig `pullen` via de unieke link. Indien de repository is ingesteld op private is dit mogelijk zodra de gebruiker inlogd met zijn/haar accountgegevens
+
+![Screenshot](./assets/img/ecrimage.jpg)
+
+Binnen de instellingen van mijn image repository heb ik ook nog een `Lifecycle policy` ingesteld. Hiermee kun je regels instellen om ervoor te zorgen dat oudere images automatisch worden verwijderd uit de repository. In mijn geval heb ik een policy gemaakt die alle oude (`any`) images verwijderd op moment dat er meer dan 1 image aanwezig is in de repository
+
+![Screenshot](./assets/img/lifecycle.jpg)
+
+#### AWS ECS
 
