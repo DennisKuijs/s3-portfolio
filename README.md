@@ -1240,7 +1240,7 @@ Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stapp
 
      ![Screenshot](./assets/img/imagetag.jpg)
 
-     Als laatste worden er 3 commando's uitgevoerd. 
+     Daarna worden er 3 commando's uitgevoerd. 
      
      Met behulp van de commando `docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .` wordt de Docker image gebouwd met als naam een combinatie van de AWS ECR Repository link en de ImageTag.
 
