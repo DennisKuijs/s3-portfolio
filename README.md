@@ -1202,10 +1202,14 @@ Indien de rechten van de workflow moeten worden beperkt kan dit worden geregeld 
 
 Na het configureren van de standaardinstellingen van de workflow komt het echte werk, de zogenoemde `jobs` of `stages`. Elke `job` representeert een bepaalde taak en heeft verschillende `steps` in hoe deze taak uitgevoerd moet worden.
 
-In mijn voorbeeld heb ik 2 `jobs` gemaakt met de namen `build` en `deploy`. De build stage is verantwoordelijk voor het bouwen van de Docker image en om deze te pushen naar de AWS ECR omgeving op het platform van Amazon. De deploy stage zorgt ervoor dat de image die bij AWS ECR is opgeslagen wordt gestart op een server dankzij AWS ECS & EC2.
+In mijn voorbeeld heb ik 2 `jobs` gemaakt met de namen `build` en `deploy`. 
+
+De build stage is verantwoordelijk voor het bouwen van de Docker image en om deze te pushen naar de AWS ECR omgeving op het platform van Amazon. 
+De deploy stage zorgt ervoor dat de image die bij AWS ECR is opgeslagen wordt gestart op een server dankzij AWS ECS & EC2.
+
 De komende tijd ga ik de workflow nog verder uitbreiden met een derde job genaamd `test`. Hierbij is het de bedoeling dat de integration tests en de SonarCloud controle wordt gestart.
 
-###### Build
+##### Build
 
 Elke job is op dezelfde manier opgebouwd en begint als eerste met de `name` property. Dit is de naam van de specifieke job die ook zichtbaar zal zijn in het overzicht van Github actions.
 
@@ -1260,4 +1264,4 @@ Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stapp
 
      ![Screenshot](./assets/img/echoimage.jpg)
 
-###### Deploy
+##### Deploy
