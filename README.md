@@ -56,7 +56,9 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
   - [Testen & Quality Assurance](#testen&qualityassurance)
     - [Integration Tests](#integration-tests)
     - [SonarCloud](#sonarcloud)
-  - [Continuous Integration & Continuous Development](#continuous-integration&continuous-development)
+  - [Continuous Integration & Continuous Development](#continuous-integration-&-continuous-development)
+    - [Docker](#docker)
+    - [Github Actions](#github-actions)
 
 
 ### Projectbeschrijving
@@ -1091,6 +1093,8 @@ Ook wil ik SonarCloud toevoegen aan mijn CI/CD Workflow zodat deployment alleen 
 
 ### Continuous Integration & Continuous Development
 
+#### Docker
+
 Continuous Integration & Continuous Development afgekort CI/CD is binnen de software ontwikkeling een erg handige tool. Dankzij het gebruik van CI/CD pipelines wordt het mogelijk gemaakt om bepaalde acties automatisch te laten uitvoeren na bijvoorbeeld een code push naar GitHub. Deze acties kunnen bijvoorbeeld het testen van code zijn, maar ook het deployen van code naar een productieontwikkeling of scannen op onregelmatigheden behoort tot de mogelijkheden.
 
 Dankzij deze automatische taken wordt het voor ontwikkelaars eenvoudiger om wijzigingen aan te brengen in de code, daarnaast is het minder foutgevoelig waardoor de betrouwbaarheid toeneemt.
@@ -1140,4 +1144,112 @@ Nu dat we in het `Dockerfile` hebben kunnen specificeren hoe de image eruit ziet
 
 ![Screenshot](./assets/img/dockerignore.jpg)
 
-In mijn geval heb ik hier de map `node_modules` uitgesloten, deze map wordt namelijk door het systeem vanzelf aangemaakt bij het uitvoeren van de commando `npm run install`. Er is dus geen noodzaak om deze vooraf mee te nemen in de codebase, daarnaast is deze map behoorlijk groot en zou het build proces van de image enorm kunnen vertragen.
+In mijn geval heb ik hier de map `node_modules` uitgesloten, deze map wordt namelijk door het systeem vanzelf aangemaakt bij het uitvoeren van de commando `npm run install`. Er is dus geen noodzaak om deze vooraf mee te nemen in de codebase, daarnaast is deze map behoorlijk groot en zou het build proces van de image onnodig kunnen vertragen.
+
+Om te testen of de `Dockerfile` goed is ingericht kan ik in de terminal de commando `docker build -t <image_name> . ` invoeren om docker een image te laten maken van de huidige codebase.
+
+![Screenshot](./assets/img/dockerbuild.jpg)
+
+Nadat het build proces van de image succesvol is verlopen verschijnt de image in de Docker Desktop omgeving. Vanaf hier is het mogelijk om een container te starten met de image waarna de REST API zal worden opgestart. Vervolgens is de API bereikbaar via het lokale netwerk `localhost` in combinatie met het ingestelde poortnummer.
+
+![Screenshot](./assets/img/image.jpg)
+
+![Screenshot](./assets/img/runningcontainer.jpg)
+
+Om de REST API te bereiken via bijvoorbeeld een webbrowser of API tester zoals Postman is het van belang om bij de instellingen van de container de ingestelde poort naar buiten te forwarden. De ingestelde poort in de `Dockerfile` is namelijk alleen intern binnen het netwerk van de container beschikbaar. Via de instellingen is het mogelijk om een lokale poort te koppelen aan de interne poort van de container. Op die manier kun je eenvoudig via je eigen lokale netwerk een verbinding maken met de container en dus in dit geval de REST API.
+
+![Screenshot](./assets/img/portforward.jpg)
+
+#### Github Actions
+
+Nadat de integratie met Docker helemaal is ingesteld en getest is op juiste werking ben ik verder gegaan met het opzetten van de CI/CD Workflow. Hiervoor heb ik gebruik gemaak van Github Actions. Er zijn diverse tools op het internet beschikbaar die je kunnen helpen met het bouwen van dergelijke pipelines, echter heb ik gekozen voor Github actions vanwege het feit dat dit mooi integreerd in de code repository op Github en je op die manier alles bij elkaar hebt staan.
+
+Ik ben als eerste begonnen met het aanmaken van 2 branches, eentje genaamd `production` en een met de naam `development`. In de branch `production` komt alle code te staan die helemaal klaar is om gedeployt te worden op een (live)server. Aan deze branch heb ik mijn Github Workflow gekoppeld. 
+
+In de development branch komt alle code te staan waar op dit moment nog aan wordt gewerkt en waar mogelijkerwijs nog fouten en/of bugs in kunnen voorkomen. Deze code is nog niet klaar om in productie te kunnen worden gebruikt.
+Ook is deze branch op dit moment niet gekoppeld aan een specifieke workflow. Wel wil ik de komende tijd dit nog uitbreiden door een aparte development workflow te maken zodat deze code eventueel op een `playground` server gedeployt kan worden. 
+
+![Screenshot](./assets/img/branches.jpg)
+
+Hierna ben ik verder gegaan met het opzetten van de daadwerkelijke workflow. Omdat ik gebruik ga maken van de verschillende services op het platform van AWS heb ik gekozen om een starttemplate te gebruiken voor AWS. Dit template heb ik vervolgens helemaal aangepast naar mijn eigen wensen en benodigheden.
+
+Wanneer je een nieuwe workflow aanmaakt wordt er in de repository automatisch een map aangemaakt genaamd `.workflows`. In deze map komen alle configuratiebestanden van de verschillende workflows te staan. In mijn voorbeeld heb ik één workflow gemaakt genaamd `production.yml`
+
+![Screenshot](./assets/img/workflows.jpg)
+
+Het configuratiebestand is opgebouwd uit een aantal verschillende blokken die samen de gehele workflow omschrijven. Met behulp van dit bestand kan een zogenoemde `runner` de taken uitvoeren die staan gespecificeerd.
+Het bestand is alsvolgt opgebouwd:
+
+Elke workflow kan beginnen met de `name` property. Hier kan de naam van de workflow worden omschreven, deze naam wordt vervolgens ook getoond binnen de omgeving van Github Actions
+
+![Screenshot](./assets/img/pipelinename.jpg)
+
+Met behulp van het `on` blok kan aangegeven worden wanneer deze workflow gestart moet worden. In mijn geval heb ik ingesteld dat de workflow moet starten op moment dat er een `push` event plaats vind in de `production` branche
+
+![Screenshot](./assets/img/workflowwhen.jpg)
+
+Gedurende het opbouwen van de workflow kan het voorkomen dat je bepaalde waardes vaker moet gebruiken. In dat geval kan het handig zijn om een `env` blok toe te voegen aan de workflow. In dit blok kun je variablen aanmaken die door het gehele bestand gebruikt kunnen worden.
+
+![Screenshot](./assets/img/workflowenv.jpg)
+
+Indien de rechten van de workflow moeten worden beperkt kan dit worden geregeld met behulp van het `permission` blok. Hiermee kun je aangeven welke permissies een workflow heeft en welke niet. In mijn workflow heb ik de permission `read` gegeven wat betekend dat de workflow alleen leesacties kan uitvoeren.
+
+![Screenshot](./assets/img/permissionworkflow.jpg)
+
+Na het configureren van de standaardinstellingen van de workflow komt het echte werk, de zogenoemde `jobs` of `stages`. Elke `job` representeert een bepaalde taak en heeft verschillende `steps` in hoe deze taak uitgevoerd moet worden.
+
+In mijn voorbeeld heb ik 2 `jobs` gemaakt met de namen `build` en `deploy`. De build stage is verantwoordelijk voor het bouwen van de Docker image en om deze te pushen naar de AWS ECR omgeving op het platform van Amazon. De deploy stage zorgt ervoor dat de image die bij AWS ECR is opgeslagen wordt gestart op een server dankzij AWS ECS & EC2.
+De komende tijd ga ik de workflow nog verder uitbreiden met een derde job genaamd `test`. Hierbij is het de bedoeling dat de integration tests en de SonarCloud controle wordt gestart.
+
+Elke job is op dezelfde manier opgebouwd en begint als eerste met de `name` property. Dit is de naam van de specifieke job die ook zichtbaar zal zijn in het overzicht van Github actions.
+
+![Screenshot](./assets/img/namejob.jpg)
+
+Daarna kan er met behulp van de `runs-on` property een besturingsysteem worden geselecteerd waarop de `runner` die de job gaat uitvoeren moet draaien. Ik heb gekozen voor de laatste versie van ubuntu (`ubuntu-latest`) 
+
+![Screenshot](./assets/img/runson.jpg)
+
+Indien er data gedeeld moet worden met andere jobs kan dit tijdelijk worden opgeslagen in variabelen die zijn gespecificeerd onder het blok `outputs`. Deze variabelen zijn toegangelijk voor andere jobs binnen dezelfde workflow
+
+![Screenshot](./assets/img/outputs.jpg)
+
+Hierna is het mogelijk om met behulp van het `steps` blok de verschillende stappen die de `job` moet doorlopen te specificeren. In het voorbeeld van de `build` stage heb ik de volgende stappen uitgewerkt:
+
+  1. Als eerste wordt de code die aanwezig is in de repository gedownload met behulp van de checkout commando.
+     ![Screenshot](./assets/img/checkoutrepo.jpg)
+
+  2. Daarna wordt er een verbinding gemaakt met de AWS omgeving en wordt de connectie tijdelijk bewaard. 
+
+     ![Screenshot](./assets/img/awscredentials.jpg)
+
+     De verbinding wordt opgebouwd met behulp van de `AccessKey`, `PublicKey` en de `region`. Al deze waardes staan netjes opgeslagen als een `secret` in de Github Secrets module
+
+     ![Screenshot](./assets/img/secrets.jpg)
+
+  3. Als de connectie succesvol is opgeslagen wordt er volgens ingelogd op de AWS omgeving en een verbinding gestart met de ECR module
+
+     ![Screenshot](./assets/img/loginecr.jpg)
+  
+  4. Als laatste wordt de daadwerkelijke Docker image gebouwd. Hiervoor gebruiken we twee `env` variabelen die binnen de step zijn gedefinieerd. 
+     
+     In de variable `ECR_REGISTRY` wordt de unieke link naar de AWS ECR repository opgeslagen. Deze link kan opgehaald worden van de Login ECR step zodra de verbinding succesvol tot stand is gekomen.
+
+     ![Screenshot](./assets/img/ecrregis.jpg)
+
+     De variable `IMAGE_TAG` wordt gevuld met een unieke `SHA` waarde die wordt gegenereerd door GitHub zelf. De ImageTag is de unieke naam van de Docker image. Deze is straks ook met de gegeven naam terug te vinden in de AWS ECR Repository.
+
+     ![Screenshot](./assets/img/imagetag.jpg)
+
+     Als laatste worden er 3 commando's uitgevoerd. 
+     
+     Met behulp van de commando `docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .` wordt de Docker image gebouwd met als naam een combinatie van de AWS ECR Repository link en de ImageTag.
+
+     ![Screenshot](./assets/img/dockerbuiltcommand.jpg)
+
+     Vervolgens wordt de Image gepusht naar de AWS ECR Repository dankzij de commando `docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG`
+
+     ![Screenshot](./assets/img/dockerpush.jpg)
+
+     En als laatste wordt de Docker Image naam opgeslagen in een `output` variable die we eerder hebben aangemaakt. Dankzij deze waarde kan de volgende job, in dit geval `deploy` de waarde uitlezen en deze gebruiken om verdere stappen uit te voeren 
+
+     ![Screenshot](./assets/img/echoimage.jpg)
