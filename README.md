@@ -18,9 +18,12 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
    -  [Wat is Agile?](#wat-is-agile)
    -  [Verschillende Agile werkwijzen](#verschillende-agile-werkwijzen)
    -  [Agile toegepast binnen het groepsproject](#agile-toegepast-binnen-het-groepsproject)
+   -  [Agile toegepast binnen het individuele project](#agile-toegepast-binnen-het-individuele-project)
 -  [Professionele ontwikkeling](#professionele-ontwikkeling)
 -  [Culturele verschillen](#culturele-verschillen)
 -  [Ethiek](#ethiek)
+-  [Business Process](#business-process)
+-  [Onderzoek - Wat zijn API Keys & Hoe gebruik je ze veilig](#onderzoek---wat-zijn-api-keys--hoe-gebruik-je-ze-veilig)
 -  [Requirements](#requirements)
 -  [User Stories](#user-stories)
 -  [Design](#design)
@@ -59,6 +62,13 @@ Op verschillende plaatsen in dit document zijn afbeeldingen ingevoegd, deze dien
   - [Continuous Integration & Continuous Development](#continuous-integration-&-continuous-development)
     - [Docker](#docker)
     - [Github Actions](#github-actions)
+      -   [Workflows](#workflows)
+          -   [Jobs](#jobs)
+              -   [Build](#build)
+              -   [Deploy](#deploy)
+    - [AWS ECR](#aws-ecr)
+    - [AWS ECS](#aws-ecs)
+    - [AWS EC2](#aws-ec2)
 
 
 ### Projectbeschrijving
@@ -163,6 +173,19 @@ Na afloop bespreken we de resulaten met iedereen en nemen we indien noodzakelijk
 
 ![Screenshot](./assets/img/peerreview.jpg)
 
+### Agile toegepast binnen het individuele project
+
+Ook in mijn individuele project heb ik het Agile principe toegepast. Zo heb ik een Scrum board gemaakt met behulp van Jira. Op dit bord heb ik alle User stories met bijbehorende taken aangemaakt.
+
+![Screenshot](./assets/img/jira.jpg)
+
+Op moment dat ik een taak heb afgerond heb ik deze op `Completed` gezet in de User Story
+
+![Screenshot](./assets/img/taskcompleted.jpg)
+
+Omdat je in het invididuele project helemaal zelfstandig werkt aan een project is het toepassen van Agile hier een stuk moeilijker dan in het groepsproject.
+Het scrum bord dient hier vooral voor structuur en een handige plek om taken te maken zodat ze niet worden vergeten. Terwijl in het groepsproject er wordt gewerkt samen met een team waarbij de taken eenvoudig kunnen worden verdeeld. Ook is het dan in één oogopslag te zien waar welk teamlid mee bezig is.
+
 ### Professionele ontwikkeling
 
 Profesionnele ontwikkeling is ook erg belangrijk als Software developer. Zowel binnen het groepsproject als het individuele project is dit veelvuldig teruggekomen.
@@ -241,6 +264,78 @@ Op deze manier proberen we de aanvallen van buitenaf tot een minimum te beperken
 
 De geimplementeerde beveiligingsoplossingen zijn besproken en goedgekeurd door de stakeholders van het project. Indien noodzakelijk worden deze in de toekomst aangevuld met extra eisen of worden bestaande eisen uitgebreid.
 
+### Business Process
+
+
+
+### Onderzoek - Wat zijn API Keys? & hoe gebruik je ze veilig?
+
+In dit semester heb ik ook geregeld onderzoek gedaan naar de mogelijke oplossingen voor problemen die ik tijdens het programmeren ben tegengekomen.
+Éen van deze onderzoeken gaat over API Keys en hoe ik deze veilig kan gebruiken in mijn code. Het onderzoek is opgebouwd aan de hand van een hoofdvraag en verschillende deelvragen. Op het einde geef ik een korte conclusie van de onderzoeksresultaten. (DOT-Framework)
+
+Hoofdvraag: Hoe gebruik ik API Keys veilig in mijn code?
+Om deze hoofdvraag goed te kunnen beantwoorden heb ik eerst verder onderzoek gedaan naar wat API Keys precies zijn en hoe deze worden gebruikt
+
+Deelvraag: Wat is een API Key?
+
+Een API Key is een soort wachtwoord waarmee gebruikers en/of applicaties zich kunnen identificeren bij een API Server. Deze key is opgebouwd uit een tekenreeks dat vaak via een speciale `crypto` library wordt aangemaakt om ervoor te zorgen dat deze altijd uniek is. Met behulp van een API Key kunnen gebruikers en applicaties toegang krijgen tot een API Server en daarmee de achterliggende functionaliteiten. 
+
+Een API Key heeft 2 belangrijke taken:
+
+  1. Client App Identification
+  Hiermee worden de applicaties en/of gebruikers die een verzoek versturen naar de API Server geidentificeerd. De API Key is namelijk gekoppeld aan een gebruiker of applicatie en op moment dat er een inkomende request wordt verzonden naar de server kan deze controleren of de gebruiker wordt herkend in het systeem.
+
+  2. Client App Authorization
+  Hiermee wordt gecontroleerd of de gebruiker die een request verstuurd naar de API Server toegang heeft tot het gedeelte (endpoint) waar deze informatie van wilt ophalen. Op moment dat er geen toegang is verleend wordt er een foutmelding teruggestuurd en ontvangt de gebruiker geen informatie.
+
+Deelvraag: Welke manieren zijn er om een API Key op te slaan in code?
+
+In bijna iedere applicatie worden API Keys gebruikt om een gebruiker te identificeren bij een server. Er zijn verschillende manier om deze key te gebruiken binnen de codebase.
+Hieronder heb ik de verschillende manieren nader toegelicht
+
+API Key in code:
+
+Het is mogelijk om een API Key direct te gebruiken binnen de codebase, bijvoorbeeld voor het ophalen van informatie bij een server. Vaak kan zo'n key worden meegegeven aan de `URL` van de server in de vorm van een `Query` parameter. 
+
+Een voorbeeld hiervan is de API Server van OpenWeather voor het ophalen van de actuele weersinformatie. 
+(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key})
+
+Het direct meesturen van de API Key is een van de snelste en gemakkelijkste oplossingen voor het identificeren van de gebruiker bij een externe dienst. 
+Echter is dit ook de meest onveiligste implementatie omdat de API Key op deze manier direct in de code terecht komt en daardoor eenvoudig kan worden gelekt op moment dat de codebase wordt gedeeld op een `Source Control System` zoals GitHub.
+
+Op moment dat een API Key is gelekt kan iedereen die de key in handen krijgt requests maken naar de externe dienst en daarmee toegang krijgen tot onbevoegde informatie. Dit kan voor privacy problemen zorgen en daarnaast kan het in geval van een betaalde dienst leiden tot onnodig extra kosten (Bijvoorbeeld als een API Server je factureert per gemaakt request)
+
+API Key opslaan in Enviroment variabelen.
+
+Een andere optie voor het opslaan van API Keys in de code is door gebruik te maken van enviroment variablen. Deze variabelen staan vaak opgeslagen in een `.env` betand en werken met een `key-value pair`. 
+Nadat een enviroment variable is aangemaakt en er een waarde aan is toegekend kan deze in de code worden uitgelezen met behulp van `process.env.<Variable naam>` 
+
+Op deze manier zijn de API Keys niet direct zichtbaar in de code aangezien de applicaie op de achtergrond de `process.env` variable vervangt met de daadwerkelijke inhoud ervan.
+Door gebruik te maken van `.env` variabelen kan de code ook veilig worden gedeeld op een `Source Control System` zoals GitHub aangezien de codes niet direct zichtbaar zijn.
+
+Wel is het van belang dat het `.env` bestand niet wordt meegenomen in de codebase, anders kunnen onbevoegden nog altijd toegang krijgen tot de gevoelige API Keys. Dit kan worden voorkomen door het `.env` bestand toe te voegen aan de `.gitignore` lijst.
+
+API Key opslaan bij een externe hosting services
+
+Nadat een applicatie gereed is om te worden gebruikt in productie wordt deze uitgerold op een externe server (Vaak van derde partijen). Tijdens het configureren van deze server is het mogelijk om de enviroment variabelen in te voeren in het configuratieoverzicht.
+
+Deze configuratie zorgt ervoor dat er intern op de server een nieuw `.env` wordt aangemaakt en dat de variabelen daarin worden toegevoegd. Aangezien het `.env` bestand niet gedeeld mag worden op een `Source Control System` zoals Github is het namelijk niet mogelijk om deze variabelen op een andere manier op te halen.
+
+Deze optie is erg handig voor een backend server zoals een API aangezien er geen frontend beschikbaar is en de gebruiker niet direct kan interacteren met de applicatie. 
+Voor een frontend applicatie is deze optie erg onveilig aangezien de `.env` variabelen door de server weer worden toegevoegd in de code en iedereen die de applicatie gebruikt deze codes weer kan inzien in de browser.
+Op dat moment wordt hetzelfde bereikt als een API Key direct in code meegeven en kan iedereen dus toegang krijgen tot deze externe services.
+
+Voor een frontend applicatie kan het beste gebruik worden gemaakt van een eigen gemaakte API die dient als een soort `Proxy` voor het afhandelen van de requests. Op die manier wordt via de eigengemaakte API server een request gemaakt naar de externe dienst en wordt de ontvangen data teruggestuurd naar de frontend. 
+Bij het gebruik hiervan is het wel van belang om deze `Proxy` API te beveiligen met een eigen gemaakte API key zodat niemand zomaar requests kan sturen naar deze server.
+
+Conclusie:
+
+Het veiligste is om de API Keys te bewaren in `.env` variablen en deze op de juiste wijze te gebruiken in de code. Wel moet het `.env` bestand worden uitgesloten van de codebase zodat deze niet wordt gedeeld op een `Source Control System` zoals GitHub.
+
+Daarnaast is het belangrijk om bij het configureren van de server alleen de enviroment variabelen in te stellen voor backend servers waarbij er geen frontend aanwezig is. 
+Voor de frontend kan gebruik worden gemaakt van een eigen gemaakte API Server die dient als `proxy` voor het afhandelen van de requests bij externe diensten
+
+De resultaten van dit onderzoek heb ik gebruikt om de API Keys in mijn eigen project en het groepsproject voor iO Digital veilig te kunnen verwerken in de applicatie. We hebben de implementatie gevalideerd bij de stakeholders van het bedrijf en hebben na enkele aanpassingen hierop goedkeuring ontvangen.
 
 ### Requirements
 Klanten
@@ -347,6 +442,15 @@ Voor het toevoegen van het product is gebruik gemaakt van de losse `cards` waar 
 De meldingen op de pagina waarvoor het voor de gebruiker belangrijk is om hier op te letten hebben een gele warning kleur gekregen die een stuk feller is. 
 
 De knoppen `Kies afbeelding`en `Velden leegmaken` hebben de kleuren van het logo gekregen, de knop `Product aanmaken` heeft de groene succeskleur gekregen. Deze kleur laat zien dat de gebruiker het beste op de knop kan klikken voor het afhandelen van de gewenste actie.
+
+Daarnaast heb ik voor mijn individuele applicatie ook een C4 Model (Container Diagram) gemaakt. Hierin wordt in één oogopslag duidelijk hoe de applicatie is opgebouwd en met welke services deze communiceert.
+
+![Screenshot](./assets/img/c4model.jpg)
+
+Voor het groepsproject hebben we veel gewerkt met diverse AWS Services. 
+Hiervoor hebben we een AWS Diagram gemaakt waarin de verschillende services en de communicatie tussen deze services duidelijk zichtbaar zijn.
+
+![Screenshot](./assets/img/AWSDiagram.jpg)
 
 ## Technische uitwerking
 
@@ -1307,14 +1411,49 @@ De deploy job doorloopt de volgende stappen:
 
 #### AWS ECR
 
-Voor het opslaan van de aangemaakte Docker images maak ik gebruik van AWS ECR (Amazon Elastic Registry). Hierop heb ik een private repository gemaakt waarin de images kunnen worden bewaard. Vervolgens is het mogelijk voor andere AWS diensten om deze images te gebruiken. 
+Voor het opslaan van de Docker images maak ik gebruik van AWS ECR (Amazon Elastic Registry). Hierop heb ik een private repository gemaakt waarin de images kunnen worden bewaard. Vervolgens is het mogelijk voor andere AWS diensten om deze images te gebruiken. 
 Daarnaast kunnen gebruikers in het geval van een public repository de images ook eenvoudig `pullen` via de unieke link. Indien de repository is ingesteld op private is dit mogelijk zodra de gebruiker inlogd met zijn/haar accountgegevens
 
 ![Screenshot](./assets/img/ecrimage.jpg)
 
-Binnen de instellingen van mijn image repository heb ik ook nog een `Lifecycle policy` ingesteld. Hiermee kun je regels instellen om ervoor te zorgen dat oudere images automatisch worden verwijderd uit de repository. In mijn geval heb ik een policy gemaakt die alle oude (`any`) images verwijderd op moment dat er meer dan 1 image aanwezig is in de repository
+Binnen de instellingen van mijn repository heb ik ook nog een `Lifecycle policy` ingesteld. Hiermee kun je regels instellen om ervoor te zorgen dat oudere images automatisch worden verwijderd uit de repository. In mijn geval heb ik een policy gemaakt die alle oude (`any`) images verwijderd op moment dat er meer dan 1 image aanwezig is in de repository
 
 ![Screenshot](./assets/img/lifecycle.jpg)
 
 #### AWS ECS
+
+AWS ECS (Amazon Container Service) is een service waarmee het mogelijk is om verschillende container instances te starten waarop diverse taken (`Task definitions`) draaien.
+Als eerste heb ik bij ECS een cluster aangemaakt binnen de region `eu-central-1`. Binnen dit cluster komen alle container instances te staan. Elke instance is een virtuele machine (EC2) met vooraf ingestelde resources. In mijn geval maak ik gebruik van een `t2.micro` instance met 1GB ram en 1vCPU. 
+
+![Screenshot](./assets/img/ecs.jpg)
+
+In een cluster is het mogelijk om één of meerdere `services` te maken. In deze service kun je instellen welke `Task definition` gestart moet worden. Ook kun je hier andere instellingen aanpassen zoals een minimale health percentage en de launch type van het cluster.
+
+![Screenshot](./assets/img/servicesecs.jpg)
+
+Op een service draait één specifieke `Task Definition`. De Task Definition is een taak waarin precies staat beschreven wat er op de container instance gestart moet worden. Zo kan bijvoorbeeld met de unieke image link verwezen worden naar een Docker image op ECR. Ook kun hier instellen hoeveel van de totale resources een taak toegewezen krijgt, dit kan erg handig zijn als je bijvoorbeeld meerdere taken en services hebt draaien binnen hetzelfde cluster.
+
+![Screenshot](./assets/img/TaskDefECS.jpg)
+
+Binnen de Task definition kun je in de `Container Definitions` instellen welke Docker image gestart moet worden. Deze Docker image kan worden opgehaald uit bijvoorbeeld AWS ECR met de unieke link.
+Ook kun je hier diverse instellingen voor de container aanpassen zoals Health checks, enviroment variabelen, netwerk instellingen en opslagconfiguraties.
+
+![Screenshot](./assets/img/containerDef.jpg)
+
+Nadat de Task Defnition helemaal is geconfigureerd kun je deze koppelen aan de eerder aangemaakte service. Hierna zal de service proberen de task definition te starten op een container instance. Op moment dat dit helemaal is gelukt wordt in het overzicht de status `Completed` weergegeven
+
+![Screenshot](./assets/img/RollOutState.jpg)
+
+
+#### AWS EC2
+
+Amazon EC2 (Amazon Elastic Compute Cloud) is een service van Amazon waarmee het mogelijk is om virtuele machines te starten in de cloud. Elke virtuele machine kan helemaal worden geconfigureerd met vooraf ingestelde resources.
+Voor het hosten van mijn REST API heb ik een `t2.micro` EC2 instance aangemaakt met 1GB RAM en 1vCPU. Deze instance is gekoppeld aan het ECS Cluster zodat deze de services eenvoudig kan starten op de virtuele machine.
+
+![Screenshot](./assets/img/ec2.jpg)
+
+Doordat de instance wordt beheerd door het ECS Cluster heb ik zelf bijna geen configuraties hoeven uit te voeren op de virtuele machine. Het ECS Cluster stelt deze helemaal voor je in met de gewenste instellingen.
+Nadat de EC2 instance is geconfigureerd heb ik alleen nog een `Security Group` hoeven aan te maken waarmee ik de container poort van de Docker container openzet op de virtuele machine. Hierdoor kan de API worden benaderd vanaf het internet
+
+![Screenshot](./assets/img/security%20group.jpg)
 
