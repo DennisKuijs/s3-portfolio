@@ -245,13 +245,13 @@ In Nederland zouden we dit namelijk niet zo snel doen, bij ons wordt het als nor
 Ethiek speelt in de wereld van Software ontwikkeling een grootte rol. Steeds meer applicaties worden slimmer ingericht en ook de hoeveelheid data die worden gedeeld neemt snel toe. Hoe zorgen we ervoor dat de software etesiche verantwoord blijft in deze snel veranderende sector? Wanneer is er sprake van onetische software? En wat kunnen we eraan doen?
 Dat zijn allemaal relevanten vragen die gesteld kunnen worden.
 
-Hoofdvraag: Wat voor rol speelt ethiek bij de `Zoek mijn collega` applicatie van iO Digital?
+Hoofdvraag: Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
 
 Ook bij ons in het groepsproject speelt het etische vraagstuk een grootte rol. Voor iO Digital ontwikkelen wij een mobiele applicatie waarmee de medewerkers op kantoor andere medewerkers eenvoudig kunnen vinden. De locaties van de collega's worden bepaald aan de hand van de apparaten die zijn verbonden op de verschillende accesspoints die door het gebouw heen zijn geplaatst.
 
 Met de app wordt het dus technisch gezien mogelijk dat collega's andere collega's voortdurend in de gaten kunnen houden en zo een locatiehistorie kunnen opbouwen van deze persoon. 
 
-Deelvraag: Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
+Deelvraag: Wat voor ethisch verantwoorde beveilingsoplossingen kunnen we hiervoor implementeren?
 
 Over dit vraagstuk hebben wij de afgelopen maanden onderzoek gedaan. We zijn in gesprek geweest met de stakeholders van het project en hebben verder gesproken met de Legal afdeling over dit probleem. De resultaten van dit onderzoek hebben geleid tot een aantal beveiligingsoplossingen die we hebben geimplementeerd in de applicatie om deze zo veilig mogelijk te maken voor de gebruikers.
 
