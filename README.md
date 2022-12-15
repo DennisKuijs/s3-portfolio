@@ -184,7 +184,7 @@ Op moment dat ik een taak heb afgerond heb ik deze op `Completed` gezet in de Us
 ![Screenshot](./assets/img/taskcompleted.jpg)
 
 Omdat je in het invididuele project helemaal zelfstandig werkt aan een project is het toepassen van Agile hier een stuk moeilijker dan in het groepsproject.
-Het scrum bord dient hier vooral voor structuur en een handige plek om taken te maken zodat ze niet worden vergeten. Terwijl in het groepsproject er wordt gewerkt samen met een team waarbij de taken eenvoudig kunnen worden verdeeld. Ook is het dan in één oogopslag te zien waar welk teamlid mee bezig is.
+Het scrum bord dient hier vooral voor structuur en een handige plek om taken te maken zodat ze niet worden vergeten. Terwijl in het groepsproject er wordt gewerkt samen met een team waarbij de taken eenvoudig kunnen worden verdeeld. Ook is dan in één oogopslag te zien waar welk teamlid mee bezig is.
 
 ### Professionele ontwikkeling
 
@@ -245,9 +245,13 @@ In Nederland zouden we dit namelijk niet zo snel doen, bij ons wordt het als nor
 Ethiek speelt in de wereld van Software ontwikkeling een grootte rol. Steeds meer applicaties worden slimmer ingericht en ook de hoeveelheid data die worden gedeeld neemt snel toe. Hoe zorgen we ervoor dat de software etesiche verantwoord blijft in deze snel veranderende sector? Wanneer is er sprake van onetische software? En wat kunnen we eraan doen?
 Dat zijn allemaal relevanten vragen die gesteld kunnen worden.
 
+Hoofdvraag: Wat voor rol speelt ethiek bij de `Zoek mijn collega` applicatie van iO Digital?
+
 Ook bij ons in het groepsproject speelt het etische vraagstuk een grootte rol. Voor iO Digital ontwikkelen wij een mobiele applicatie waarmee de medewerkers op kantoor andere medewerkers eenvoudig kunnen vinden. De locaties van de collega's worden bepaald aan de hand van de apparaten die zijn verbonden op de verschillende accesspoints die door het gebouw heen zijn geplaatst.
 
-Met de app wordt het dus technisch gezien mogelijk dat collega's andere collega's voortdurend in de gaten kunnen houden en zo een locatiehistorie kunnen opbouwen van deze persoon. Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
+Met de app wordt het dus technisch gezien mogelijk dat collega's andere collega's voortdurend in de gaten kunnen houden en zo een locatiehistorie kunnen opbouwen van deze persoon. 
+
+Deelvraag: Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
 
 Over dit vraagstuk hebben wij de afgelopen maanden onderzoek gedaan. We zijn in gesprek geweest met de stakeholders van het project en hebben verder gesproken met de Legal afdeling over dit probleem. De resultaten van dit onderzoek hebben geleid tot een aantal beveiligingsoplossingen die we hebben geimplementeerd in de applicatie om deze zo veilig mogelijk te maken voor de gebruikers.
 
@@ -262,6 +266,8 @@ Ten slotte zorgen we ervoor dat de API Server die deze gegevens verwerkt goed wo
 De overige endpoints zijn beveiligd met een API Key die gehashed staat opgeslagen op een veilige plek op de AWS Omgeving.
 Op deze manier proberen we de aanvallen van buitenaf tot een minimum te beperken en zo datalekken te voorkomen.
 
+Conclusie
+Door middel van het inplementeren van diverse beveiligingsoplossingen kunnen we tijdens het gebruik van de app alsnog een veilige werkomgeving creëren.
 De geimplementeerde beveiligingsoplossingen zijn besproken en goedgekeurd door de stakeholders van het project. Indien noodzakelijk worden deze in de toekomst aangevuld met extra eisen of worden bestaande eisen uitgebreid.
 
 ### Business Process
@@ -271,7 +277,9 @@ De geimplementeerde beveiligingsoplossingen zijn besproken en goedgekeurd door d
 ### Onderzoek - Wat zijn API Keys? & hoe gebruik je ze veilig?
 
 In dit semester heb ik ook geregeld onderzoek gedaan naar de mogelijke oplossingen voor problemen die ik tijdens het programmeren ben tegengekomen.
-Éen van deze onderzoeken gaat over API Keys en hoe ik deze veilig kan gebruiken in mijn code. Het onderzoek is opgebouwd aan de hand van een hoofdvraag en verschillende deelvragen. Op het einde geef ik een korte conclusie van de onderzoeksresultaten. (DOT-Framework)
+Éen van deze onderzoeken gaat over API Keys en hoe ik deze veilig kan gebruiken in mijn code. Het onderzoek is opgebouwd aan de hand van een hoofdvraag en verschillende deelvragen. Op het einde geef ik een korte conclusie van de onderzoeksresultaten.
+
+Voor het onderzoek heb ik gebruik gemaakt van de Lab research methode die onderdeel is van het DOT-Framework
 
 Hoofdvraag: Hoe gebruik ik API Keys veilig in mijn code?
 Om deze hoofdvraag goed te kunnen beantwoorden heb ik eerst verder onderzoek gedaan naar wat API Keys precies zijn en hoe deze worden gebruikt
@@ -282,10 +290,10 @@ Een API Key is een soort wachtwoord waarmee gebruikers en/of applicaties zich ku
 
 Een API Key heeft 2 belangrijke taken:
 
-  1. Client App Identification
+  1. [Client App Identification](https://www.youtube.com/watch?v=sNn23dPRUS8)
   Hiermee worden de applicaties en/of gebruikers die een verzoek versturen naar de API Server geidentificeerd. De API Key is namelijk gekoppeld aan een gebruiker of applicatie en op moment dat er een inkomende request wordt verzonden naar de server kan deze controleren of de gebruiker wordt herkend in het systeem.
 
-  2. Client App Authorization
+  2. [Client App Authorization](https://www.youtube.com/watch?v=sNn23dPRUS8)
   Hiermee wordt gecontroleerd of de gebruiker die een request verstuurd naar de API Server toegang heeft tot het gedeelte (endpoint) waar deze informatie van wilt ophalen. Op moment dat er geen toegang is verleend wordt er een foutmelding teruggestuurd en ontvangt de gebruiker geen informatie.
 
 Deelvraag: Welke manieren zijn er om een API Key op te slaan in code?
