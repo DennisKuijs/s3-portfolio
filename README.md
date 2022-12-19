@@ -245,6 +245,8 @@ In Nederland zouden we dit namelijk niet zo snel doen, bij ons wordt het als nor
 Ethiek speelt in de wereld van Software ontwikkeling een grootte rol. Steeds meer applicaties worden slimmer ingericht en ook de hoeveelheid data die worden gedeeld neemt snel toe. Hoe zorgen we ervoor dat de software etesiche verantwoord blijft in deze snel veranderende sector? Wanneer is er sprake van onetische software? En wat kunnen we eraan doen?
 Dat zijn allemaal relevanten vragen die gesteld kunnen worden.
 
+Voor het onderzoek heb ik gebruik gemaakt van de Field research methode die onderdeel is van het DOT-Framework
+
 Hoofdvraag: Hoe zorgen we ervoor dat er aan de ene kant een veilige werkomgeving wordt gecreërd en aan de andere kant de medewerkers de app op een goede manier kunnen blijven gebruiken?
 
 Ook bij ons in het groepsproject speelt het etische vraagstuk een grootte rol. Voor iO Digital ontwikkelen wij een mobiele applicatie waarmee de medewerkers op kantoor andere medewerkers eenvoudig kunnen vinden. De locaties van de collega's worden bepaald aan de hand van de apparaten die zijn verbonden op de verschillende accesspoints die door het gebouw heen zijn geplaatst.
@@ -271,6 +273,26 @@ Door middel van het inplementeren van diverse beveiligingsoplossingen kunnen we 
 De geimplementeerde beveiligingsoplossingen zijn besproken en goedgekeurd door de stakeholders van het project. Indien noodzakelijk worden deze in de toekomst aangevuld met extra eisen of worden bestaande eisen uitgebreid.
 
 ### Business Process
+
+Voor het individuele project heb ik ook een aantal business processen uitgewerkt. Deze gaan over de situatie voor het gebruik van mijn applicatie en na het gebruik ervan. Op die manier is het verschil in proces goed te zien en daarmee ook de winst die er mee wordt behaald.
+
+![Screenshot](./assets/img/Proces%202.png)
+
+Bij de bovenstaande afbeelding is het proces uitgewerkt van een medewerker die een binnenkomende bestelling gaat inpakken. Hierbij wordt geen gebruik gemaakt van de applicatie die in ontwikkeling is. Alles wordt handmatig afgehandeld.
+In het proces komt duidelijk naar voren dat er veel handmatige stappen nodig zijn om een bestelling te kunnen verwerken. Bij deze stappen is de kans op fouten erg groot omdat er nergens in het proces controles worden uitgevoerd.
+
+Ook kosten sommige stappen in het proces, zoals het downloaden en schalen van een verzendlabel veel tijd en vertragen het proces onnodig. Dit kan ervoor zorgen dat er bij drukte en een lage bezetting niet genoeg tijd is om alle bestellingen op tijd te kunnen verwerken.
+
+![Screenshot](./assets/img/Proces%203.png)
+
+In het verbeterde proces hierboven wordt ervan uitgegaan dat de medewerker gebruikt maakt van de nieuwe software die wordt ontwikkeld. Dankzij het WMS Systeem zijn er veel minder handmatige stappen en wordt veel automatisch bepaald door het systeem. Zo weet het systeem bijvoorbeeld de afmetingen van de producten en kan op basis hiervan automatisch een doosformaat voorstellen.
+
+Ook zijn er meer controles toegevoegd in het proces. Zo moet een medewerker de artikelen die zijn verzameld eerst scannen. Pas op moment dat alle bestelde artikelen overeenkomen met de gescande artikelen kan er een zending worden aangemaakt. Mocht er een fout optreden dan is op geen enkele manier mogelijk om de bestelling te kunnen afronden. 
+
+Als laatste zijn veel handmatige stappen geautomatiseerd, zo worden pakbonnen en verzendlabels automatisch naar de printer verzonden op moment dat de medewerker deze nodig heeft in het proces. Handmatig schalen is ook niet meer nodig, de software doet dit voortaan geheel vanzelf.
+
+Dankzij dit verbeterde proces wordt de kans fouten zo veel mogelijk verkleind en draagt het bij aan een betere KPI Score van bijvoorbeeld het retourpercentage doordat er mogelijk minder producten retour komen wegens een fout artikel in de zending.
+Ook kunnen bestellingen nu veel sneller worden verwerkt dankzij de vele automatische stappen in het systeem. Dit zorgt ervoor dat alle bestellingen op tijd gereed zijn voordat ze worden opgehaald door de vervoerders. Hierdoor worden klanten niet teleurgesteld dat hun zending is vertraagd en zal de KPI score voor klanttevredenheid toenemen.
 
 
 
