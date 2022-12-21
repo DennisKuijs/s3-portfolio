@@ -245,7 +245,7 @@ Het cultuurmodel bestaat uit 6 verschillende dimensies waarbij in elke dimensie 
 
 In dit voorbeeld heb ik 4 verschillende dimensies uitgewerkt en nader toegelicht.
 
-Machtsafstand
+#### Machtsafstand
 De eerste dimensie in het model is machtsafstand. Hierbij wordt er gekeken naar de gelijkwaardigheid tussen de verschillende personen in de maatschappij.
 Bij deze dimensie wordt er gekeken in hoeverre personen van minder machtige organisaties en/of bedrijven verwachten dat de macht mogelijk oneerlijk is verdeeld over de wereld.
 
@@ -253,18 +253,18 @@ Bij een grote machtsafstand vinden personen het belangrijk dat er een trap van m
 
 Bij een kleine machtsafstand vinden personen eerlijkheid het belangrijkste en streven naar een gelijk speelveld voor iedereen. Daarbij vinden ze ook dat machtsongelijkheid moet worden bestreden.
 
-Individualisme
+#### Individualisme
 
 Bij individualisme wordt er gekeken naar de onderligende afhankelijkheid van een individueel persoon in de samenleving. Er wordt gekeken in welke mate het zelfbeeld kan worden ingedeeld in individualitisch (Ik vorm) of collectivistisch (wij vorm)
 
 Bij samenlevingen waarbij het individualisme een belangrijke rol speelt wordt vanuit gegaan dat deze personen alleen voor zichzelf en hun directe naaste zullen zorgen. Terwijl in een collectivistische samenleving mensen zich verbonden voelen met een groep en voor elkaar zullen zorgen
 
-Masculiniteit
+#### Masculiniteit
 De derde dimensie is Masculiniteit. Bij deze dimensie wordt onderzocht welke onderdelen binnen de maatschappij mensen motiveert om de aller beste te zijn. In een samenleving waarbij Masculiniteit een grote rol speelt zijn goede prestaties en succes erg belangrijk.
 
 Het tegenovergestelde van Maculiniteit is Femininiteit. Hierbij wordt de nadruk gelegt op het onderhouden van relaties en minder op succes
 
-Onzekerheidsvermijding
+#### Onzekerheidsvermijding
 Bij de dimensie onzekerheidsvermijding wordt er onderzocht hoe groepen in de maatschappij omgaan met de gedachte dat hoe de toekomst eruit ziet niet bekend is.
 
 Deze gedachte brengt bij de meeste groepen angst en onzekerheid en er wordt gekeken hoe de groepen reageren op deze onvoorspelbare situaties.
