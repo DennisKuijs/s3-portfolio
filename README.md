@@ -283,9 +283,9 @@ Scores van Nederland en onze directe buurlanden:
 
 Score van Nederland en diverse andere landen in de wereld:
 
-Nederland: 80 punten
-Verenigde Staten: 91 punten
-China: 20 punten
+  - Nederland: 80 punten
+  - Verenigde Staten: 91 punten
+  - China: 20 punten
 
 Hieruit is dus duidelijk op te maken dat de chinese bevolking veel meer voor elkaar zorgt en minder om de (ik) persoon geeft.
 Terwijl in Nederland en de Verenigde Staten de Ik vorm erg overheersend is.
