@@ -255,15 +255,15 @@ Bij een kleine machtsafstand vinden personen eerlijkheid het belangrijkste en st
 
 Scores van Nederland en onze directe buurlanden:
 
-Nederland: 38 punten
-Belgie: 65 punten
-Duitsland: 35 punten
+  - Nederland: 38 punten
+  - Belgie: 65 punten
+  - Duitsland: 35 punten
 
 Score van Nederland en diverse andere landen in de wereld:
 
-Nederland: 38 punten
-Verenigde Staten: 40 punten
-China: 80 punten
+  - Nederland: 38 punten
+  - Verenigde Staten: 40 punten
+  - China: 80 punten
 
 Bij de volgende scores komt naar voren dat in China men het belangrijk vind dat er een trap van macht is en er dus ongelijkheid heerst tussen verschillende groepen.
 
@@ -277,9 +277,9 @@ Bij samenlevingen waarbij het individualisme een belangrijke rol speelt wordt va
 
 Scores van Nederland en onze directe buurlanden:
 
-Nederland: 80 punten
-Belgie: 75 punten
-Duitsland: 67 punten
+  - Nederland: 80 punten
+  - Belgie: 75 punten
+  - Duitsland: 67 punten
 
 Score van Nederland en diverse andere landen in de wereld:
 
@@ -297,15 +297,15 @@ Het tegenovergestelde van Maculiniteit is Femininiteit. Hierbij wordt de nadruk 
 
 Scores van Nederland en onze directe buurlanden:
 
-Nederland: 14 punten
-Belgie: 54 punten
-Duitsland: 66 punten
+  - Nederland: 14 punten
+  - Belgie: 54 punten
+  - Duitsland: 66 punten
 
 Score van Nederland en diverse andere landen in de wereld:
 
-Nederland: 14 punten
-Verenigde Staten: 62 punten
-China: 66 punten
+  - Nederland: 14 punten
+  - Verenigde Staten: 62 punten
+  - China: 66 punten
 
 Met de volgende scores is duidelijk te zien dat in Nederland er veel minder nadruk wordt gelegd op succes en prestaties waarbij dit in China en de Verenigde Staten wel het geval is.
 
@@ -321,15 +321,15 @@ Deze gedachte brengt bij de meeste groepen angst en onzekerheid en er wordt geke
 
 Scores van Nederland en onze directe buurlanden:
 
-Nederland: 53 punten
-Belgie: 94 punten
-Duitsland: 65 punten
+  - Nederland: 53 punten
+  - Belgie: 94 punten
+  - Duitsland: 65 punten
 
 Score van Nederland en diverse andere landen in de wereld:
 
-Nederland: 53 punten
-Verenigde Staten: 46 punten
-China: 30 punten
+  - Nederland: 53 punten
+  - Verenigde Staten: 46 punten
+  - China: 30 punten
 
 Deze dimensie ligt bij elk van de bovenstaande landen aardig dicht bij elkaar. Behalve België, hun scoren 94 punten op deze dimensie wat betekent dat er grotere angst heerst bij onvoorspelbare situaties.
 Dit is in landen zoals China, die maar 30 punten scoort erg weinig. Hun hebben weinig angst en kunnen goed omgaan met deze situaties.
