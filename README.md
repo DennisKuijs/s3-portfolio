@@ -253,21 +253,86 @@ Bij een grote machtsafstand vinden personen het belangrijk dat er een trap van m
 
 Bij een kleine machtsafstand vinden personen eerlijkheid het belangrijkste en streven naar een gelijk speelveld voor iedereen. Daarbij vinden ze ook dat machtsongelijkheid moet worden bestreden.
 
+Scores van Nederland en onze directe buurlanden:
+
+Nederland: 38 punten
+Belgie: 65 punten
+Duitsland: 35 punten
+
+Score van Nederland en diverse andere landen in de wereld:
+
+Nederland: 38 punten
+Verenigde Staten: 40 punten
+China: 80 punten
+
+Bij de volgende scores komt naar voren dat in China men het belangrijk vind dat er een trap van macht is en er dus ongelijkheid heerst tussen verschillende groepen.
+
+In Nederland en de Verenigde Staten vinden we dit minder belangrijk en liggen net zoals onze buurlanden meer de nadruk op gelijke machtsverdeling voor iedereen.
+
 #### Individualisme
 
 Bij individualisme wordt er gekeken naar de onderligende afhankelijkheid van een individueel persoon in de samenleving. Er wordt gekeken in welke mate het zelfbeeld kan worden ingedeeld in individualitisch (Ik vorm) of collectivistisch (wij vorm)
 
 Bij samenlevingen waarbij het individualisme een belangrijke rol speelt wordt vanuit gegaan dat deze personen alleen voor zichzelf en hun directe naaste zullen zorgen. Terwijl in een collectivistische samenleving mensen zich verbonden voelen met een groep en voor elkaar zullen zorgen
 
+Scores van Nederland en onze directe buurlanden:
+
+Nederland: 80 punten
+Belgie: 75 punten
+Duitsland: 67 punten
+
+Score van Nederland en diverse andere landen in de wereld:
+
+Nederland: 80 punten
+Verenigde Staten: 91 punten
+China: 20 punten
+
+Hieruit is dus duidelijk op te maken dat de chinese bevolking veel meer voor elkaar zorgt en minder om de (ik) persoon geeft.
+Terwijl in Nederland en de Verenigde Staten de Ik vorm erg overheersend is.
+
 #### Masculiniteit
 De derde dimensie is Masculiniteit. Bij deze dimensie wordt onderzocht welke onderdelen binnen de maatschappij mensen motiveert om de aller beste te zijn. In een samenleving waarbij Masculiniteit een grote rol speelt zijn goede prestaties en succes erg belangrijk.
 
 Het tegenovergestelde van Maculiniteit is Femininiteit. Hierbij wordt de nadruk gelegt op het onderhouden van relaties en minder op succes
 
+Scores van Nederland en onze directe buurlanden:
+
+Nederland: 14 punten
+Belgie: 54 punten
+Duitsland: 66 punten
+
+Score van Nederland en diverse andere landen in de wereld:
+
+Nederland: 14 punten
+Verenigde Staten: 62 punten
+China: 66 punten
+
+Met de volgende scores is duidelijk te zien dat in Nederland er veel minder nadruk wordt gelegd op succes en prestaties waarbij dit in China en de Verenigde Staten wel het geval is.
+
+Ook in onze directe buurlanden zoals Belgie en Duitsland is carriere maken erg belangrijk en de norm.
+
+Bij ons in Nederland wordt de nadruk gelegd op Femininiteit waarbij we veel waarde hechten aan het onderhouden van relaties met personen.
+
+
 #### Onzekerheidsvermijding
 Bij de dimensie onzekerheidsvermijding wordt er onderzocht hoe groepen in de maatschappij omgaan met de gedachte dat hoe de toekomst eruit ziet niet bekend is.
 
 Deze gedachte brengt bij de meeste groepen angst en onzekerheid en er wordt gekeken hoe de groepen reageren op deze onvoorspelbare situaties.
+
+Scores van Nederland en onze directe buurlanden:
+
+Nederland: 53 punten
+Belgie: 94 punten
+Duitsland: 65 punten
+
+Score van Nederland en diverse andere landen in de wereld:
+
+Nederland: 53 punten
+Verenigde Staten: 46 punten
+China: 30 punten
+
+Deze dimensie ligt bij elk van de bovenstaande landen aardig dicht bij elkaar. Behalve België, hun scoren 94 punten op deze dimensie wat betekent dat er grotere angst heerst bij onvoorspelbare situaties.
+Dit is in landen zoals China, die maar 30 punten scoort erg weinig. Hun hebben weinig angst en kunnen goed omgaan met deze situaties.
 
 ### Ethiek
 
